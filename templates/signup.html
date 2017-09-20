@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Python Flask Bucket List App</title>
+
+    <title>WEDx</title>
+
+
+    <script src="../static/js/jquery-3.2.1.js"></script>
+    <script src="../static/js/signUp.js"></script>
+
+
 
 
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/jumbotron-narrow.css" rel="stylesheet">
     <link href="../static/signup.css" rel="stylesheet">
 
   </head>
@@ -21,19 +28,17 @@
             <li role="presentation"><a href="#">Sign In</a></li>
             <li role="presentation" class="active"><a href="#">Sign Up</a></li>
           </ul>
-        </nav>
-        <h3 class="text-muted">Python Flask App</h3>
-      </div>
-
       <div class="jumbotron">
-        <h1>Bucket List App</h1>
+        <h1>Sign Up for WEDx</h1>
         <form class="form-signin">
-        <label for="inputName" class="sr-only">Name</label>
-        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputFName" class="sr-only">First Name</label>
+        <input type="fname" name="inputFName" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
+        <label for="inputLName" class="sr-only">Last Name</label>
+        <input type="lname" name="inputLName" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="username" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required >
 
         <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
       </form>
@@ -46,5 +51,6 @@
       </footer>
 
     </div>
+
   </body>
 </html>
