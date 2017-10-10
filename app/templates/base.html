@@ -1,0 +1,18 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - WEDx</title>
+    {% else %}
+    <title>WEDx</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>WEDx <br>
+    <a href="/index">Home</a>
+    <a href="/login"> Login</a>
+
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>
