@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../static/css/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4 w3-animate-left">
+        <div class="w3-display-container">
+          <img src="../static/img/intro-bg.jpg" style="width:100%" alt="Avatar">
+        </div>
+        <div class="w3-container">
+            <div class="w3-container-topleft w3-margin-right w3-text-black">
+            <h2>Anirudh Konduru</h2>
+            </div>
+          <p><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>Age</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>About</b></p>
+          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom w3-animate-right">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Details</h2>
+             
+        <div class="w3-bar w3-teal">
+                <button class="w3-bar-item w3-button" onclick="openTab('Profile')">Profile Details</button>
+                <button class="w3-bar-item w3-button" onclick="openTab('Contact')">Contact Details</button>
+                <button class="w3-bar-item w3-button" onclick="openTab('Partner')">Partner Preferences</button>
+              </div>
+        
+             <div id="Profile" class="city w3-animate-opacity">
+                <h2>Profile Details</h2>
+              </div>
+              
+            <div id="Contact" class="city w3-animate-opacity" style="display:none">
+                <h2>Contact</h2>
+              </div>
+              
+             <div id="Partner" class="city w3-animate-opacity" style="display:none">
+                <h2>Partner</h2>
+              </div>
+
+              <script>
+              function openTab(tabName) {
+                var i;
+                var x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none"; 
+                }
+                document.getElementById(tabName).style.display = "block"; 
+            }
+        </script>
+
+         <br>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+
+</body>
+</html>

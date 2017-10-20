@@ -1,4 +1,3 @@
 venv
-*.pyc
 migrations
-config.py
+*.pyc
