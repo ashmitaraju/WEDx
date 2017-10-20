@@ -3,9 +3,55 @@
 {% extends "base.html" %}
 {% block title %}Sign Up{% endblock %}
 {% block body %}
+<style>
+  .affix {
+      top: 10;
+      left: 0;
+      width: 25%;
+  }
+
+  }
+  </style>
 <div class="content-section">
   <div class="center">
     <h1>Edit your profile</h1>
+
+
+      <!-- Sidebar -->
+          <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+              <ul class="sidebar-nav">
+
+                  <li>
+                      <a href="#basic" role="tab" data-toggle="tab">Basic Details</a>
+                  </li>
+                  <li>
+                      <a href="#education" role="tab" data-toggle="tab">Education</a>
+                  </li>
+                  <li>
+                      <a href="#emp" role="tab" data-toggle="tab">Employment</a>
+                  </li>
+                  <li>
+                      <a href="#social" role="tab" data-toggle="tab">Social Media</a>
+                  </li>
+                  <li>
+                      <a href="#image" role="tab" data-toggle="tab">Image Gallery</a>
+                  </li>
+                  <li>
+                      <a href="#body" role="tab" data-toggle="tab">Body Details</a>
+                  </li>
+                  <li>
+                      <a href="#preferences" role="tab" data-toggle="tab">Partner Preferences</a>
+                  </li>
+              </ul>
+          </nav>
+
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Bootstrap core JavaScript -->
+    <script src="static/assets/js/jquermenu.js"></script>
+    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
+
+  <div id="wrapper">
     <br/>
     {{ wtf.quick_form(form) }}
   </div>

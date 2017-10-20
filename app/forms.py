@@ -40,3 +40,4 @@ class EditProfileForm(Form):
     about = TextField('About', validators = [InputRequired()])
 
     submit = SubmitField('Save Changes')
+    

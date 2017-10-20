@@ -1,4 +1,5 @@
 venv
 migrations
+flask
 *.pyc
 /app/static/assets/img
