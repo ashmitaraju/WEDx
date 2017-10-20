@@ -131,3 +131,9 @@ def editProfile():
 @login_required
 def advancedSearch():
     return render_template('advancedSearch.html')
+
+
+@app.route('/searchResults', methods=['GET', 'POST'])
+@login_required
+def searchResults():
+    return render_template('searchResults.html')

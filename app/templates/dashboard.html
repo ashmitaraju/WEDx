@@ -7,6 +7,9 @@
 
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
                 <div class="profile-page">
+
+
+
                     <div class="main main-raised col-md-12">
                             <div class="profile-content col-md-3 text-left">
                           
@@ -33,6 +36,9 @@
                                         <p>{{ profile.about }} </p>
                                     </div>
 
+
+
+                                    
                             </div>
                             <div class="container col-md-9">
                                     
@@ -45,13 +51,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <div class="input-bar-item">
-                                                        <button class="btn btn-primary btn-round btn-sm">
+                                                        <button class="btn btn-primary btn-round">
                                                                 <i class="material-icons">search</i>
                                                         </button>
+                                        
+                                                         <a href="{{ url_for('advancedSearch') }}" class="btn btn-primary btn-round text-center">Advanced Search </a> 
+                                                       
                                                   </div>
                                                 </div>
+                                                
                                               </form>
                                             </div>
+                                            
+                                                    
+                                                    
                                           </div>
                                                     
 
