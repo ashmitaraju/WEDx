@@ -24,7 +24,7 @@ def dashboard():
     Render the dashboard template on the /dashboard route
     """
     profile = Profiles.query.filter_by(username= current_user.username).first()
-    
+
     return render_template('dashboard.html', title="Dashboard", profile = profile)
 
 
@@ -50,7 +50,7 @@ def viewProfile(user):
     if (str(profile.gender) == "male"):
         gender['male'] = True
 
-        
+
 
     return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender)
 
@@ -123,7 +123,6 @@ def editProfile():
             flash('Details Updated.')
             return redirect(url_for('dashboard'))
 
-
     return render_template('editProfile.html', title= 'Edit Profile', form = form)
 
 
@@ -137,3 +136,17 @@ def advancedSearch():
 @login_required
 def searchResults():
     return render_template('searchResults.html')
+
+@app.route('/delete', methods=['GET', 'POST'])
+@login_required
+def delete():
+    form = DeleteProfileForm(request.form)
+    if form.validate_on_submit():
+        user = Users.query.filter_by(email = form.email.data).first()
+        if user is not None and user.verify_password(form.password.data):
+
+            return redirect('delete') #review
+    else:
+        flash('Invlaid email or password')
+
+    return render_template('delete.html', title= 'Delete Profile', form=form)
