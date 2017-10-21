@@ -1,7 +1,13 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, TextField, ValidationError , IntegerField
 from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required
+<<<<<<< HEAD
 from .models import *
+=======
+from .models import Users
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from app import images
+>>>>>>> 64941fbb03f960518a84324c72aad9d0566ad608
 
 class LoginForm(Form):
     email = StringField('email', validators =[DataRequired(), Email()])
@@ -36,22 +42,7 @@ class EditProfileForm(Form):
     hometown = StringField('Hometown', validators = [InputRequired()])
     mother_tongue = StringField('Mother Tongue', validators = [InputRequired()])
     about = TextField('About', validators = [InputRequired()])
-    submit = SubmitField('Save Changes')
-
-class EditEducationForm(Form):
-
-    school = StringField('School')
-    under_grad = StringField('Under Graduation')
-    post_grad = StringField('Post Gradution')
-    submit = SubmitField('Save Changes')
-
-class EditEmploymentForm(Form):
-
-    occupation = StringField('Occupation')
-    designation = StringField('Designation')
-    company_name = StringField('Company Name')
-    salary = IntegerField('Salary')
-    submit = SubmitField('Save Changes')
+    image = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
 
 class EditPreferencesForm(Form):
 

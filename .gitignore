@@ -2,4 +2,5 @@ venv
 migrations
 flask
 *.pyc
-/app/static/assets/img
+/app/static/img
+config.py
