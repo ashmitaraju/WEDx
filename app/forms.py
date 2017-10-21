@@ -9,8 +9,8 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app import images
 
 class LoginForm(Form):
-    email = StringField('email', validators =[DataRequired(), Email()])
-    password = PasswordField('password', validators = [InputRequired()])
+    email = StringField('E-mail', validators =[DataRequired(), Email()])
+    password = PasswordField('Password', validators = [InputRequired()])
     submit = SubmitField('Login')
 
 
@@ -41,7 +41,23 @@ class EditProfileForm(Form):
     hometown = StringField('Hometown', validators = [InputRequired()])
     mother_tongue = StringField('Mother Tongue', validators = [InputRequired()])
     about = TextField('About', validators = [InputRequired()])
+    current_location = StringField('Current Location' , validators = [InputRequired()])
     image = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
+    submit = SubmitField('Submit')
+
+class EditEducationForm(Form):
+
+    school = StringField('School')
+    under_grad = StringField('Under Graduation')
+    post_grad = StringField('Post Gradution')
+    submit = SubmitField('Save Changes')
+
+class EditEmploymentForm(Form):
+     occupation = StringField('Occupation')
+     designation = StringField('Designation')
+     company_name = StringField('Company Name')
+     salary = IntegerField('Salary')
+     submit = SubmitField('Save Changes')
 
 class EditPreferencesForm(Form):
 
@@ -57,6 +73,20 @@ class EditPreferencesForm(Form):
     about = TextField('About')
     submit = SubmitField('Save Changes')
 
+class EditSocialMediaForm(Form):
+
+    facebook = StringField('Facebook Link')
+    twitter = StringField('Twitter Link')
+    instagram = StringField('Instagram Link')
+    linkedin = StringField('Linkedin Link')
+    submit = SubmitField('Save Changes')
+
+class EditImageGalleryForm(Form):
+
+
+    submit = SubmitField('Save Changes')
+
+
 class EditBodyForm(Form):
 
     hairChoices = [('pale','Pale'),('fair','Fair'), ('light brown' , 'Light Brown') , ('dark' , 'Dark')]
@@ -67,6 +97,6 @@ class EditBodyForm(Form):
     submit = SubmitField('Save Changes')
 
 class DeleteProfileForm(Form):
-    email = StringField('email', validators =[DataRequired(), Email()])
-    password = PasswordField('password', validators = [InputRequired()])
+    email = StringField('E-mail', validators =[DataRequired(), Email()])
+    password = PasswordField('Password', validators = [InputRequired()])
     submit = SubmitField('Confirm')

@@ -17,12 +17,12 @@
                             <div class="name">
                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>20</h6>
-                                <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Chitoor</h6>
+                                <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ profile.current_location }}</h6>
                             </div>
                             <div class="col-md-12 text-center">
                                     <button class="btn btn-primary">Send Message</button>
                             </div>
-                        </div>   
+                        </div>
                     </div>
                     <div class="description text-center">
                         <h4> About </h4>
@@ -83,7 +83,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h3>Pictures</h3>
-                                      
+
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h3>Partner Preferences</h3>
-                                          
+
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-        </div>  
+        </div>
     </div>
 
  {% endblock %}

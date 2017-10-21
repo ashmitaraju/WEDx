@@ -1,9 +1,9 @@
 from app import app
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
-from .forms import LoginForm, SignUpForm, EditProfileForm
+from .forms import *
 from app import db, images
-from .models import Users, Profiles, ImageGallery
+from .models import *
 
 
 
@@ -107,6 +107,12 @@ def editProfile():
 
     if profile is None:
         form = EditProfileForm()
+        form1=EditEducationForm()
+        form2=EditEmploymentForm()
+        form3=EditSocialMediaForm()
+        form4=EditImageGalleryForm()
+        form5=EditBodyForm()
+        form6=EditPreferencesForm()
 
         if form.validate_on_submit():
             filename = images.save(request.files['image'])
@@ -119,9 +125,25 @@ def editProfile():
             flash('Details Updated.')
             return redirect(url_for('dashboard'))
 
+        if form.validate_on_submit():
+            #education = Education()
+            db.session.add(profile)
+            db.session.add(image)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('dashboard'))
+
 
     else :
         form = EditProfileForm(obj=profile)
+
+        form1=EditEducationForm()
+        form2=EditEmploymentForm()
+        form3=EditSocialMediaForm()
+        form4=EditImageGalleryForm()
+        form5=EditBodyForm()
+        form6=EditPreferencesForm()
+
         form.populate_obj(profile)
         if form.validate_on_submit():
             filename = images.save(request.files['image'])
@@ -132,7 +154,9 @@ def editProfile():
             flash('Details Updated.')
             return redirect(url_for('dashboard'))
 
-    return render_template('editProfile.html', title= 'Edit Profile', form = form)
+
+
+    return render_template('editProfile.html', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6)
 
 
 @app.route('/advancedSearch', methods=['GET', 'POST'])

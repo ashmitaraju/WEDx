@@ -9,12 +9,13 @@
   <!-- Sidebar -->
   <div class="content-section" >
     <div class="center">
-      <h1>Edit your profile</h1>
+      <h1>Edit Your Profile</h1>
       <div id="wrapper">
 
+        <div class="profile-tabs">
+            <div class="nav-align-center">
+                <ul class="nav nav-pills nav-pills-primary " role="tablist">
 
-      <nav class="nav flex-column" >
-          <ul class="sidebar-nav">
 
               <li>
                   <a href="#basic" role="tab" data-toggle="tab">Basic Details</a>
@@ -29,7 +30,7 @@
                   <a href="#social" role="tab" data-toggle="tab">Social Media</a>
               </li>
               <li>
-                  <a href="#image" role="tab" data-toggle="tab">Image Gallery</a>
+                  <a href="#img" role="tab" data-toggle="tab">Image Gallery</a>
               </li>
               <li>
                   <a href="#body" role="tab" data-toggle="tab">Body Details</a>
@@ -38,7 +39,8 @@
                   <a href="#preferences" role="tab" data-toggle="tab">Partner Preferences</a>
               </li>
           </ul>
-      </nav>
+      </div>
+    </div>
 
 
 
@@ -51,26 +53,32 @@
 
       <div id="education" class="tab-pane fade">
         <h3>Education Details</h3>
+        {{ wtf.quick_form(form1) }}
       </div>
 
       <div id="emp" class="tab-pane fade">
         <h3>Employment Details</h3>
+        {{ wtf.quick_form(form2) }}
       </div>
 
       <div id="social" class="tab-pane fade">
         <h3>Social Media</h3>
+        {{ wtf.quick_form(form3) }}
       </div>
 
-      <div id="image" class="tab-pane fade">
+      <div id="img" class="tab-pane fade">
         <h3>Gallery</h3>
+        {{ wtf.quick_form(form4) }}
       </div>
 
       <div id="body" class="tab-pane fade">
         <h3>Body Details</h3>
+        {{ wtf.quick_form(form5) }}
       </div>
 
       <div id="preferences" class="tab-pane fade">
         <h3>Partner Preferences</h3>
+        {{ wtf.quick_form(form6) }}
       </div>
 
     </div>
