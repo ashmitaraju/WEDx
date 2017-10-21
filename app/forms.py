@@ -1,13 +1,12 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, TextField, ValidationError , IntegerField
 from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required
-<<<<<<< HEAD
+
 from .models import *
-=======
+
 from .models import Users
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app import images
->>>>>>> 64941fbb03f960518a84324c72aad9d0566ad608
 
 class LoginForm(Form):
     email = StringField('email', validators =[DataRequired(), Email()])
