@@ -6,3 +6,8 @@ UPLOADS_DEFAULT_URL = '../static/img/'
 
 UPLOADED_IMAGES_DEST ='app/static/img/'
 UPLOADED_IMAGES_URL = '../static/img/'
+#Go sleep
+#goodnight 
+#dream about jesus.
+#aye aye captain 
+# #bsout
