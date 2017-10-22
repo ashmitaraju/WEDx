@@ -97,6 +97,7 @@ def signup():
 @login_required
 def editProfile():
     profile = Profiles.query.filter_by(username=current_user.username).first()
+    search = Search.query.filter_by(username = current_user.username).first()
 
 
     if profile is None:
@@ -113,8 +114,10 @@ def editProfile():
             url = images.url(filename)
             image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
             profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , image_id = image.imgid)
+            search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
             db.session.add(profile)
             db.session.add(image)
+            db.session.add(search)
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('dashboard'))
@@ -143,6 +146,8 @@ def editProfile():
             filename = images.save(request.files['image'])
             url = images.url(filename)
             image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
+            search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+            
             db.session.add(image)
             db.session.commit()
             flash('Details Updated.')
@@ -156,12 +161,14 @@ def editProfile():
 @app.route('/advancedSearch', methods=['GET', 'POST'])
 @login_required
 def advancedSearch():
-    return render_template('advancedSearch.html')
-
+    form = SearchFilterForm()
+    return render_template('advancedSearch.html', form = form)
 
 @app.route('/searchResults', methods=['GET', 'POST'])
 @login_required
 def searchResults():
+    
+    #search = Search.query.filter_by(username = current_user.username)
     return render_template('searchResults.html')
 
 @app.route('/delete', methods=['GET', 'POST'])

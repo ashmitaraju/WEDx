@@ -9,6 +9,8 @@ from .models import Users
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app import images
 
+genderChoices = [('male', 'Male'),('female', 'Female')]
+
 class LoginForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
     password = PasswordField('Password', validators = [InputRequired()])
@@ -62,7 +64,7 @@ class EditEmploymentForm(Form):
 
 class EditPreferencesForm(Form):
 
-    genderChoices = [('male', 'Male'),('female', 'Female')]
+    
 
     occupation = StringField('Occupation')
     salary = IntegerField('Salary')
@@ -101,3 +103,11 @@ class DeleteProfileForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
     password = PasswordField('Password', validators = [InputRequired()])
     submit = SubmitField('Confirm')
+
+class SearchFilterForm(Form):
+    gender = SelectField('Gender', choices = genderChoices)
+    mother_tongue = StringField('Mother Tongue')
+    current_location = StringField('Current Location')
+    hometown = StringField('Hometown')
+    submit = SubmitField('Search')
+    

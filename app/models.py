@@ -144,6 +144,7 @@ class Search(UserMixin, db.Model):
     hometown = db.Column(db.String(60), nullable = True)
     mother_tongue = db.Column(db.String(60), nullable = True)
     current_location = db.Column(db.String(20), nullable = True)
+    dob = db.Column(db.Date, nullable = True)
 
     def __repr(self):
         return '<Search :{}>'.format(self.username)
