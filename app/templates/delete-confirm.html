@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+<div class="content-section">
+  <div class="center">
+    <h1>We're sad to see you go :(</h1>
+
+    <p> Tell us why you're leaving </p>
+
+    <div class="checkbox">
+	<label>
+		<input type="checkbox" name="optionsCheckboxes">
+		I'm getting married!
+	</label>
+</div>
+<div class="checkbox">
+	<label>
+		<input type="checkbox" name="optionsCheckboxes" >
+		I'm going to remain a lone wolf.
+	</label>
+</div>
+<div class="checkbox">
+	<label>
+		<input type="checkbox" name="optionsCheckboxes" >
+		I do not want to disclose.
+	</label>
+</div>
+    <br/>
+
+<form action="/forward/" method="post">
+    <button name="forwardBtn" type="submit">Goodbye</button>
+</form>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}

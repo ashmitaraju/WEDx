@@ -40,7 +40,7 @@ class Profiles(UserMixin, db.Model):
     __tablename__ = 'Profiles'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     first_name = db.Column(db.String(60))
     last_name = db.Column(db.String(60))
     image_id = db.Column(db.Integer, nullable = True)
@@ -58,7 +58,7 @@ class Social_Media(UserMixin, db.Model):
     __tablename__= 'Social_Media'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     facebook = db.Column(db.String(150), nullable = True)
     instagram = db.Column(db.String(150), nullable = True)
     linkedin = db.Column(db.String(150), nullable = True)
@@ -70,7 +70,7 @@ class Education(UserMixin, db.Model):
     __tablename__= 'Education'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     school = db.Column(db.String(150), nullable = False)
     under_grad = db.Column(db.String(150), nullable = True)
     post_grad = db.Column(db.String(150), nullable = True)
@@ -81,7 +81,7 @@ class Employment(UserMixin, db.Model):
     __tablename__= 'Employment'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     occupation = db.Column(db.String(150), nullable = True)
     designation = db.Column(db.String(150), nullable = True)
     company_name = db.Column(db.String(150), nullable = True)
@@ -93,7 +93,7 @@ class Body(UserMixin, db.Model):
     __tablename__= 'Body'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     height = db.Column(db.Integer, nullable = True)
     weight =  db.Column(db.Integer, nullable = True)
     complexion = db.Column(db.String(10), nullable = True)
@@ -102,12 +102,11 @@ class Body(UserMixin, db.Model):
     def __repr(self):
         return '<Body :{}>'.format(self.username)
 
-
 class Partner_Preferences(UserMixin, db.Model):
     __tablename__= 'Partner_Preferences'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     height = db.Column(db.Integer, nullable = True)
     occupation = db.Column(db.String(150), nullable = True)
     salary = db.Column(db.BigInteger, nullable = True)
@@ -123,7 +122,7 @@ class ImageGallery(UserMixin, db.Model):
     __tablename__= 'ImageGallery'
 
     imgid = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     image_filename = db.Column(db.String(60), default= None, nullable= False)
     image_path = db.Column(db.Text, default= None, nullable = False)
 
@@ -135,7 +134,7 @@ class Search(UserMixin, db.Model):
     __tablename__= 'Search'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username"), nullable = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     height = db.Column(db.Integer, nullable = True)
     occupation = db.Column(db.String(150), nullable = True)
     salary = db.Column(db.BigInteger, nullable = True)

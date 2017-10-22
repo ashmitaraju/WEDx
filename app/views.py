@@ -5,13 +5,14 @@ from .forms import *
 from app import db, images
 from .models import *
 
-
+"""
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.get(id)
+"""
 
 @app.route('/')
 def homepage():
-    """
-    Render the homepage template on the / route
-    """
     return render_template('index.html', title="Welcome")
 
 
@@ -20,9 +21,6 @@ def homepage():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    """
-    Render the dashboard template on the /dashboard route
-    """
     profile = Profiles.query.filter_by(username= current_user.username).first()
 
     return render_template('dashboard.html', title="Dashboard", profile = profile)
@@ -40,7 +38,6 @@ def index():
 @login_required
 def viewProfile(user):
 
-
     profile = Profiles.query.filter_by(username=user).first()
     image = ImageGallery.query.filter_by(username=user).first()
     if profile is None:
@@ -50,9 +47,6 @@ def viewProfile(user):
     gender = {'male' : False}
     if (str(profile.gender) == "male"):
         gender['male'] = True
-
-
-
     return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image)
 
 
@@ -177,9 +171,25 @@ def delete():
     if form.validate_on_submit():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
-
-            return redirect('delete') #review
+                if current_user.email == form.email.data:
+                    return redirect('deleteconfirm') #review
+                else:
+                    flash('Invalid Email ID. Please enter again.')
+                    return redirect('delete')
     else:
         flash('Invlaid email or password')
 
     return render_template('delete.html', title= 'Delete Profile', form=form)
+
+@app.route('/deleteconfirm', methods=['GET', 'POST'])
+@login_required
+def deleteconfirm():
+        return render_template('delete-confirm.html')
+
+@app.route("/forward/", methods=['POST'])
+def move_forward():
+    user = current_user
+    db.session.delete(user)
+    db.session.commit()
+    flash('Ciao')
+    return redirect('logout')

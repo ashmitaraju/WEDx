@@ -6,8 +6,6 @@ from flask_bootstrap import Bootstrap
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 import os
 
-
-
 db = SQLAlchemy()
 login_manager = LoginManager()
 
@@ -23,11 +21,6 @@ Bootstrap(app)
 
 images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
-
-
-
-
-
 
 
 from app import views, models
