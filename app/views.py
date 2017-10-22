@@ -112,7 +112,7 @@ def editProfile():
             filename = images.save(request.files['image'])
             url = images.url(filename)
             image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-            profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username )
+            profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , image_id = image.imgid)
             db.session.add(profile)
             db.session.add(image)
             db.session.commit()

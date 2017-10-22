@@ -1,6 +1,7 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, TextField, ValidationError , IntegerField
+from wtforms import StringField, PasswordField, SubmitField, SelectField,  TextField, ValidationError , IntegerField
 from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required
+from wtforms.fields.html5 import DateField
 
 from .models import *
 
@@ -90,7 +91,7 @@ class EditImageGalleryForm(Form):
 class EditBodyForm(Form):
 
     hairChoices = [('pale','Pale'),('fair','Fair'), ('light brown' , 'Light Brown') , ('dark' , 'Dark')]
-    height = IntegerField('Height')
+    height = IntegerField('Height(in cm)')
     weight = IntegerField('Weight')
     hair_colour = StringField('Hair Colour')
     complexion = SelectField('Complexion' , choices = hairChoices)
