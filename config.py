@@ -7,7 +7,12 @@ UPLOADS_DEFAULT_URL = '../static/img/'
 UPLOADED_IMAGES_DEST ='app/static/img/'
 UPLOADED_IMAGES_URL = '../static/img/'
 #Go sleep
-#goodnight 
+#goodnight
 #dream about jesus.
-#aye aye captain 
+#aye aye captain
 # #bsout
+
+#what did you do
+#thu. it cant even show errors properly
+#kthnxbai
+#bye
