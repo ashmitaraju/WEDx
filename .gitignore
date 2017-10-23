@@ -3,4 +3,3 @@ migrations
 flask
 *.pyc
 /app/static/img
-config.py
