@@ -16,7 +16,7 @@
                                     <div class="row">
                                         <div class="profile">
                                             <div class="avatar">
-                                                <img src="../static/assets/img/konduru.jpg" alt="Circle Image" class="img-rounded img-responsive img-raised">
+                                                <img src="{{ image.image_path }}" alt="Circle Image" class="img-rounded img-responsive img-raised">
                                             </div>
                                             <div class="name">
                                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
@@ -54,18 +54,18 @@
                                                         <button class="btn btn-primary btn-round">
                                                                 <i class="material-icons">search</i>
                                                         </button>
-                                                        
+
                                                   </div>
                                                 </div>
 
-                                                
+
                                               </form>
-                                              
+
                                             </div>
                                             <a href="{{ url_for('advancedSearch') }}" class="btn btn-primary btn-round text-center">Advanced Search </a>
                                             <a href="{{ url_for('delete') }}" class="btn btn-primary btn-round text-center">Delete Account </a>
 
-                                         
+
 
 
 

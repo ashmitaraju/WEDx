@@ -1,6 +1,6 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField, SelectField,  TextField, ValidationError , IntegerField
-from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required
+from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required , Optional
 from wtforms.fields.html5 import DateField
 
 from .models import *
@@ -47,7 +47,7 @@ class EditProfileForm(Form):
     mother_tongue = StringField('Mother Tongue')
     about = TextField('About')
     current_location = StringField('Current Location')
-    image = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
+    image = FileField('Profile Picture', validators=[Optional() , FileAllowed(images, 'Images only!')])
     submit = SubmitField('Save Changes')
 
 class EditEducationForm(Form):
@@ -66,7 +66,7 @@ class EditEmploymentForm(Form):
 
 class EditPreferencesForm(Form):
 
-    
+
 
     occupation = StringField('Occupation')
     salary = IntegerField('Salary')
@@ -112,4 +112,3 @@ class SearchFilterForm(Form):
     current_location = StringField('Current Location')
     hometown = StringField('Hometown')
     submit = SubmitField('Search')
-    
