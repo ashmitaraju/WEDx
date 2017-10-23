@@ -93,18 +93,18 @@ def editProfile():
 
     if profile is None:
         form = EditProfileForm()
-        form1=EditEducationForm()
-        form2=EditEmploymentForm()
-        form3=EditSocialMediaForm()
-        form4=EditImageGalleryForm()
-        form5=EditBodyForm()
-        form6=EditPreferencesForm()
+        form1 = EditEducationForm()
+        form2 = EditEmploymentForm()
+        form3 = EditSocialMediaForm()
+        form4 = EditImageGalleryForm()
+        form5 = EditBodyForm()
+        form6 = EditPreferencesForm()
 
         if form.validate_on_submit():
             filename = images.save(request.files['image'])
             url = images.url(filename)
             image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-            profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , image_id = image.imgid)
+            profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
             search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
             db.session.add(profile)
             db.session.add(image)
