@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+<div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
+<div class="profile-page">
+    <div class="main main-raised col-md-12">
+            <div class="profile-content col-md-12">
+
+                <div class="row">
+                    <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Filters </h3> <hr>
+
+                <br>
+                <form>
+                <span class="label label-default" style="float :left;">Age</span>
+                <br>
+                <div id="sliderDouble" class="slider slider-info "></div>
+
+
+                        <div class="form-group label-floating">
+                            <label class="control-label">With Floating Label</label>
+                            <input type="text" class="form-control" >
+                        </div>
+                        <div class="form-group label-floating">
+                                <label class="control-label">With Floating Label</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                         <div class="form-group label-floating">
+                                <label class="control-label">With Floating Label</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                         <div class="form-group label-floating">
+                                <label class="control-label">With Floating Label</label>
+                                <input type="text" class="form-control" >
+                            </div>
+
+                            <div class="text-center">
+                            <button class="btn btn-primary btn-round ">
+                                    <i class="material-icons">search</i> Submit
+                                </button>
+                            </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+     </div>
+
+
+
+{% endblock %}
+{% block scripts %}
+<script>
+$('#sliderDouble').noUiSlider({
+	start: [18, 21] ,
+	connect: true,
+	range: {
+	    min: 18,
+	    max: 100
+	}
+});
+</script>
+{% endblock %}

@@ -41,8 +41,8 @@ class Profiles(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
-    first_name = db.Column(db.String(60))
-    last_name = db.Column(db.String(60))
+    first_name = db.Column(db.String(60) , nullable = False)
+    last_name = db.Column(db.String(60) , nullable = True)
     image_id = db.Column(db.Integer, nullable = True)
     gender = db.Column(db.String(10), nullable = True)
     hometown = db.Column(db.String(60), nullable = True)
@@ -51,6 +51,7 @@ class Profiles(UserMixin, db.Model):
     about = db.Column(db.Text, nullable = True)
     marital_status = db.Column(db.String(20), nullable = True)
     current_location = db.Column(db.String(20), nullable = True)
+
     def __repr(self):
         return '<Profile :{}>'.format(self.username)
 

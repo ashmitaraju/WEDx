@@ -5,17 +5,10 @@ from .forms import *
 from app import db, images
 from .models import *
 
-"""
-@login_manager.user_loader
-def load_user(user_id):
-    return Users.get(id)
-"""
 
 @app.route('/')
 def homepage():
     return render_template('index.html', title="Welcome")
-
-
 
 
 @app.route('/dashboard')
@@ -24,8 +17,6 @@ def dashboard():
     profile = Profiles.query.filter_by(username= current_user.username).first()
 
     return render_template('dashboard.html', title="Dashboard", profile = profile)
-
-
 
 
 @app.route('/index')
@@ -148,7 +139,7 @@ def editProfile():
             url = images.url(filename)
             image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
             search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
-            
+
             db.session.add(image)
             db.session.commit()
             flash('Details Updated.')
@@ -168,7 +159,7 @@ def advancedSearch():
 @app.route('/searchResults', methods=['GET', 'POST'])
 @login_required
 def searchResults():
-    
+
     #search = Search.query.filter_by(username = current_user.username)
     return render_template('searchResults.html')
 

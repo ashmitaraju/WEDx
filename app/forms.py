@@ -5,7 +5,6 @@ from wtforms.fields.html5 import DateField
 
 from .models import *
 
-from .models import Users
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app import images
 
@@ -21,7 +20,7 @@ class SignUpForm(Form):
     email = StringField('E-Mail', validators = [InputRequired(), Email()])
     username = StringField('Username', validators = [InputRequired()])
     password = PasswordField('Password', validators = [InputRequired()])
-    confirm_password = PasswordField('Confirm Password', validators = [InputRequired(), EqualTo('confirm_password')])
+    confirm_password = PasswordField('Confirm Password', validators = [InputRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
     def validate_email(self, field):
@@ -37,16 +36,19 @@ class EditProfileForm(Form):
 
     genderChoices = [('male', 'Male'),('female', 'Female')]
 
+    maritalChoices = [('single' , 'Single') , ('divorced' , 'Divorced') , ('widow' , 'Widow/Widower') , ('poly' , 'Believe in Polygamy')]
+
     first_name = StringField('First Name', validators = [InputRequired()])
-    last_name = StringField('Last Name', validators = [InputRequired()])
-    gender = SelectField('Gender', choices = genderChoices, validators = [Required()])
+    last_name = StringField('Last Name')
+    gender = SelectField('Gender', choices = genderChoices)
     dob = DateField('Date of Birth', validators = [InputRequired()])
-    hometown = StringField('Hometown', validators = [InputRequired()])
-    mother_tongue = StringField('Mother Tongue', validators = [InputRequired()])
-    about = TextField('About', validators = [InputRequired()])
-    current_location = StringField('Current Location' , validators = [InputRequired()])
+    marital_status = SelectField('Marital Status' , choices = maritalChoices , validators = [InputRequired()])
+    hometown = StringField('Hometown')
+    mother_tongue = StringField('Mother Tongue')
+    about = TextField('About')
+    current_location = StringField('Current Location')
     image = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Save Changes')
 
 class EditEducationForm(Form):
 
