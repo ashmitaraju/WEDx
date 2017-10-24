@@ -107,7 +107,7 @@ def editProfile():
         form6 = EditPreferencesForm()
 
         if form.validate_on_submit():
-            pic=request.files.get('image')
+            pic = request.files.get('image')
             if pic is not None:
                 filename = images.save(request.files['image'])
                 url = images.url(filename)
@@ -161,7 +161,11 @@ def editProfile():
             form6.populate_obj(pref)
 
         if form.validate_on_submit():
-            pic=request.files.get('image')
+            #print "Debug Here"
+            #print form.image.data
+
+            pic = form.image.data
+
             if pic is not None:
                 filename = images.save(request.files['image'])
                 url = images.url(filename)

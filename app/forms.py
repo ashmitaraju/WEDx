@@ -1,12 +1,21 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField, SelectField,  TextField, ValidationError , IntegerField
-from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required , Optional
+from wtforms.validators import DataRequired, InputRequired, Email, EqualTo, Required , Optional, StopValidation
 from wtforms.fields.html5 import DateField
 
 from .models import *
 
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from app import images
+
+def myvalidator(form, field):
+
+    if not form.image.data:
+
+        field.errors[:] = []
+        raise StopValidation()
+
+
 
 genderChoices = [('male', 'Male'),('female', 'Female')]
 
@@ -47,8 +56,10 @@ class EditProfileForm(Form):
     mother_tongue = StringField('Mother Tongue')
     about = TextField('About')
     current_location = StringField('Current Location')
-    image = FileField('Profile Picture', validators=[Optional() , FileAllowed(images, 'Images only!')])
+    image = FileField('Profile Picture', validators=[myvalidator, Optional()])
     submit = SubmitField('Save Changes')
+
+
 
 class EditEducationForm(Form):
 
