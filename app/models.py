@@ -151,6 +151,21 @@ class Search(UserMixin, db.Model):
         return '<Search :{}>'.format(self.username)
 
 
+class Messages(UserMixin, db.Model):
+    
+    __tablename__= 'Messages'
+    msgid = db.Column(db.Integer, primary_key= True)
+    sender_username = db.Column(db.String(150), nullable = False)
+    receiver_username  = db.Column(db.String(150), nullable = False)
+    subject = db.Column(db.String(50), nullable = False)
+    body = db.Column(db.Text, nullable = False)
+    timestamp = db.Column(db.DateTime, nullable = False)
+
+    def __repr(self):
+        return '<Message :{}>'.format(self.msgid)
+    
+
+
 @login_manager.user_loader
 def load_user(id):
     return Users.query.get(int(id))

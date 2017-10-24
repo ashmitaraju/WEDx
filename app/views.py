@@ -14,10 +14,11 @@ def homepage():
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    messages = Messages.query.filter_by(receiver_username= current_user.username).all()
     profile = Profiles.query.filter_by(username= current_user.username).first()
     id = profile.image_id
     image = ImageGallery.query.filter_by(imgid = id).first()
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image)
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image, messages = messages)
 
 
 @app.route('/index')
@@ -40,7 +41,14 @@ def viewProfile(user):
     gender = {'male' : False}
     if (str(profile.gender) == "male"):
         gender['male'] = True
-    return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image)
+
+    form = SendMessageForm()
+    if form.validate_on_submit():
+        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.subject.data)
+        db.session.add(message)
+        db.session.commit()
+        flash('Message sent!')
+    return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image, form = form)
 
 
 
@@ -112,18 +120,19 @@ def editProfile():
                 filename = images.save(request.files['image'])
                 url = images.url(filename)
                 image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-                #profile.image_id = image.imgid
+               # profile.image_id = image.imgid
                 db.session.add(image)
                 db.session.commit()
                 image = ImageGallery.query.filter_by(image_filename = filename).first()
                 profile.image_id = image.imgid
                 db.session.add(profile)
+                db.session.commit()
             else:
                 image = None
 
             if image is not None:
                 image = ImageGallery.query.filter_by(image_filename = filename).first()
-                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = = foform.gender.data, dob = form.dob.data, about rm.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
             else:
                 profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
 
@@ -170,7 +179,7 @@ def editProfile():
                 filename = images.save(request.files['image'])
                 url = images.url(filename)
                 image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-                #profile.image_id = image.imgid
+                profile.image_id = image.imgid
                 db.session.add(image)
                 db.session.commit()
                 image = ImageGallery.query.filter_by(image_filename = filename).first()
@@ -190,7 +199,7 @@ def editProfile():
             db.session.add(search)
             db.session.commit()
 
-            flash('Details Updated.')
+            flash('Details Updated.') 
             return redirect(url_for('editProfile'))
 
         if form1.validate_on_submit():

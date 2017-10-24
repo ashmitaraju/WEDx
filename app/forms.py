@@ -123,3 +123,10 @@ class SearchFilterForm(Form):
     current_location = StringField('Current Location')
     hometown = StringField('Hometown')
     submit = SubmitField('Search')
+
+
+class SendMessageForm(Form):
+    subject = StringField('Subject', validators =[DataRequired()])
+    body = TextField('Body', validators = [InputRequired()])
+    submit = SubmitField('Send')
+  
