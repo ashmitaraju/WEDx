@@ -115,11 +115,14 @@ def editProfile():
                 #profile.image_id = image.imgid
                 db.session.add(image)
                 db.session.commit()
+                image = ImageGallery.query.filter_by(image_filename = filename).first()
+                profile.image_id = image.imgid
+                db.session.add(profile)
             else:
                 image = None
 
             if image is not None:
-                image = ImageGallery.query.filter_by(filename = filename).first()
+                image = ImageGallery.query.filter_by(image_filename = filename).first()
                 profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
             else:
                 profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
@@ -169,11 +172,20 @@ def editProfile():
                 image = ImageGallery.query.filter_by(image_filename = filename).first()
                 profile.image_id = image.imgid
                 db.session.add(profile)
+            else:
+                image = None
 
+            if image is not None:
+                image = ImageGallery.query.filter_by(image_filename = filename).first()
+                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+            else:
+                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
             search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
-
+            db.session.add(profile)
+            db.session.add(search)
             db.session.commit()
+
             flash('Details Updated.')
             return redirect(url_for('editProfile'))
 
