@@ -8,3 +8,9 @@ UPLOADED_IMAGES_ALLOW = set(['png', 'jpg', 'jpeg'])
 
 UPLOADED_IMAGES_DEST ='app/static/img/'
 UPLOADED_IMAGES_URL = '../static/img/'
+
+#i'll add next buttons? its needed to redirect to the next page
+#add
+#im eating. will be afk what is afk
+#away from konga xD
+#so mean xD# go add button

@@ -4,7 +4,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from .forms import *
 from app import db, images
 from .models import *
-import os
+from datetime import datetime
 
 
 @app.route('/')
@@ -22,7 +22,7 @@ def dashboard():
         image = ImageGallery.query.filter_by(imgid = id).first()
     else:
         image = None
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages)
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
 
 
 @app.route('/index')
@@ -50,7 +50,7 @@ def viewProfile(user):
 
     form = SendMessageForm()
     if form.validate_on_submit():
-        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.subject.data)
+        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.subject.data , timestamp = datetime.now())
         db.session.add(message)
         db.session.commit()
         flash('Message sent!')
@@ -104,31 +104,16 @@ def signup():
 @login_required
 def editProfile():
         profile = Profiles.query.filter_by(username = current_user.username).first()
-        search = Search.query.filter_by(username = current_user.username).first()
-        """
-        education = Education.query.filter_by(username = current_user.username).first()
-        emp = Employment.query.filter_by(username = current_user.username).first()
-        soc = Social_Media.query.filter_by(username = current_user.username).first()
-        bod = Body.query.filter_by(username = current_user.username).first()
-        pref = Partner_Preferences.query.filter_by(username = current_user.username).first()
-        """
+
+
         if profile is None:
             form = EditProfileForm()
-            """
-            form1 = EditEducationForm()
-            form2 = EditEmploymentForm()
-            form3 = EditSocialMediaForm()
-            form4 = EditImageGalleryForm()
-            form5 = EditBodyForm()
-            form6 = EditPreferencesForm()
-            """
             if form.validate_on_submit():
                 pic = form.image.data
                 if pic is not None:
                     filename = images.save(request.files['image'])
                     url = images.url(filename)
                     image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-                    #profile.image_id = image.imgid
                     db.session.add(image)
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
@@ -140,46 +125,15 @@ def editProfile():
                 search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
                 db.session.add(search)
-                db.session.commit()
+                db.session.commit() 
 
-                return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+                return redirect(url_for('editEducation'))
 
-        else :
+        else:
             form = EditProfileForm(obj=profile)
             form.populate_obj(profile)
 
             form.populate_obj(profile)
-            """
-            if education is not None:
-                form1 = EditEducationForm(obj = education)
-                form1.populate_obj(education)
-            else:
-                form1 = EditEducationForm()
-
-            if emp is not None:
-                form2 = EditEmploymentForm(obj = emp)
-                form2.populate_obj(emp)
-            else:
-                form2 = EditEmploymentForm()
-
-            if soc is not None:
-                form3 = EditSocialMediaForm(obj = soc)
-                form3.populate_obj(soc)
-            else:
-                form3=EditSocialMediaForm()
-
-            if bod is not None:
-                form5 = EditBodyForm(obj = bod)
-                form5.populate_obj(bod)
-            else:
-                form5 = EditBodyForm()
-
-            if pref is not None:
-                form6 = EditPreferencesForm(obj = pref)
-                form6.populate_obj(pref)
-            else:
-                form6=EditPreferencesForm()
-            """
             if form.validate_on_submit():
                 pic = form.image.data
                 if pic is not None:   #picture is uploaded
@@ -190,37 +144,172 @@ def editProfile():
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
-
-                search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+                    db.session.commit()
+                #search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+                search = Search.query.filter_by(username = current_user.username).first()
+                search.dob = form.dob.data
+                search.mother_tongue = form.mother_tongue.data
+                search.hometown = form.mother_tongue.data
+                search.current_location = form.current_location.data
+                search.gender = form.gender.data
                 db.session.commit()
+               # print(search.current_location)
 
                 flash('Details Updated.')
+                return redirect(url_for('editEducation'))
 
+        return render_template('editProfile.html', form = form)
 
-            return render_template('education.html', title= 'Edit Profile', form = form )
-"""
 @app.route('/education', methods=['GET', 'POST'])
 @login_required
 def editEducation():
+    education = Education.query.filter_by(username = current_user.username).first()
+    #search = Search.query.filter_by(username = current_user.username).first()
+    if education is not None: #reediting time
+        form1 = EditEducationForm(obj = education)
+        form1.populate_obj(education)
+        if form1.validate_on_submit():
+            education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
+            db.session.commit()
+            search = Search.query.filter_by(username = current_user.username).first()   
+            search.under_grad = form1.under_grad.data
+            search.post_grad = form1.post_grad.data
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editEmployment'))
+
+    else:
+        form1 = EditEducationForm()
+        if form1.validate_on_submit():
+            education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
+            db.session.add(education)
+            db.session.commit()
+            search = Search.query.filter_by(username = current_user.username).first()   
+            search.under_grad = form1.under_grad.data
+            search.post_grad = form1.post_grad.data
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editEmployment'))
+
+
+    return render_template('education.html', form = form1)
+
 
 @app.route('/employment', methods=['GET', 'POST'])
 @login_required
 def editEmployment():
+    emp = Employment.query.filter_by(username = current_user.username).first()
+   # search = Search.query.filter_by(username = current_user.username).first()
+    if emp is not None:
+        form2 = EditEmploymentForm(obj = emp)
+        form2.populate_obj(emp)
+        if form2.validate_on_submit():
+            emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
+           # search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+            db.session.commit()
+            search = Search.query.filter_by(username = current_user.username).first()   
+            search.occupation = form2.occupation.data
+            search.salary = form2.salary.data
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editSocial'))
+    else:
+        form2 = EditEmploymentForm()
+        if form2.validate_on_submit():
+            emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
+            db.session.add(emp)
+            db.session.commit()
+            #emp = Employment.query.filter_by(username = current_user.username).first()
+            #search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+            search = Search.query.filter_by(username = current_user.username).first()   
+            search.occupation = form2.occupation.data
+            search.salary = form2.salary.data
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editSocial'))
+
+
+    return render_template('employment.html', form = form2)
 
 @app.route('/social', methods=['GET', 'POST'])
 @login_required
 def editSocial():
+    soc = Social_Media.query.filter_by(username = current_user.username).first()
+    if soc is not None:
+        form3 = EditSocialMediaForm(obj = soc)
+        form3.populate_obj(soc)
+        if form3.validate_on_submit():
+            soc = Social_Media(facebook = form3.facebook.data , twitter = form3.twitter.data , instagram = form3.instagram.data , linkedin = form3.linkedin.data , username = current_user.username)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editBody'))
+    else:
+        form3=EditSocialMediaForm()
+        if form3.validate_on_submit():
+            soc = Social_Media(facebook = form3.facebook.data , twitter = form3.twitter.data , instagram = form3.instagram.data , linkedin = form3.linkedin.data , username = current_user.username)
+            db.session.add(soc)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editBody'))
+
+    return render_template('social.html', form = form3)
+
 
 @app.route('/body', methods=['GET', 'POST'])
 @login_required
 def editBody():
+    bod = Body.query.filter_by(username = current_user.username).first()
+    search = Search.query.filter_by(username = current_user.username).first()
+    if bod is not None:
+        form5 = EditBodyForm(obj = bod)
+        form5.populate_obj(bod)
+        bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
+       # search = Search(height = form5.height.data)
+
+        search.height = form5.height.data
+        db.session.commit()
+        flash('Details Updated.')
+        return redirect(url_for('editPreferences'))
+    else:
+        form5 = EditBodyForm()
+        if form5.validate_on_submit():
+            bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
+            db.session.add(bod)
+            db.session.commit()
+            bod = Body.query.filter_by(username = current_user.username).first()
+            search = Search.query.filter_by(username = current_user.username).first()  
+            search = Search(height = form5.height.data)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editPreferences'))
+
+    return render_template('body.html', form = form5)
 
 @app.route('/preferences', methods=['GET', 'POST'])
 @login_required
 def editPreferences():
-"""
+    pref = Partner_Preferences.query.filter_by(username = current_user.username).first()
+    if pref is not None:
+        form6 = EditPreferencesForm(obj = pref)
+        form6.populate_obj(pref)
+        pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
+        db.session.commit()
+        flash('Details Updated.')
+        return redirect(url_for('dashboard'))
+    else:
+        form6=EditPreferencesForm()
+        if form6.validate_on_submit():
+            pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
+            db.session.add(pref)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('dashboard'))
+
+    return render_template('preferences.html', form = form6)
+
 
 @app.route('/advancedSearch', methods=['GET', 'POST'])
 @login_required
