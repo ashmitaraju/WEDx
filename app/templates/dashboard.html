@@ -70,6 +70,30 @@
 
 
                                           </div>
+                                          <div class="container col-md-12">
+                                          <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th>From</th>
+                                                    <th class="text-left">Suject</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                    {% for message in messages %}       
+                                            <tr>
+                                                <td class="text-center">{{ message.msgid }}</td>
+                                                <td>{{ message.sender_username }}</td>
+                                                <td class="text-left">{{ message.subject }}</td>
+                                            </tr>
+                                            {% endfor %}   
+                                            <tbody>
+
+
+
+                                            </table>
+                                            </div>
 
 
 
