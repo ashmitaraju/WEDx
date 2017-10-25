@@ -22,7 +22,15 @@ def dashboard():
         image = ImageGallery.query.filter_by(imgid = id).first()
     else:
         image = None
+
     return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
+
+@app.route('/dashboard' , methods = ['POST'])
+@login_required
+def quicksearch():
+    text = request.form['text']
+    print text 
+    return redirect(url_for('viewProfile/text'))
 
 
 @app.route('/index')
@@ -140,7 +148,7 @@ def editProfile():
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     #profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
-                    profile.image_id = image.imgid 
+                    profile.image_id = image.imgid
                     db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
