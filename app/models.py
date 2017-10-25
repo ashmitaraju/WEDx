@@ -86,7 +86,8 @@ class Employment(UserMixin, db.Model):
     occupation = db.Column(db.String(150), nullable = True)
     designation = db.Column(db.String(150), nullable = True)
     company_name = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger, nullable = True)
+    salary = db.Column(db.BigInteger) 
+    #okay
     def __repr(self):
         return '<Employment :{}>'.format(self.username)
 
@@ -95,8 +96,8 @@ class Body(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    height = db.Column(db.Integer, nullable = True)
-    weight =  db.Column(db.Integer, nullable = True)
+    height = db.Column(db.Integer)
+    weight =  db.Column(db.Integer)
     complexion = db.Column(db.String(10), nullable = True)
     hair_colour = db.Column(db.String(10), nullable = True)
 
@@ -108,9 +109,9 @@ class Partner_Preferences(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    height = db.Column(db.Integer, nullable = True)
+    height = db.Column(db.Integer)
     occupation = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger, nullable = True)
+    salary = db.Column(db.BigInteger)
     gender = db.Column(db.String(10), nullable = True)
     hometown = db.Column(db.String(60), nullable = True)
     mother_tongue = db.Column(db.String(60), nullable = True)
@@ -136,9 +137,9 @@ class Search(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    height = db.Column(db.Integer, nullable = True)
+    height = db.Column(db.Integer)
     occupation = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger, nullable = True)
+    salary = db.Column(db.BigInteger)
     under_grad = db.Column(db.String(150), nullable = True)
     post_grad = db.Column(db.String(150), nullable = True)
     gender = db.Column(db.String(10), nullable = True)
@@ -152,19 +153,21 @@ class Search(UserMixin, db.Model):
 
 
 class Messages(UserMixin, db.Model):
-    
+
     __tablename__= 'Messages'
     msgid = db.Column(db.Integer, primary_key= True)
     sender_username = db.Column(db.String(150), nullable = False)
     receiver_username  = db.Column(db.String(150), nullable = False)
-    subject = db.Column(db.String(50), nullable = False)
+    subject = db.Column(db.String(50), nullable = True)
     body = db.Column(db.Text, nullable = False)
-    timestamp = db.Column(db.DateTime, nullable = False)
+    timestamp = db.Column(db.String, nullable = False) #isnt this the table
 
     def __repr(self):
         return '<Message :{}>'.format(self.msgid)
-    
 
+# ey wait. let subject be Optional
+#-_- okay
+#xD
 
 @login_manager.user_loader
 def load_user(id):

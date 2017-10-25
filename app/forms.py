@@ -58,8 +58,7 @@ class EditProfileForm(Form):
     current_location = StringField('Current Location')
     image = FileField('Profile Picture', validators=[myvalidator, Optional()])
     submit = SubmitField('Save Changes')
-
-
+    #nxt = SubmitField('Next')
 
 class EditEducationForm(Form):
 
@@ -72,17 +71,14 @@ class EditEmploymentForm(Form):
      occupation = StringField('Occupation')
      designation = StringField('Designation')
      company_name = StringField('Company Name')
-     salary = IntegerField('Salary')
+     salary = IntegerField('Salary' , validators = [Optional()])
      submit = SubmitField('Save Changes')
 
 class EditPreferencesForm(Form):
-
-
-
     occupation = StringField('Occupation')
-    salary = IntegerField('Salary')
+    salary = IntegerField('Salary' , validators = [Optional()])
     hometown = StringField('Hometown')
-    height = IntegerField('Height')
+    height = IntegerField('Height' , validators = [Optional()])
     current_location = StringField('Current Location')
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue')
@@ -106,8 +102,8 @@ class EditImageGalleryForm(Form):
 class EditBodyForm(Form):
 
     hairChoices = [('pale','Pale'),('fair','Fair'), ('light brown' , 'Light Brown') , ('dark' , 'Dark')]
-    height = IntegerField('Height(in cm)')
-    weight = IntegerField('Weight')
+    height = IntegerField('Height(in cm)' , validators = [Optional()])
+    weight = IntegerField('Weight' , validators = [Optional()])
     hair_colour = StringField('Hair Colour')
     complexion = SelectField('Complexion' , choices = hairChoices)
     submit = SubmitField('Save Changes')
@@ -129,4 +125,3 @@ class SendMessageForm(Form):
     subject = StringField('Subject', validators =[DataRequired()])
     body = TextField('Body', validators = [InputRequired()])
     submit = SubmitField('Send')
-  
