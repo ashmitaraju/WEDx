@@ -1,4 +1,4 @@
-from app import app
+rvcefrom app import app
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 from .forms import *
