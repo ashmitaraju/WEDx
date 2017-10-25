@@ -5,6 +5,7 @@ from .forms import *
 from app import db, images
 from .models import *
 from datetime import datetime
+import os
 
 
 @app.route('/')
@@ -312,6 +313,7 @@ def editPreferences():
 @login_required
 def advancedSearch():
     form = SearchFilterForm()
+
     return render_template('advancedSearch.html', form = form)
 
 @app.route('/searchResults', methods=['GET', 'POST'])
@@ -343,12 +345,12 @@ def delete():
 def deleteconfirm():
         return render_template('delete-confirm.html')
 
-@app.route("/forward/", methods=['POST'])
+@app.route("/forward/", methods=['POST','GET'])
 def move_forward():
     user = current_user
     images = ImageGallery.query.filter_by(username= current_user.username).all()
     for image in images:
-         os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], image.filename))
+         os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
 
     db.session.delete(user)
     db.session.commit()

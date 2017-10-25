@@ -112,7 +112,11 @@ class SearchFilterForm(Form):
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
-    hometown = StringField('Hometown', validators = [Optional()])
+    occupation = StringField('Occupation', validators = [Optional()])
+    salary = StringField('Salary', validators = [Optional()])
+    under_grad = StringField('Undergrad School', validators = [Optional()])
+    post_grad = StringField('Postgrad School', validators = [Optional()])
+    height = IntegerField('Height(in cm)' , validators = [Optional()])
     submit = SubmitField('Search')
 
 
