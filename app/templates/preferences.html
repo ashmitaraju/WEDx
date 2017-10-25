@@ -9,6 +9,31 @@
     <h1>Edit Your Profile</h1>
     <div id="wrapper">
 
+      <div class="profile-tabs">
+         <div class="nav-align-center">
+             <ul class="nav nav-pills nav-pills-primary " role="tablist">
+          <li>
+              <a href="{{ url_for('editProfile') }}">Basic Profile</a>
+          </li>
+          <li>
+              <a href="{{ url_for('editEducation') }}">Education</a>
+          </li>
+          <li>
+              <a href="{{ url_for('editEmployment') }}">Employment</a>
+          </li>
+          <li>
+              <a href="{{ url_for('editSocial') }}">Social Media</a>
+          </li>
+          <li>
+              <a href="{{ url_for('editBody') }}">Body Details</a>
+          </li>
+          <li>
+              <a href="{{ url_for('editPreferences') }}">Partner Preferences</a>
+          </li>
+      </ul>
+  </div>
+</div>
+
       <h3>Partner Preferences</h3>
       {{ wtf.quick_form(form, extra_classes="input-group form-control") }}
       </div>

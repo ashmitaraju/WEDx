@@ -17,7 +17,7 @@
                                         <div class="profile">
 
                                             <div class="image">
-                                                <img src="../static/img/kedall.jpg" alt="" class="img-rounded img-raised object-fit_cover" >
+                                                <img src= {{ image.image_path }} alt="" class="img-rounded img-raised object-fit_cover" >
                                             </div>
                                             <div class="name">
                                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
@@ -82,13 +82,13 @@
                                             </thead>
 
                                             <tbody>
-                                                    {% for message in messages %}       
+                                                    {% for message in messages %}
                                             <tr>
                                                 <td class="text-center">{{ message.msgid }}</td>
                                                 <td>{{ message.sender_username }}</td>
                                                 <td class="text-left">{{ message.subject }}</td>
                                             </tr>
-                                            {% endfor %}   
+                                            {% endfor %}
                                             <tbody>
 
 

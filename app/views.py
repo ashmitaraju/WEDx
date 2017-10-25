@@ -104,8 +104,6 @@ def signup():
 @login_required
 def editProfile():
         profile = Profiles.query.filter_by(username = current_user.username).first()
-
-
         if profile is None:
             form = EditProfileForm()
             if form.validate_on_submit():
@@ -125,14 +123,12 @@ def editProfile():
                 search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
                 db.session.add(search)
-                db.session.commit() 
+                db.session.commit()
 
                 return redirect(url_for('editEducation'))
 
         else:
             form = EditProfileForm(obj=profile)
-            form.populate_obj(profile)
-
             form.populate_obj(profile)
             if form.validate_on_submit():
                 pic = form.image.data
@@ -143,16 +139,16 @@ def editProfile():
                     db.session.add(image)
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
-                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    #profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    profile.image_id = image.imgid 
                     db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
                     db.session.commit()
-                #search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
                 search = Search.query.filter_by(username = current_user.username).first()
                 search.dob = form.dob.data
                 search.mother_tongue = form.mother_tongue.data
-                search.hometown = form.mother_tongue.data
+                search.hometown = form.hometown.data
                 search.current_location = form.current_location.data
                 search.gender = form.gender.data
                 db.session.commit()
@@ -174,7 +170,7 @@ def editEducation():
         if form1.validate_on_submit():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.commit()
-            search = Search.query.filter_by(username = current_user.username).first()   
+            search = Search.query.filter_by(username = current_user.username).first()
             search.under_grad = form1.under_grad.data
             search.post_grad = form1.post_grad.data
             db.session.commit()
@@ -187,7 +183,7 @@ def editEducation():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.add(education)
             db.session.commit()
-            search = Search.query.filter_by(username = current_user.username).first()   
+            search = Search.query.filter_by(username = current_user.username).first()
             search.under_grad = form1.under_grad.data
             search.post_grad = form1.post_grad.data
             db.session.commit()
@@ -210,7 +206,7 @@ def editEmployment():
             emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
            # search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
             db.session.commit()
-            search = Search.query.filter_by(username = current_user.username).first()   
+            search = Search.query.filter_by(username = current_user.username).first()
             search.occupation = form2.occupation.data
             search.salary = form2.salary.data
             db.session.commit()
@@ -224,7 +220,7 @@ def editEmployment():
             db.session.commit()
             #emp = Employment.query.filter_by(username = current_user.username).first()
             #search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
-            search = Search.query.filter_by(username = current_user.username).first()   
+            search = Search.query.filter_by(username = current_user.username).first()
             search.occupation = form2.occupation.data
             search.salary = form2.salary.data
             db.session.commit()
@@ -266,13 +262,13 @@ def editBody():
     if bod is not None:
         form5 = EditBodyForm(obj = bod)
         form5.populate_obj(bod)
-        bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
-       # search = Search(height = form5.height.data)
-
-        search.height = form5.height.data
-        db.session.commit()
-        flash('Details Updated.')
-        return redirect(url_for('editPreferences'))
+        if form5.validate_on_submit():
+            bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.height = form5.height.data
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editPreferences'))
     else:
         form5 = EditBodyForm()
         if form5.validate_on_submit():
@@ -280,8 +276,8 @@ def editBody():
             db.session.add(bod)
             db.session.commit()
             bod = Body.query.filter_by(username = current_user.username).first()
-            search = Search.query.filter_by(username = current_user.username).first()  
-            search = Search(height = form5.height.data)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.height = form5.height.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editPreferences'))
@@ -295,10 +291,11 @@ def editPreferences():
     if pref is not None:
         form6 = EditPreferencesForm(obj = pref)
         form6.populate_obj(pref)
-        pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
-        db.session.commit()
-        flash('Details Updated.')
-        return redirect(url_for('dashboard'))
+        if form6.validate_on_submit():
+            pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('dashboard'))
     else:
         form6=EditPreferencesForm()
         if form6.validate_on_submit():
@@ -359,4 +356,3 @@ def move_forward():
     return redirect('logout')
 
 #@app.route('/uploadImages', methods=['POST'])
-
