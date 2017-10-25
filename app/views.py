@@ -16,9 +16,9 @@ def homepage():
 def dashboard():
     messages = Messages.query.filter_by(receiver_username= current_user.username).all()
     profile = Profiles.query.filter_by(username= current_user.username).first()
-    id = profile.image_id
-    image = ImageGallery.query.filter_by(imgid = id).first()
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image, messages = messages)
+   # id = profile.image_id
+   # image = ImageGallery.query.filter_by(imgid = id).first()
+    return render_template('dashboard.html', title="Dashboard", profile = profile , messages = messages)
 
 
 @app.route('/index')
@@ -32,7 +32,7 @@ def index():
 def viewProfile(user):
 
     profile = Profiles.query.filter_by(username=user).first()
-    id = profile.image_id
+   # id = profile.image_id
     image = ImageGallery.query.filter_by(imgid = id).first()
     if profile is None:
         flash('Profile does not exist')
@@ -132,7 +132,7 @@ def editProfile():
 
             if image is not None:
                 image = ImageGallery.query.filter_by(image_filename = filename).first()
-                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = = foform.gender.data, dob = form.dob.data, about rm.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender =  form.gender.data, dob = form.dob.data, about= form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
             else:
                 profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
 
