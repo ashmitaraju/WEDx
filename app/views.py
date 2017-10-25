@@ -104,7 +104,6 @@ def signup():
 @login_required
 def editProfile():
         profile = Profiles.query.filter_by(username = current_user.username).first()
-        search = Search.query.filter_by(username = current_user.username).first()
 
 
         if profile is None:
@@ -145,11 +144,19 @@ def editProfile():
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
-
-                search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+                    db.session.commit()
+                #search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+                search = Search.query.filter_by(username = current_user.username).first()
+                search.dob = form.dob.data
+                search.mother_tongue = form.mother_tongue.data
+                search.hometown = form.hometown.data
+                search.current_location = form.current_location.data
+                search.gender = form.gender.data
                 db.session.commit()
+               # print(search.current_location)
 
                 flash('Details Updated.')
                 return redirect(url_for('editEducation'))
@@ -160,14 +167,16 @@ def editProfile():
 @login_required
 def editEducation():
     education = Education.query.filter_by(username = current_user.username).first()
-    search = Search.query.filter_by(username = current_user.username).first()
+    #search = Search.query.filter_by(username = current_user.username).first()
     if education is not None: #reediting time
         form1 = EditEducationForm(obj = education)
         form1.populate_obj(education)
         if form1.validate_on_submit():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.commit()
-            search = Search(under_grad = education.under_grad , post_grad = education.post_grad)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.under_grad = form1.under_grad.data
+            search.post_grad = form1.post_grad.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editEmployment'))
@@ -178,7 +187,9 @@ def editEducation():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.add(education)
             db.session.commit()
-            search = Search(under_grad = education.under_grad , post_grad = education.post_grad)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.under_grad = form1.under_grad.data
+            search.post_grad = form1.post_grad.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editEmployment'))
@@ -191,13 +202,17 @@ def editEducation():
 @login_required
 def editEmployment():
     emp = Employment.query.filter_by(username = current_user.username).first()
-    search = Search.query.filter_by(username = current_user.username).first()
+   # search = Search.query.filter_by(username = current_user.username).first()
     if emp is not None:
         form2 = EditEmploymentForm(obj = emp)
         form2.populate_obj(emp)
         if form2.validate_on_submit():
             emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
-            search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+           # search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+            db.session.commit()
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.occupation = form2.occupation.data
+            search.salary = form2.salary.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editSocial'))
@@ -207,7 +222,11 @@ def editEmployment():
             emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
             db.session.add(emp)
             db.session.commit()
-            search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+            #emp = Employment.query.filter_by(username = current_user.username).first()
+            #search = Search(occupation = form2.occupation.data , salary = form2.salary.data)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.occupation = form2.occupation.data
+            search.salary = form2.salary.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editSocial'))
@@ -249,7 +268,8 @@ def editBody():
         form5.populate_obj(bod)
         if form5.validate_on_submit():
             bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
-            search = Search(height = form5.height.data)
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.height = form5.height.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editPreferences'))
@@ -259,7 +279,9 @@ def editBody():
             bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
             db.session.add(bod)
             db.session.commit()
-            search = Search(height = form5.height.data)
+            bod = Body.query.filter_by(username = current_user.username).first()
+            search = Search.query.filter_by(username = current_user.username).first()
+            search.height = form5.height.data
             db.session.commit()
             flash('Details Updated.')
             return redirect(url_for('editPreferences'))
@@ -328,7 +350,13 @@ def deleteconfirm():
 @app.route("/forward/", methods=['POST'])
 def move_forward():
     user = current_user
+    images = ImageGallery.query.filter_by(username= current_user.username).all()
+    for image in images:
+         os.remove(os.path.join(app.config['UPLOADED_ITEMS_DEST'], image.filename))
+
     db.session.delete(user)
     db.session.commit()
     flash('Ciao')
     return redirect('logout')
+
+#@app.route('/uploadImages', methods=['POST'])
