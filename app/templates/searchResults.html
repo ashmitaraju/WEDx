@@ -11,20 +11,22 @@
             <div class="profile-content col-md-12">
 
                 <div class="row">
-                    <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Filters </h3> <hr>
+                    <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Results </h3> <hr>
                     
                 <br>
-                <div class="card-search">
+                {% for i in num %}
+                <div class="w3-animate-left card-search col-md-3 ">
                     <img src="img.jpg" alt="John" style="width:100%">
-                    <h1>John Doe</h1>
+                    <h2>John Doe</h2>
                     <p class="title-search">CEO & Founder, Example</p>
                     <p>Harvard University</p>
                     <a href="#"><i class="fa fa-dribbble"></i></a> 
                     <a href="#"><i class="fa fa-twitter"></i></a> 
                     <a href="#"><i class="fa fa-linkedin"></i></a> 
                     <a href="#"><i class="fa fa-facebook"></i></a> 
-                    <p><button>Contact</button></p>
+                    <p><button class="btn btn-danger">View Profile</button></p>
                   </div>
+                {% endfor %}
 
                     
                 </div>

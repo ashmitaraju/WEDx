@@ -322,7 +322,7 @@ def advancedSearch():
 def searchResults():
 
     #search = Search.query.filter_by(username = current_user.username)
-    return render_template('searchResults.html')
+    return render_template('searchResults.html', num = [1,2,45,56,32])
 
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required
