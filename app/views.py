@@ -126,7 +126,7 @@ def editProfile():
                 search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
                 db.session.add(search)
-                db.session.commit() 
+                db.session.commit()
 
                 return redirect(url_for('editEducation'))
 
@@ -247,11 +247,12 @@ def editBody():
     if bod is not None:
         form5 = EditBodyForm(obj = bod)
         form5.populate_obj(bod)
-        bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
-        search = Search(height = form5.height.data)
-        db.session.commit()
-        flash('Details Updated.')
-        return redirect(url_for('editPreferences'))
+        if form5.validate_on_submit():
+            bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
+            search = Search(height = form5.height.data)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('editPreferences'))
     else:
         form5 = EditBodyForm()
         if form5.validate_on_submit():
@@ -272,10 +273,11 @@ def editPreferences():
     if pref is not None:
         form6 = EditPreferencesForm(obj = pref)
         form6.populate_obj(pref)
-        pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
-        db.session.commit()
-        flash('Details Updated.')
-        return redirect(url_for('dashboard'))
+        if form6.validate_on_submit():
+            pref = Partner_Preferences(height = form6.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
+            db.session.commit()
+            flash('Details Updated.')
+            return redirect(url_for('dashboard'))
     else:
         form6=EditPreferencesForm()
         if form6.validate_on_submit():

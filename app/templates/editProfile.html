@@ -4,64 +4,42 @@
 {% block title %}Edit Profile{% endblock %}
 {% block body %}
 
-
-
-  <!-- Sidebar -->
   <div class="content-section" >
     <div class="center">
       <h1>Edit Your Profile</h1>
       <div id="wrapper">
-<!--
-        <div class="profile-tabs">
-            <div class="nav-align-center">
-                <ul class="nav nav-pills nav-pills-primary " role="tablist">
 
-
+          <div class="profile-tabs">
+             <div class="nav-align-center">
+                 <ul class="nav nav-pills nav-pills-primary " role="tablist">
               <li>
-                  <a href="#basic" role="tab" data-toggle="tab">Basic Details</a>
+                  <a href="{{ url_for('editProfile') }}">Basic Profile</a>
               </li>
               <li>
-                  <a href="#education" role="tab" data-toggle="tab">Education</a>
+                  <a href="{{ url_for('editEducation') }}">Education</a>
               </li>
               <li>
-                  <a href="#emp" role="tab" data-toggle="tab">Employment</a>
+                  <a href="{{ url_for('editEmployment') }}">Employment</a>
               </li>
               <li>
-                  <a href="#social" role="tab" data-toggle="tab">Social Media</a>
+                  <a href="{{ url_for('editSocial') }}">Social Media</a>
               </li>
               <li>
-                  <a href="#img" role="tab" data-toggle="tab">Image Gallery</a>
+                  <a href="{{ url_for('editBody') }}">Body Details</a>
               </li>
               <li>
-                  <a href="#body" role="tab" data-toggle="tab">Body Details</a>
-              </li>
-              <li>
-                  <a href="#preferences" role="tab" data-toggle="tab">Partner Preferences</a>
+                  <a href="{{ url_for('editPreferences') }}">Partner Preferences</a>
               </li>
           </ul>
       </div>
     </div>
 
--->
 
-<!--
-    <div class="tab-content">
-      <div id="basic" class="tab-pane fade in active">
--->
         <h3>Basic Details</h3>
         {{ wtf.quick_form(form, extra_classes="input-group form-control") }}
       </div>
 
-
-
     </div>
   </div>
 
-  <!-- /#sidebar-wrapper -->
-
-      <!-- Bootstrap core JavaScript -->
-        <br/>
-
-  </div>
-</div>
 {% endblock %}
