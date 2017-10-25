@@ -46,23 +46,30 @@
 
                                     <div class="input-bar col-sm-12 text-center">
                                             <div class="input-bar-item width100">
-                                              <form class="form-inline" action="." method="POST">
-                                                 <div class="form-group">
 
-                                                    <input type="text" value="" placeholder="Search by username" class="form-control width100">
-                                
-                                                </div>
-                                                <div class="form-group">
+                                              <form action="/dashboard" method="POST">
+
+
+                                                    <input type="text" name = "text" placeholder="Search by username" class="form-control width100">
+
+
+
                                                   <div class="input-bar-item">
-                                                        <button class="btn btn-primary btn-round">
+                                                        <button type = "submit" name = "text" class="btn btn-primary btn-round" type="submit">
                                                                 <i class="material-icons">search</i>
                                                         </button>
 
-                                                  </div>
+                                                
                                                 </div>
 
 
                                               </form>
+
+  <!--
+                                            <form action="/dashboard" method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form> -->
 
                                             </div>
                                             <a href="{{ url_for('advancedSearch') }}" class="btn btn-primary btn-round text-center">Advanced Search </a>

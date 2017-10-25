@@ -12,9 +12,14 @@ def homepage():
     return render_template('index.html', title="Welcome")
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
 def dashboard():
+    if request.method == 'POST':
+        text = request.form["text"]
+        print text
+        return redirect(url_for('viewProfile' , user = text))
+
     messages = Messages.query.filter_by(receiver_username= current_user.username).all()
     profile = Profiles.query.filter_by(username= current_user.username).first()
     if profile is not None:
@@ -24,14 +29,6 @@ def dashboard():
         image = None
 
     return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
-
-@app.route('/dashboard' , methods = ['POST'])
-@login_required
-def quicksearch():
-    text = request.form['text']
-    print text 
-    return redirect(url_for('viewProfile/text'))
-
 
 @app.route('/index')
 def index():
@@ -327,7 +324,7 @@ def advancedSearch():
 def searchResults():
 
     #search = Search.query.filter_by(username = current_user.username)
-    return render_template('searchResults.html')
+    return render_template('searchResults.html', num = [1,2,45,56,32])
 
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required
