@@ -13,9 +13,14 @@ def homepage():
     return render_template('index.html', title="Welcome")
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
 def dashboard():
+    if request.method == 'POST':
+        text = request.form["text"]
+        print text
+        return redirect(url_for('viewProfile' , user = text))
+
     messages = Messages.query.filter_by(receiver_username= current_user.username).all()
     profile = Profiles.query.filter_by(username= current_user.username).first()
     if profile is not None:
@@ -23,8 +28,8 @@ def dashboard():
         image = ImageGallery.query.filter_by(imgid = id).first()
     else:
         image = None
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
 
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
 
 @app.route('/index')
 def index():
@@ -141,7 +146,7 @@ def editProfile():
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     #profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
-                    profile.image_id = image.imgid 
+                    profile.image_id = image.imgid
                     db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
