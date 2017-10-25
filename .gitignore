@@ -3,3 +3,4 @@ migrations
 flask
 *.pyc
 /app/static/img
+.git-old
