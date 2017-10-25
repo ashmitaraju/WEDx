@@ -15,8 +15,6 @@ def myvalidator(form, field):
         field.errors[:] = []
         raise StopValidation()
 
-
-
 genderChoices = [('male', 'Male'),('female', 'Female')]
 
 class LoginForm(Form):
@@ -43,55 +41,52 @@ class SignUpForm(Form):
 
 class EditProfileForm(Form):
 
-    genderChoices = [('male', 'Male'),('female', 'Female')]
-
     maritalChoices = [('single' , 'Single') , ('divorced' , 'Divorced') , ('widow' , 'Widow/Widower') , ('poly' , 'Believe in Polygamy')]
-
     first_name = StringField('First Name', validators = [InputRequired()])
-    last_name = StringField('Last Name')
+    last_name = StringField('Last Name', validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     dob = DateField('Date of Birth', validators = [InputRequired()])
     marital_status = SelectField('Marital Status' , choices = maritalChoices , validators = [InputRequired()])
-    hometown = StringField('Hometown')
-    mother_tongue = StringField('Mother Tongue')
-    about = TextField('About')
-    current_location = StringField('Current Location')
+    hometown = StringField('Hometown', validators = [Optional()])
+    mother_tongue = StringField('Mother Tongue', validators = [Optional()])
+    about = TextField('About', validators = [Optional()])
+    current_location = StringField('Current Location', validators = [Optional()])
     image = FileField('Profile Picture', validators=[myvalidator, Optional()])
     submit = SubmitField('Save and Next')
     #nxt = SubmitField('Next')
 
 class EditEducationForm(Form):
 
-    school = StringField('School')
-    under_grad = StringField('Under Graduation')
-    post_grad = StringField('Post Gradution')
-    submit = SubmitField('Save and Next')
+    school = StringField('School', validators = [Optional()])
+    under_grad = StringField('Under Graduation', validators = [Optional()])
+    post_grad = StringField('Post Gradution', validators = [Optional()])
+    submit = SubmitField('Save and Next', validators = [Optional()])
 
 class EditEmploymentForm(Form):
-     occupation = StringField('Occupation')
-     designation = StringField('Designation')
-     company_name = StringField('Company Name')
+     occupation = StringField('Occupation', validators = [Optional()])
+     designation = StringField('Designation', validators = [Optional()])
+     company_name = StringField('Company Name', validators = [Optional()])
      salary = IntegerField('Salary' , validators = [Optional()])
      submit = SubmitField('Save and Next')
 
 class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
     salary = IntegerField('Salary' , validators = [Optional()])
-    hometown = StringField('Hometown')
+    hometown = StringField('Hometown', validators = [Optional()])
     height = IntegerField('Height' , validators = [Optional()])
-    current_location = StringField('Current Location')
+    current_location = StringField('Current Location', validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
-    mother_tongue = StringField('Mother Tongue')
-    about = TextField('About')
-    submit = SubmitField('Save Changes')
+    mother_tongue = StringField('Mother Tongue', validators = [Optional()])
+    about = TextField('About', validators = [Optional()])
+    submit = SubmitField('Save Changes', validators = [Optional()])
 
 class EditSocialMediaForm(Form):
 
-    facebook = StringField('Facebook Link')
-    twitter = StringField('Twitter Link')
-    instagram = StringField('Instagram Link')
-    linkedin = StringField('Linkedin Link')
-    submit = SubmitField('Save and Next')
+    facebook = StringField('Facebook Link', validators = [Optional()])
+    twitter = StringField('Twitter Link', validators = [Optional()])
+    instagram = StringField('Instagram Link', validators = [Optional()])
+    linkedin = StringField('Linkedin Link', validators = [Optional()])
+    submit = SubmitField('Save and Next', validators = [Optional()])
 
 class EditImageGalleryForm(Form):
 
@@ -104,9 +99,9 @@ class EditBodyForm(Form):
     hairChoices = [('pale','Pale'),('fair','Fair'), ('light brown' , 'Light Brown') , ('dark' , 'Dark')]
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     weight = IntegerField('Weight' , validators = [Optional()])
-    hair_colour = StringField('Hair Colour')
+    hair_colour = StringField('Hair Colour', validators = [Optional()])
     complexion = SelectField('Complexion' , choices = hairChoices)
-    submit = SubmitField('Save and Next')
+    submit = SubmitField('Save and Next', validators = [Optional()])
 
 class DeleteProfileForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
@@ -115,9 +110,9 @@ class DeleteProfileForm(Form):
 
 class SearchFilterForm(Form):
     gender = SelectField('Gender', choices = genderChoices)
-    mother_tongue = StringField('Mother Tongue')
-    current_location = StringField('Current Location')
-    hometown = StringField('Hometown')
+    mother_tongue = StringField('Mother Tongue', validators = [Optional()])
+    current_location = StringField('Current Location', validators = [Optional()])
+    hometown = StringField('Hometown', validators = [Optional()])
     submit = SubmitField('Search')
 
 

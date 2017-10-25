@@ -104,8 +104,6 @@ def signup():
 @login_required
 def editProfile():
         profile = Profiles.query.filter_by(username = current_user.username).first()
-
-
         if profile is None:
             form = EditProfileForm()
             if form.validate_on_submit():
@@ -132,8 +130,6 @@ def editProfile():
         else:
             form = EditProfileForm(obj=profile)
             form.populate_obj(profile)
-
-            form.populate_obj(profile)
             if form.validate_on_submit():
                 pic = form.image.data
                 if pic is not None:   #picture is uploaded
@@ -143,12 +139,12 @@ def editProfile():
                     db.session.add(image)
                     db.session.commit()
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
-                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    #profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
+                    profile.image_id = image.imgid 
                     db.session.commit()
                 else:
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
                     db.session.commit()
-                #search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
                 search = Search.query.filter_by(username = current_user.username).first()
                 search.dob = form.dob.data
                 search.mother_tongue = form.mother_tongue.data
