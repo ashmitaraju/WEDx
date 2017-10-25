@@ -1,0 +1,107 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+
+
+{% block body %}
+<div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
+<div class="profile-page">
+    <div class="main main-raised">
+            <div class="profile-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="{{ image.image_path }}" alt="Circle Image" class="img-rounded img-responsive img-raised">
+                            </div>
+                            <div class="name">
+                                <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
+                                <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>25</h6>
+                                <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ profile.current_location }}</h6>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                    <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description text-center">
+                        <h4> About </h4>
+                        <p>{{ profile.about }} </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="profile-tabs">
+                        <div class="nav-align-center">
+                            <ul class="nav nav-pills nav-pills-danger" role="tablist">
+                                <li class="active">
+                                    <a href="#profile" role="tab" data-toggle="tab">
+                                        <i class="material-icons">camera</i>
+                                        Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#contact" role="tab" data-toggle="tab">
+                                        <i class="material-icons">palette</i>
+                                        Contact
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#pictures" role="tab" data-toggle="tab">
+                                        <i class="material-icons">favorite</i>
+                                        Pictures
+                                    </a>
+                                </li>
+                            <li>
+                                    <a href="#preferences" role="tab" data-toggle="tab">
+                                        <i class="material-icons">favorite</i>
+                                        Preferences
+                                    </a>
+                                </li>
+                            </ul>
+                            <hr>
+
+                            <div class="tab-content gallery">
+                                <div class="tab-pane active" id="profile">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Profile</h3>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane text-center" id="contact">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Contact Details</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane text-center" id="pictures">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Pictures</h3>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane text-center" id="preferences">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h3>Partner Preferences</h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+ {% endblock %}
+ {% block scripts %}
+ {% endblock %}

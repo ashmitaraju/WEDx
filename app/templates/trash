@@ -1,0 +1,37 @@
+"""
+      elif form1.validate_on_submit():
+          education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
+          db.session.add(education)
+          db.session.commit()
+          flash('Details Updated.')
+          return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+
+      elif form2.validate_on_submit():
+
+          emp = Employment(occupation = form2.occupation.data , designation = form2.designation.data , company_name = form2.company_name.data , salary = form2.salary.data , username = current_user.username)
+          db.session.add(emp)
+          db.session.commit()
+          flash('Details Updated.')
+          return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+
+      elif form3.validate_on_submit():
+          soc = Social_Media(facebook = form3.facebook.data , twitter = form3.twitter.data , instagram = form3.instagram.data , linkedin = form3.linkedin.data , username = current_user.username)
+          db.session.add(soc)
+          db.session.commit()
+          flash('Details Updated.')
+          return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+
+      elif form5.validate_on_submit():
+          bod = Body(height = form5.height.data , weight = form5.weight.data , complexion = form5.complexion.data , hair_colour = form5.hair_colour.data , username = current_user.username)
+          db.session.add(bod)
+          db.session.commit()
+          flash('Details Updated.')
+          return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+
+      elif form6.validate_on_submit():
+          pref = Partner_Preferences(height = form5.height.data , occupation = form6.occupation.data , salary = form6.salary.data , gender = form6.gender.data , hometown = form6.hometown.data , mother_tongue = form6.mother_tongue.data , current_location = form6.current_location.data , about = form6.about.data , username = current_user.username)
+          db.session.add(pref)
+          db.session.commit()
+          flash('Details Updated.')
+          return redirect(url_for('editProfile', title= 'Edit Profile', form = form , form1=form1 , form2=form2 , form3=form3 , form4=form4 , form5=form5 , form6=form6))
+      """

@@ -1,17 +1,17 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/utils.html" as utils %}
 {% extends "base.html" %}
-{% block title %}Sign Up{% endblock %}
+{% block title %}Edit Profile{% endblock %}
 {% block body %}
 
-  }
+
 
   <!-- Sidebar -->
   <div class="content-section" >
     <div class="center">
       <h1>Edit Your Profile</h1>
       <div id="wrapper">
-
+<!--
         <div class="profile-tabs">
             <div class="nav-align-center">
                 <ul class="nav nav-pills nav-pills-primary " role="tablist">
@@ -42,15 +42,16 @@
       </div>
     </div>
 
+-->
 
-
-
+<!--
     <div class="tab-content">
       <div id="basic" class="tab-pane fade in active">
+-->
         <h3>Basic Details</h3>
         {{ wtf.quick_form(form, extra_classes="input-group form-control") }}
       </div>
-
+<!--
       <div id="education" class="tab-pane fade">
         <h3>Education Details</h3>
         {{ wtf.quick_form(form1) }}
@@ -83,14 +84,12 @@
 
     </div>
   </div>
+
+-->
       <!-- /#sidebar-wrapper -->
 
       <!-- Bootstrap core JavaScript -->
-    <script src="static/assets/js/jquermenu.js"></script>
-    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
-
-
-    <br/>
+        <br/>
 
   </div>
 </div>
