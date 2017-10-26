@@ -4,8 +4,12 @@ from flask_login import login_required, login_user, logout_user, current_user
 from .forms import *
 from app import db, images
 from .models import *
-from datetime import datetime
-import os
+import datetime
+
+def calculate_age(born):
+    today = datetime.datetime.now()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
 
 
 @app.route('/')
@@ -29,7 +33,9 @@ def dashboard():
     else:
         image = None
 
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages) #eh wait
+    age = calculate_age(profile.dob)
+
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , messages = messages , age = age) #eh wait
 
 @app.route('/index')
 def index():
@@ -60,7 +66,8 @@ def viewProfile(user):
         db.session.add(message)
         db.session.commit()
         flash('Message sent!')
-    return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image, form = form)
+    age = calculate_age(profile.dob)
+    return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image, form = form , age=age)
 
 
 
