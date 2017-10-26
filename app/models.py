@@ -86,7 +86,7 @@ class Employment(UserMixin, db.Model):
     occupation = db.Column(db.String(150), nullable = True)
     designation = db.Column(db.String(150), nullable = True)
     company_name = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger) 
+    salary = db.Column(db.BigInteger)
     #okay
     def __repr(self):
         return '<Employment :{}>'.format(self.username)
@@ -151,7 +151,6 @@ class Search(UserMixin, db.Model):
     def __repr(self):
         return '<Search :{}>'.format(self.username)
 
-
 class Messages(UserMixin, db.Model):
 
     __tablename__= 'Messages'
@@ -164,10 +163,6 @@ class Messages(UserMixin, db.Model):
 
     def __repr(self):
         return '<Message :{}>'.format(self.msgid)
-
-# ey wait. let subject be Optional
-#-_- okay
-#xD
 
 @login_manager.user_loader
 def load_user(id):

@@ -22,7 +22,6 @@ class LoginForm(Form):
     password = PasswordField('Password', validators = [InputRequired()])
     submit = SubmitField('Login')
 
-
 class SignUpForm(Form):
     email = StringField('E-Mail', validators = [InputRequired(), Email()])
     username = StringField('Username', validators = [InputRequired()])
@@ -38,7 +37,6 @@ class SignUpForm(Form):
         if Users.query.filter_by(username=field.data).first():
             raise ValidationError('Username is already in use')
 
-
 class EditProfileForm(Form):
 
     maritalChoices = [('single' , 'Single') , ('divorced' , 'Divorced') , ('widow' , 'Widow/Widower') , ('poly' , 'Believe in Polygamy')]
@@ -51,7 +49,7 @@ class EditProfileForm(Form):
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     about = TextField('About', validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
-    image = FileField('Profile Picture', validators=[myvalidator, Optional()])
+    image = FileField('Profile Picture', validators=[myvalidator, Optional() , FileAllowed(images, 'Image only!')])
     submit = SubmitField('Save and Next')
     #nxt = SubmitField('Next')
 
@@ -60,7 +58,8 @@ class EditEducationForm(Form):
     school = StringField('School', validators = [Optional()])
     under_grad = StringField('Under Graduation', validators = [Optional()])
     post_grad = StringField('Post Gradution', validators = [Optional()])
-    submit = SubmitField('Save and Next', validators = [Optional()])
+    submit = SubmitField('Save and Next')
+    skip = SubmitField('Skip')
 
 class EditEmploymentForm(Form):
      occupation = StringField('Occupation', validators = [Optional()])
@@ -68,6 +67,7 @@ class EditEmploymentForm(Form):
      company_name = StringField('Company Name', validators = [Optional()])
      salary = IntegerField('Salary' , validators = [Optional()])
      submit = SubmitField('Save and Next')
+     skip = SubmitField('Skip')
 
 class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
@@ -78,7 +78,8 @@ class EditPreferencesForm(Form):
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     about = TextField('About', validators = [Optional()])
-    submit = SubmitField('Save Changes', validators = [Optional()])
+    submit = SubmitField('Save Changes')
+    skip = SubmitField('Skip')
 
 class EditSocialMediaForm(Form):
 
@@ -86,13 +87,14 @@ class EditSocialMediaForm(Form):
     twitter = StringField('Twitter Link', validators = [Optional()])
     instagram = StringField('Instagram Link', validators = [Optional()])
     linkedin = StringField('Linkedin Link', validators = [Optional()])
-    submit = SubmitField('Save and Next', validators = [Optional()])
+    submit = SubmitField('Save and Next')
+    skip = SubmitField('Skip')
 
 class EditImageGalleryForm(Form):
 
-    image = FileField('Profile Picture', validators=[myvalidator, Optional() , FileAllowed(images, 'Image only!')])
+    image = FileField('Upload Picture(s)', validators=[myvalidator, Optional() , FileAllowed(images, 'Image only!')])
     submit = SubmitField('Save and Next')
-
+    skip = SubmitField('Skip')
 
 class EditBodyForm(Form):
 
@@ -101,7 +103,8 @@ class EditBodyForm(Form):
     weight = IntegerField('Weight' , validators = [Optional()])
     hair_colour = StringField('Hair Colour', validators = [Optional()])
     complexion = SelectField('Complexion' , choices = hairChoices)
-    submit = SubmitField('Save and Next', validators = [Optional()])
+    submit = SubmitField('Save and Next')
+    skip = SubmitField('Skip')
 
 class DeleteProfileForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
@@ -114,7 +117,6 @@ class SearchFilterForm(Form):
     current_location = StringField('Current Location', validators = [Optional()])
     hometown = StringField('Hometown', validators = [Optional()])
     submit = SubmitField('Search')
-
 
 class SendMessageForm(Form):
     subject = StringField('Subject', validators =[DataRequired()])

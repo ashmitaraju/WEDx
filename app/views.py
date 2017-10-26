@@ -12,12 +12,9 @@ def calculate_age(born):
     today = datetime.datetime.now()
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
-
-
 @app.route('/')
 def homepage():
     return render_template('index.html', title="Welcome")
-
 
 @app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
@@ -42,8 +39,6 @@ def dashboard():
 @app.route('/index')
 def index():
     return render_template('index.html', title = 'Home')
-
-
 
 @app.route('/viewProfile/<user>', methods=['GET', 'POST'])
 @login_required
@@ -71,9 +66,6 @@ def viewProfile(user):
     age = calculate_age(profile.dob)
     return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image, form = form , age=age)
 
-
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -86,18 +78,12 @@ def login():
             flash('Invlaid email or password')
     return render_template('login.html', title='Sign In', form = form)
 
-
-
-
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('You have logged out.')
     return redirect(url_for('login'))
-
-
-
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -110,10 +96,6 @@ def signup():
         flash('Registration Successful! You may now create your profile.')
         return redirect(url_for('editProfile'))
     return render_template('signup.html', title='Sign Up', form = form)
-
-
-
-
 
 @app.route('/editProfile', methods=['GET', 'POST'])
 @login_required
@@ -194,7 +176,7 @@ def editEducation():
 
     else:
         form1 = EditEducationForm()
-        if form1.validate_on_submit():
+        if form1.validate_on_submit('submit'):
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.add(education)
             db.session.commit()
@@ -207,7 +189,6 @@ def editEducation():
 
 
     return render_template('education.html', form = form1)
-
 
 @app.route('/employment', methods=['GET', 'POST'])
 @login_required
@@ -286,7 +267,6 @@ def editImages():
         return redirect(url_for('editBody'))
     return render_template('image.html' , form = form4)
 
-
 @app.route('/body', methods=['GET', 'POST'])
 @login_required
 def editBody():
@@ -339,7 +319,6 @@ def editPreferences():
             return redirect(url_for('dashboard'))
 
     return render_template('preferences.html', form = form6)
-
 
 @app.route('/advancedSearch', methods=['GET', 'POST'])
 @login_required
