@@ -61,26 +61,31 @@
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                   </button>
-                  <b>Info alert:</b> 
-                  {% with messages = get_flashed_messages() %}
+                  <b>Info alert:</b>
+                  
                   {% if messages %}
-                    {% for message in messages %}
-                      {{ message }}
-                    {% endfor %}
-                  {% endif %}
-                {% endwith %}
+
+                      {% for message in messages %}
+
+                        {% with messages = get_flashed_messages() %}
+                        {{ message }}
+                          {% endwith %}
+                      {% endfor %}
+
+
+                {% endif %}
                 </div>
             </div>
     </nav>
 
     <div class="wrapper">
-           
+
       {% block body %}
       {% endblock %}
-     
+
       <div class="push"></div>
     </div>
-   
+
     <footer>
         <div class="container">
             <div class="row">

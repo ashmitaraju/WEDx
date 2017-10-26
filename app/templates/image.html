@@ -25,6 +25,9 @@
               <a href="{{ url_for('editSocial') }}">Social Media</a>
           </li>
           <li>
+              <a href="{{ url_for('editImages') }}">Gallery</a>
+          </li>
+          <li>
               <a href="{{ url_for('editBody') }}">Body Details</a>
           </li>
           <li>
@@ -35,7 +38,14 @@
 </div>
 
       <h3>Gallery Details</h3>
-      {{ wtf.quick_form(form, extra_classes="input-group form-control") }}
+      <form method="POST" enctype="multipart/form-data" class="form-control">
+
+    {{ form.hidden_tag() }}
+    {{ form.image(multiple="multiple") }}
+    {{ form.submit }}
+    {{ form.skip }}
+</form>
+
       </div>
 
       <br/>
