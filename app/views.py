@@ -5,6 +5,8 @@ from .forms import *
 from app import db, images
 from .models import *
 import datetime
+from werkzeug.utils import secure_filename
+import os
 
 def calculate_age(born):
     today = datetime.datetime.now()
@@ -254,7 +256,7 @@ def editSocial():
             soc = Social_Media(facebook = form3.facebook.data , twitter = form3.twitter.data , instagram = form3.instagram.data , linkedin = form3.linkedin.data , username = current_user.username)
             db.session.commit()
             flash('Details Updated.')
-            return redirect(url_for('editBody'))
+            return redirect(url_for('editImages'))
     else:
         form3=EditSocialMediaForm()
         if form3.validate_on_submit():
@@ -262,9 +264,27 @@ def editSocial():
             db.session.add(soc)
             db.session.commit()
             flash('Details Updated.')
-            return redirect(url_for('editBody'))
+            return redirect(url_for('editImages'))
 
     return render_template('social.html', form = form3)
+
+@app.route('/uploadImages', methods=['GET', 'POST'])
+@login_required
+def editImages():
+    form4 = EditImageGalleryForm()
+
+    if form4.validate_on_submit() and 'image' in request.files:
+
+        for f in request.files.getlist('image'):
+
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(app.config['UPLOADED_IMAGES_DEST'], filename))
+            url = "app/static/img/" + filename
+            image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
+            db.session.add(image)
+            db.session.commit()
+        return redirect(url_for('editBody'))
+    return render_template('image.html' , form = form4)
 
 
 @app.route('/body', methods=['GET', 'POST'])
@@ -367,5 +387,3 @@ def move_forward():
     db.session.commit()
     flash('Ciao')
     return redirect('logout')
-
-#@app.route('/uploadImages', methods=['POST'])

@@ -90,7 +90,7 @@ class EditSocialMediaForm(Form):
 
 class EditImageGalleryForm(Form):
 
-
+    image = FileField('Profile Picture', validators=[myvalidator, Optional() , FileAllowed(images, 'Image only!')])
     submit = SubmitField('Save and Next')
 
 
