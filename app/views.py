@@ -176,7 +176,7 @@ def editEducation():
 
     else:
         form1 = EditEducationForm()
-        if form1.validate_on_submit('submit'):
+        if form1.validate_on_submit():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.add(education)
             db.session.commit()
