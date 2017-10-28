@@ -176,7 +176,7 @@ def editEducation():
 
     else:
         form1 = EditEducationForm()
-        if form1.validate_on_submit('submit'):
+        if form1.validate_on_submit():
             education = Education(school = form1.school.data , under_grad = form1.under_grad.data , post_grad = form1.post_grad.data , username = current_user.username)
             db.session.add(education)
             db.session.commit()
@@ -252,6 +252,9 @@ def editSocial():
 @app.route('/uploadImages', methods=['GET', 'POST'])
 @login_required
 def editImages():
+
+    pics = ImageGallery.query.filter_by(username = current_user.username).all() 
+
     form4 = EditImageGalleryForm()
 
     if form4.validate_on_submit() and 'image' in request.files:
@@ -265,7 +268,7 @@ def editImages():
             db.session.add(image)
             db.session.commit()
         return redirect(url_for('editBody'))
-    return render_template('image.html' , form = form4)
+    return render_template('image.html' , form = form4 , pics = pics)
 
 @app.route('/body', methods=['GET', 'POST'])
 @login_required
