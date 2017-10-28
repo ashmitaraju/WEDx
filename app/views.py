@@ -252,6 +252,9 @@ def editSocial():
 @app.route('/uploadImages', methods=['GET', 'POST'])
 @login_required
 def editImages():
+
+    pics = ImageGallery.query.filter_by(username = current_user.username).all() 
+
     form4 = EditImageGalleryForm()
 
     if form4.validate_on_submit() and 'image' in request.files:
@@ -265,7 +268,7 @@ def editImages():
             db.session.add(image)
             db.session.commit()
         return redirect(url_for('editBody'))
-    return render_template('image.html' , form = form4)
+    return render_template('image.html' , form = form4 , pics = pics)
 
 @app.route('/body', methods=['GET', 'POST'])
 @login_required

@@ -38,6 +38,14 @@
 </div>
 
       <h3>Gallery Details</h3>
+    
+      {% for pic in pics: %}
+      <div class="image">
+        <img src= {{ pic.image_path }} alt="" class="img-rounded img-raised object-fit_cover"  width="120">
+      </div>
+      {% endfor %}
+   
+    
       <form method="POST" enctype="multipart/form-data" class="form-control">
 
     {{ form.hidden_tag() }}
