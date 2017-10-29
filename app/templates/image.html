@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 {% block title %}Edit Profile{% endblock %}
 {% block body %}
-<script type="text/javascript" language="javascript">
+
     function highLight()
     {
       var img = document.getElementById('myImage');
@@ -58,7 +58,7 @@
     </div>
       {% endfor %}
    
-    <!--
+    
       <form method="POST" enctype="multipart/form-data" class="form-control">
 
     {{ form.hidden_tag() }}
@@ -66,46 +66,9 @@
     {{ form.submit }}
     {{ form.skip }}
 </form>
---> 
-
-<div class="container"> 
-    <br> 
-    <div class="col-sm-8"> 
-        <form role="form"> 
-            <legend>Add Images</legend> 
-            <div class="row">
-                <div class="form-group col-sm-2"> 
-                    <div class="img-picker">
-                        <div class="form-control btn btn-default btn-block mg-upload-btn">
-                            <i class="glyphicon glyphicon-plus">
-
-                            </i>
-                            <input type-"file" name="images"> 
-                        </div>
-                    </div>
-                </div> 
-                <div class="form-group col-sm-2"> 
-                    <div class="img-picker"></div>
-                </div> 
-                <div class="form-group col-sm-2"> 
-                    <div class="img-picker"></div>
-                </div> 
-                <div class="form-group col-sm-2"> 
-                    <div class="img-picker"></div>
-                </div> 
-                <div class="form-group col-sm-2"> 
-                    <div class="img-picker"></div>
-                </div> 
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form> 
-    </div> 
-</div>
-      </div>
-
       <br/>
 
 </div>
 </div>
-<script type="text/javascript" src="../static/assets/js/image.js"></script>
+
 {% endblock %}
