@@ -72,6 +72,7 @@
                                     <a href="#profile" role="tab" data-toggle="tab">
                                         <i class="material-icons">camera</i>
                                         Profile
+
                                     </a>
                                 </li>
                                 <li>
@@ -83,7 +84,7 @@
                                 <li>
                                     <a href="#pictures" role="tab" data-toggle="tab">
                                         <i class="material-icons">favorite</i>
-                                        Pictures
+                                        Picture
                                     </a>
                                 </li>
                             <li>
@@ -99,7 +100,7 @@
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h3>Profile</h3>
+                                                <h3>Profile</h3>
 
                                         </div>
                                     </div>
@@ -107,14 +108,24 @@
                                 <div class="tab-pane text-center" id="contact">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h3>Contact Details</h3>
+                                            
+                                                <h3>Contact Details</h3>
+                                            <br>
+                                            Email ID: 
+                                            {{ emailid.email }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane text-center" id="pictures">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h3>Pictures</h3>
+                                            
+                                                <h3>Pictures</h3>
+                                            {% for pic in pics: %}
+                                            <div class="image">
+                                              <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" onclick = "highLight()" >
+                                            </div>
+                                            {% endfor %}
 
                                         </div>
                                     </div>

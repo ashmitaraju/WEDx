@@ -15,17 +15,26 @@
                     
                 <br>
                 {% for profile in profiles %}
+                
                 <div class="w3-animate-left card-search col-md-3 ">
-                    <img src="img.jpg" alt="John" style="width:100%">
-                    <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
-                    <p class="title-search">CEO & Founder, Example</p>
-                    <p>Harvard University</p>
-                    <a href="#"><i class="fa fa-dribbble"></i></a> 
-                    <a href="#"><i class="fa fa-twitter"></i></a> 
-                    <a href="#"><i class="fa fa-linkedin"></i></a> 
-                    <a href="#"><i class="fa fa-facebook"></i></a> 
+                    {% if profile[1] %}
+                    <img src="{{ profile[1].image_path }}" alt="No Profile Picture" style="width:100%">
+                    {%else %}
+                    <img src="../static/assets/img/konduru.jpg" alt="No Profile Picture" style="width:100%">
+                    {% endif %} 
+                    <h2>{{ profile[0].first_name }} {{ profile[0].last_name }}</h2>
+                    <p class="title-search">{{ profile[0].about }}</p>
+                    <p>{{ profile[0].current_location }}</p>
+                    {% if profile[2] %}
+                    <a href="{{ profile[2].instagram}}"><i class="fa fa-instagram"></i></a> 
+                    <a href="{{ profile[2].twitter}}"><i class="fa fa-twitter"></i></a> 
+                    <a href="{{ profile[2].linkedin}}"><i class="fa fa-linkedin"></i></a> 
+                    <a href="{{ profile[2].facebook}}"><i class="fa fa-facebook"></i></a> 
+                    {% endif %} 
+
                     <p><a href="{{ url_for('viewProfile', user= profile.username) }}" class="btn btn-primary btn-round text-center"> View Profile </a></p>
                   </div>
+                
                 {% endfor %}
 
                     

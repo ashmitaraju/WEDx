@@ -98,7 +98,7 @@ class EditImageGalleryForm(Form):
 
 class EditBodyForm(Form):
 
-    hairChoices = [('pale','Pale'),('fair','Fair'), ('light brown' , 'Light Brown') , ('dark' , 'Dark')]
+    hairChoices = [('pale','Pale'),('fair','Fair'), ('brown' , 'Brown') , ('dark' , 'Dark')]
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     weight = IntegerField('Weight' , validators = [Optional()])
     hair_colour = StringField('Hair Colour', validators = [Optional()])

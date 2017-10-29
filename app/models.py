@@ -60,10 +60,10 @@ class Social_Media(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    facebook = db.Column(db.String(150), nullable = True)
-    instagram = db.Column(db.String(150), nullable = True)
-    linkedin = db.Column(db.String(150), nullable = True)
-    twitter = db.Column(db.String(150), nullable = True)
+    facebook = db.Column(db.String(150), default = "www.facebook.com")
+    instagram = db.Column(db.String(150), default = "www.insagram.com")
+    linkedin = db.Column(db.String(150), default = "www.linkedin.com")
+    twitter = db.Column(db.String(150), default = "www.twitter.com")
     def __repr(self):
         return '<Social_Media :{}>'.format(self.username)
 
