@@ -14,17 +14,17 @@
                     <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Results </h3> <hr>
                     
                 <br>
-                {% for i in num %}
+                {% for profile in profiles %}
                 <div class="w3-animate-left card-search col-md-3 ">
                     <img src="img.jpg" alt="John" style="width:100%">
-                    <h2>John Doe</h2>
+                    <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
                     <p class="title-search">CEO & Founder, Example</p>
                     <p>Harvard University</p>
                     <a href="#"><i class="fa fa-dribbble"></i></a> 
                     <a href="#"><i class="fa fa-twitter"></i></a> 
                     <a href="#"><i class="fa fa-linkedin"></i></a> 
                     <a href="#"><i class="fa fa-facebook"></i></a> 
-                    <p><button class="btn btn-danger">View Profile</button></p>
+                    <p><a href="{{ url_for('viewProfile', user= profile.username) }}" class="btn btn-primary btn-round text-center"> View Profile </a></p>
                   </div>
                 {% endfor %}
 

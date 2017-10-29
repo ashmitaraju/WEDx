@@ -327,14 +327,31 @@ def editPreferences():
 @login_required
 def advancedSearch():
     form = SearchFilterForm()
+    if form.validate_on_submit():
+        search = {}
+        for field in form:
+            if (field.data and field.name != 'csrf_token' and field.name != 'submit'):
+                search.update({field.name : field.data})
+            
+        print search
+
+        query = db.session.query('Search')
+        for _filter, value in search.items():
+             query = Search.query.filter(getattr(Search, _filter) == value)
+        result = query.all()
+
+        profiles = []
+        for user in result:
+            profiles.append(Profiles.query.filter_by(username = user.username).first())
+
+        return render_template('searchResults.html', profiles = profiles)
+
+        
+                
+
     return render_template('advancedSearch.html', form = form)
 
-@app.route('/searchResults', methods=['GET', 'POST'])
-@login_required
-def searchResults():
 
-    #search = Search.query.filter_by(username = current_user.username)
-    return render_template('searchResults.html', num = [1,2,45,56,32])
 
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required

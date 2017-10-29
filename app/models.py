@@ -148,8 +148,8 @@ class Search(UserMixin, db.Model):
     current_location = db.Column(db.String(20), nullable = True)
     dob = db.Column(db.Date, nullable = True)
 
-    def __repr(self):
-        return '<Search :{}>'.format(self.username)
+    def __repr__(self):
+        return self.username.format(self.username)
 
 class Messages(UserMixin, db.Model):
 
