@@ -81,6 +81,7 @@
 
                                           
                                           <div class="container col-md-12">
+                                                <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">message</i></i> Filters </h3> <hr>
                                           <table class="table">
                                             <thead>
                                                 <tr>
@@ -91,11 +92,12 @@
                                             </thead>
 
                                             <tbody>
-                                                    {% for message in messages %}
+                                                    {% for msg in messages %}
                                             <tr>
-                                                <td class="text-center">{{ message.msgid }}</td>
-                                                <td>{{ message.sender_username }}</td>
-                                                <td class="text-left">{{ message.subject }}</td>
+                                                <td class="text-center">{{ msg.msgid }}</td>
+                                                <td>{{ msg.sender_username }}</td>
+                                                <td class="text-left">{{ msg.subject }}</td>
+                                                <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View & Reply </a> </td>
                                             </tr>
                                             {% endfor %}
                                             <tbody>
@@ -105,7 +107,7 @@
                                             </table>
                                             </div>
 
-
+                                           
 
 
 

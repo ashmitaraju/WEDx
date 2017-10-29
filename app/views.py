@@ -59,7 +59,7 @@ def viewProfile(user):
 
     form = SendMessageForm()
     if form.validate_on_submit():
-        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.subject.data , timestamp = datetime.now())
+        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.body.data , timestamp = datetime.datetime.now())
         db.session.add(message)
         db.session.commit()
         flash('Message sent!')
@@ -351,6 +351,20 @@ def advancedSearch():
 
     return render_template('advancedSearch.html', form = form)
 
+@app.route('/replyMessage/<mid>', methods=['GET', 'POST'])
+@login_required
+def replyMessage(mid):
+    form = SendMessageForm()
+    message = Messages.query.filter_by(msgid= mid).first()
+    
+    if form.validate_on_submit():
+        newMessage = Messages(sender_username = current_user.username, receiver_username = message.sender_username, subject = form.subject.data, body = form.body.data, timestamp = datetime.datetime.now())
+        db.session.add(newMessage)
+        db.session.commit()
+        flash('Message Sent!')
+        return redirect(url_for('dashboard'))
+
+    return render_template('replyMessage.html', form = form, message = message)
 
 
 @app.route('/delete', methods=['GET', 'POST'])
