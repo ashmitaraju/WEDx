@@ -15,7 +15,7 @@ def myvalidator(form, field):
         field.errors[:] = []
         raise StopValidation()
 
-genderChoices = [('male', 'male'),('female', 'female')]
+genderChoices = [('male', 'Male'),('female', 'Female')]
 
 class LoginForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
@@ -73,7 +73,7 @@ class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
     salary = IntegerField('Salary' , validators = [Optional()])
     hometown = StringField('Hometown', validators = [Optional()])
-    height = IntegerField('Height' , validators = [Optional()])
+    height = IntegerField('Height (in cm)' , validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
