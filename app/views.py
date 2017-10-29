@@ -327,6 +327,7 @@ def editPreferences():
 @login_required
 def advancedSearch():
     form = SearchFilterForm()
+    search = Search.query.all() 
     return render_template('advancedSearch.html', form = form)
 
 @app.route('/searchResults', methods=['GET', 'POST'])

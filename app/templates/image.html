@@ -3,7 +3,13 @@
 {% extends "base.html" %}
 {% block title %}Edit Profile{% endblock %}
 {% block body %}
-
+<script type="text/javascript" language="javascript">
+    function highLight()
+    {
+      var img = document.getElementById('myImage');
+      img.style.border = "2px black";
+    }
+    </script>
 <div class="content-section" >
   <div class="center">
     <h1>Edit Your Profile</h1>
@@ -41,8 +47,9 @@
     
       {% for pic in pics: %}
       <div class="image">
-        <img src= {{ pic.image_path }} alt="" class="img-rounded img-raised object-fit_cover"  width="120">
-      </div>
+        <img src= {{ pic.image_path }} id="myImage" alt="" class="img-rounded img-raised object-fit_cover"  width="120" onclick="hightLight()" >
+        <a href="" onclick="highLight();"> </a>    
+    </div>
       {% endfor %}
    
     
