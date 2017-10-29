@@ -33,8 +33,9 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     
-                    <h3> Sender : {{ message.sender_username }}</h3>
-                    <h4> Message : {{ message.body }}</h4>
+                    <h4 class="title"> Sender : {{ message.sender_username }}</h3>
+                    <h5 class="title"> Message :-</h5>
+                    <p> {{ message.body }}  </p>
 
                     
                     {{ wtf.quick_form(form) }}

@@ -4,3 +4,5 @@ flask
 *.pyc
 /app/static/img
 .git-old
+.vscode
+.idea
