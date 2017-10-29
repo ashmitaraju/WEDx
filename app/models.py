@@ -98,8 +98,8 @@ class Body(UserMixin, db.Model):
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
     height = db.Column(db.Integer)
     weight =  db.Column(db.Integer)
-    complexion = db.Column(db.String(10), nullable = True)
-    hair_colour = db.Column(db.String(10), nullable = True)
+    complexion = db.Column(db.String(30), nullable = True)
+    hair_colour = db.Column(db.String(30), nullable = True)
 
     def __repr(self):
         return '<Body :{}>'.format(self.username)
@@ -137,6 +137,7 @@ class Search(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
+    age = db.Column(db.Integer , nullable = True)
     height = db.Column(db.Integer)
     occupation = db.Column(db.String(150), nullable = True)
     salary = db.Column(db.BigInteger)
@@ -146,7 +147,7 @@ class Search(UserMixin, db.Model):
     hometown = db.Column(db.String(60), nullable = True)
     mother_tongue = db.Column(db.String(60), nullable = True)
     current_location = db.Column(db.String(20), nullable = True)
-    dob = db.Column(db.Date, nullable = True)
+    
 
     def __repr__(self):
         return self.username.format(self.username)

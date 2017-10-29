@@ -12,6 +12,10 @@ login_manager = LoginManager()
 app = Flask(__name__)
 app.config.from_object('config')
 
+#app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 
+app.secret_key = 'red-wedding'
+#images = Images(app) 
+
 db.init_app(app)
 login_manager.init_app(app)
 login_manager.login_message = "You must be logged in to access this page."

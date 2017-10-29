@@ -117,7 +117,8 @@ def editProfile():
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
                 db.session.add(profile)
                 db.session.commit()
-                search = Search(username= current_user.username, dob = profile.dob, mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
+                age = calculate_age(profile.dob) 
+                search = Search(username= current_user.username, age = age , mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
                 db.session.add(search)
                 db.session.commit()
@@ -143,7 +144,8 @@ def editProfile():
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
                     db.session.commit()
                 search = Search.query.filter_by(username = current_user.username).first()
-                search.dob = form.dob.data
+                age = calculate_age(profile.dob) 
+                search.age = age
                 search.mother_tongue = form.mother_tongue.data
                 search.hometown = form.hometown.data
                 search.current_location = form.current_location.data
@@ -257,7 +259,13 @@ def editImages():
 
     form4 = EditImageGalleryForm()
 
-    if form4.validate_on_submit() and 'image' in request.files:
+    if form4.skip.data:
+        return redirect(url_for('editBody'))
+
+
+    #if form4.validate_on_submit() and 'image' in request.files:
+    if 'image' in request.files:
+        print "hey"
 
         for f in request.files.getlist('image'):
 
