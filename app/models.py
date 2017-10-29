@@ -159,7 +159,7 @@ class Messages(UserMixin, db.Model):
     receiver_username  = db.Column(db.String(150), nullable = False)
     subject = db.Column(db.String(50), nullable = True)
     body = db.Column(db.Text, nullable = False)
-    timestamp = db.Column(db.String, nullable = False) #isnt this the table
+    timestamp = db.Column(db.String(50), nullable = False) #isnt this the table
 
     def __repr(self):
         return '<Message :{}>'.format(self.msgid)
