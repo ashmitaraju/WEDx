@@ -53,6 +53,7 @@
               </ul>
           </div>
         </div>
+        {% if messages %}
         <div class="alert alert-info">
                 <div class="container-fluid">
                   <div class="alert-icon">
@@ -63,7 +64,7 @@
                   </button>
                   <b>Info alert:</b>
                   
-                  {% if messages %}
+                 
 
                       {% for message in messages %}
 
@@ -73,9 +74,10 @@
                       {% endfor %}
 
 
-                {% endif %}
+                
                 </div>
             </div>
+        {% endif %}
     </nav>
 
     <div class="wrapper">

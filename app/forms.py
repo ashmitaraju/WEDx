@@ -15,7 +15,7 @@ def myvalidator(form, field):
         field.errors[:] = []
         raise StopValidation()
 
-genderChoices = [('male', 'Male'),('female', 'Female')]
+genderChoices = [('male', 'male'),('female', 'female')]
 
 class LoginForm(Form):
     email = StringField('E-mail', validators =[DataRequired(), Email()])
@@ -112,11 +112,31 @@ class DeleteProfileForm(Form):
     submit = SubmitField('Confirm')
 
 class SearchFilterForm(Form):
+    age = IntegerField('Age' , validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
     hometown = StringField('Hometown', validators = [Optional()])
+    mother_tongue = StringField('Mother Tongue', )
+    height = IntegerField('Height(in cm)' , validators = [Optional()])
+    salary = IntegerField('Salary' , validators = [Optional()])
+    under_grad = StringField('Under Graduation', validators = [Optional()])
+    post_grad = StringField('Post Gradution', validators = [Optional()])
     submit = SubmitField('Search')
+'''
+      id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
+    height = db.Column(db.Integer)
+    occupation = db.Column(db.String(150), nullable = True)
+    salary = db.Column(db.BigInteger)
+    under_grad = db.Column(db.String(150), nullable = True)
+    post_grad = db.Column(db.String(150), nullable = True)
+    gender = db.Column(db.String(10), nullable = True)
+    hometown = db.Column(db.String(60), nullable = True)
+    mother_tongue = db.Column(db.String(60), nullable = True)
+    current_location = db.Column(db.String(20), nullable = True)
+    dob = db.Column(db.Date, nullable = True)
+'''
 
 class SendMessageForm(Form):
     subject = StringField('Subject', validators =[DataRequired()])
