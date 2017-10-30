@@ -24,7 +24,7 @@
                     {% endif %} 
                     <h2>{{ profile[0].first_name }} {{ profile[0].last_name }}</h2>
                     <p class="title-search">{{ profile[0].about }}</p>
-                    <p>{{ profile[0].current_location }}</p>
+                    <p>{{ profile[0].current_location }}</p>    
                     {% if profile[2] %}
                     <a href="{{ profile[2].instagram}}"><i class="fa fa-instagram"></i></a> 
                     <a href="{{ profile[2].twitter}}"><i class="fa fa-twitter"></i></a> 
@@ -32,7 +32,7 @@
                     <a href="{{ profile[2].facebook}}"><i class="fa fa-facebook"></i></a> 
                     {% endif %} 
 
-                    <p><a href="{{ url_for('viewProfile', user= profile.username) }}" class="btn btn-primary btn-round text-center"> View Profile </a></p>
+                    <p><a href="{{url_for('viewProfile', user = profile[0].username)}}" class="btn btn-danger btn-round text-center"> View Profile </a></p>
                   </div>
                 
                 {% endfor %}

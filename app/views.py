@@ -405,17 +405,16 @@ def deleteMessage(mid):
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required
 def delete():
-    form = DeleteProfileForm(request.form)
+    form = DeleteProfileForm()
+
     if form.validate_on_submit():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
                 if current_user.email == form.email.data:
-                    return redirect('deleteconfirm') #review
+                    return redirect('deleteconfirm') 
                 else:
                     flash('Invalid Email ID. Please enter again.')
                     return redirect('delete')
-    else:
-        flash('Invlaid email or password')
 
     return render_template('delete.html', title= 'Delete Profile', form=form)
 
@@ -425,6 +424,7 @@ def deleteconfirm():
         return render_template('delete-confirm.html')
 
 @app.route("/forward/", methods=['POST', 'GET'])
+@login_required
 def move_forward():
     user = current_user
     images = ImageGallery.query.filter_by(username= current_user.username).all()
