@@ -6,7 +6,7 @@
 {% block body %}
 
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
-                <div class="profile-page">
+                <div class="profile-page w3-animate-opacity">
                         <br/>
                         {{ utils.flashed_messages() }}
                         <br/>
@@ -45,35 +45,34 @@
                                     <div class="input-bar col-sm-12 text-center">
                                             <div class="input-bar-item width100">
 
-                                              <form action="/dashboard" method="POST">
+                                              <form class="form-inline" action="/dashboard" method="POST">
 
-
+                                                    <div class="form-group">                             
                                                     <input type="text" name = "text" placeholder="Search by username" class="form-control width100">
-
-
+                                              </div>
+                                                <div class="form-group">
 
                                                   <div class="input-bar-item">
-                                                        <button type = "submit" name = "text" class="btn btn-primary btn-round" type="submit">
+                                                        <button type= "submit" name = "text" class="btn btn-primary btn-round" type="submit">
                                                                 <i class="material-icons">search</i>
                                                         </button>
-
-
+                                                        
+                                                </div>
                                                 </div>
 
 
                                               </form>
+                                            <div>
+                                              <a href="{{ url_for('advancedSearch') }}" class="btn btn-primary btn-round text-center">Advanced Search </a>
+                                              <a href="{{ url_for('delete') }}" class="btn btn-primary btn-round text-center">Delete Account </a>
 
-  <!--
-                                            <form action="/dashboard" method="POST">
-        <input type="text" name="text">
-        <input type="submit" name="my-form" value="Send">
-    </form> -->
-
-                                            </div>
-                                            <a href="{{ url_for('advancedSearch') }}" class="btn btn-primary btn-round text-center">Advanced Search </a>
-                                            <a href="{{ url_for('delete') }}" class="btn btn-primary btn-round text-center">Delete Account </a>
+                                          </div>
 
 
+                                            
+                                            
+
+                                        
 
 
 
@@ -100,7 +99,7 @@
                                             {% endfor %}
                                             <tbody>
 
-
+                                            
 
                                             </table>
                                             </div>

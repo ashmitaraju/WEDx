@@ -46,7 +46,8 @@ def viewProfile(user):
 
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
-    prefs = Partner_Preferences.query.filter_by(username = user).all() 
+    prefs = Partner_Preferences.query.filter_by(username = user).first() 
+    print prefs 
     emailid = Users.query.filter_by(username = user).first()
     
 
