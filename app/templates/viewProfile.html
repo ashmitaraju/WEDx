@@ -53,13 +53,6 @@
 
                     <!-- Button trigger modal -->
 
-
-
-
-
-
-
-
                 </div>
             </div>
 
@@ -77,13 +70,13 @@
                                 </li>
                                 <li>
                                     <a href="#contact" role="tab" data-toggle="tab">
-                                        <i class="material-icons">palette</i>
+                                        <i class="material-icons">email</i>
                                         Contact
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#pictures" role="tab" data-toggle="tab">
-                                        <i class="material-icons">favorite</i>
+                                        <i class="material-icons">photo</i>
                                         Picture
                                     </a>
                                 </li>
@@ -96,31 +89,75 @@
                             </ul>
                             <hr>
 
-                            <div class="tab-content gallery">
+                            <div class="tab-content gallery center">
                                 <div class="tab-pane active" id="profile">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                                 <h3>Profile</h3>
+
+                                                <table class="table ">
+                                                        <div>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                
+                                                            <tbody>
+                                                                    <tr>
+                                                                            <td class="title text-left">Hometown</td>
+                                                                            <td>{{profile.hometown}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Mother Tongue</td>
+                                                                            <td>{{ profile.mother_tongue}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Marital Status</td>
+                                                                            <td>{{profile.marital_status}}</td>
+                                                                    </tr>
+                                                            
+                                                            </tbody>
+                                                   
+                                                        </div>
+                                                    </table>
 
                                         </div>
                                     </div>
                                 </div>
+                            
+
                                 <div class="tab-pane text-center" id="contact">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             
                                                 <h3>Contact Details</h3>
-                                            <br>
-                                            Email ID: 
-                                            {{ emailid.email }}
+                                                <table class="table ">
+                                                        <div>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                
+                                                            <tbody>
+                                                                    <tr>
+                                                                            <td class="title text-left">Email ID</td>
+                                                                            <td>{{emailid.email}}</td>
+                                                                    </tr>
+                                                                    
+                                                            </tbody>
+                                                   
+                                                        </div>
+                                                    </table>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane text-center" id="pictures">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             
-                                                <h3>Pictures</h3>
+                                            <h3>Pictures</h3>
                                             {% for pic in pics: %}
                                             <div class="image">
                                               <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" onclick = "highLight()" >
@@ -132,12 +169,57 @@
                                 </div>
                                 <div class="tab-pane text-center" id="preferences">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <h3>Partner Preferences</h3>
-
+                                                <table class="table ">
+                                                        <div>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                
+                                                            <tbody>
+                                                                    <tr>
+                                                                            <td class="title text-left">Hometown</td>
+                                                                            <td>{{prefs.height}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Mother Tongue</td>
+                                                                            <td>{{prefs.occupation}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Salary</td>
+                                                                            <td>{{prefs.salary}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Gender</td>
+                                                                            <td>{{prefs.gender}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Hometown</td>
+                                                                            <td>{{prefs.hometown}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Mother Tongue</td>
+                                                                            <td>{{prefs.mother_tongue}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Current Location</td>
+                                                                            <td>{{prefs.current_location}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">About</td>
+                                                                            <td>{{prefs.about}}</td>
+                                                                    </tr>
+                                                            
+                                                            </tbody>
+                                                   
+                                                        </div>
+                                                    </table>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
 
                             </div>
                         </div>
