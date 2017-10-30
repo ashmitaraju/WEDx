@@ -45,6 +45,11 @@ def index():
 def viewProfile(user):
 
     profile = Profiles.query.filter_by(username=user).first()
+    pics = ImageGallery.query.filter_by(username = user).all()
+    prefs = Partner_Preferences.query.filter_by(username = user).all() 
+    emailid = Users.query.filter_by(username = user).first()
+    
+
     if profile is None:
         flash('Profile does not exist')
         return redirect('dashboard')
@@ -64,7 +69,7 @@ def viewProfile(user):
         db.session.commit()
         flash('Message sent!')
     age = calculate_age(profile.dob)
-    return render_template('viewProfile.html', title = profile.first_name, profile = profile, gender = gender, image= image, form = form , age=age)
+    return render_template('viewProfile.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , form = form , age=age)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -341,6 +346,7 @@ def advancedSearch():
             if (field.data and field.name != 'csrf_token' and field.name != 'submit'):
                 search.update({field.name : field.data})
             
+        print "hey"    
         print search
 
         query = db.session.query('Search')
@@ -348,15 +354,25 @@ def advancedSearch():
              query = Search.query.filter(getattr(Search, _filter) == value)
         result = query.all()
 
+        #images = [] 
         profiles = []
         for user in result:
             if user.username != current_user.username:
-                profiles.append(Profiles.query.filter_by(username = user.username).first())
-
-        return render_template('searchResults.html', profiles = profiles)
-
+                profile = Profiles.query.filter_by(username = user.username).first()  
+                image = ImageGallery.query.filter_by(imgid = profile.image_id).first()
+                social = Social_Media.query.filter_by(username = profile.username).first()
+                if image is None and social is None: 
+                    profiles.append([profile , False , False]) 
+                elif image is None and social is not None: 
+                    profiles.append([profile , False , social ])
+                elif image is not None and social is None: 
+                    profiles.append([profile , image , False])
+                else: 
+                    profiles.append([profile , image , social])
         
-                
+        print profiles
+
+        return render_template('searchResults.html', profiles = profiles , images = images)
 
     return render_template('advancedSearch.html', form = form)
 
@@ -384,8 +400,6 @@ def deleteMessage(mid):
     db.session.commit()
     flash('Message Deleted')
     return redirect(url_for('dashboard'))
-
-
 
 @app.route('/delete', methods=['GET', 'POST'])
 @login_required
