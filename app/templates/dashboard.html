@@ -68,6 +68,31 @@
 
                                           </div>
 
+                                          <div class="container col-md-12">
+                                            <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">message</i></i> Requests </h3> <hr>
+                                      <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>From</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                                {% for req in requests %}
+                                        <tr>
+                                            <td class="text-center">{{ req.request_id }}</td>
+                                            <td>{{ req.from_username }}</td>
+                                            <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> Accept </a> </td>
+                                            <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Reject </a> </td>
+                                        {% endfor %}
+                                        <tbody>
+
+                                        
+
+                                        </table>
+                                        </div>
+
 
                                             
                                             

@@ -20,6 +20,7 @@
 
                 <br>
                 <span class="label label-default" style="float :left;">Age</span>
+                <h5> + ageRangeValueElement </h5>
                 <br>
                 <div id="sliderDouble" class="slider slider-info "></div>
                 {{ wtf.quick_form(form) }}
@@ -66,7 +67,11 @@
 
 {% endblock %}
 {% block scripts %}
+
+
+
 <script>
+
 $('#sliderDouble').noUiSlider({
 	start: [18, 21] ,
 	connect: true,
@@ -75,5 +80,6 @@ $('#sliderDouble').noUiSlider({
 	    max: 100
 	}
 });
+
 </script>
 {% endblock %}

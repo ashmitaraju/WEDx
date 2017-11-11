@@ -162,8 +162,23 @@ class Messages(UserMixin, db.Model):
     body = db.Column(db.Text, nullable = False)
     timestamp = db.Column(db.String(50), nullable = False) #isnt this the table
 
-    def __repr(self):
+    def __repr__(self):
         return '<Message :{}>'.format(self.msgid)
+
+class Requests(UserMixin, db.Model):
+    __tablename__= 'Requests'
+    request_id = db.Column(db.Integer, primary_key= True)
+    to_username = db.Column(db.String(150), nullable = False)
+    from_username = db.Column(db.String(150), nullabe = False)
+    status = db.Column(db.String(10), nullabe = False)
+
+    def __repr__(self):
+        return '<Request :{}>'.format(self.request_id)
+
+
+
+
+
 
 @login_manager.user_loader
 def load_user(id):

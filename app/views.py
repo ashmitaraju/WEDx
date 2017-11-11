@@ -352,7 +352,8 @@ def advancedSearch():
 
         query = db.session.query('Search')
         for _filter, value in search.items():
-             query = Search.query.filter(getattr(Search, _filter) == value)
+            query = Search.query.filter(getattr(Search, _filter) == value)
+        
         result = query.all()
 
         #images = [] 
