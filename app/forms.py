@@ -116,20 +116,12 @@ class SearchFilterForm(Form):
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
-<<<<<<< HEAD
     hometown = StringField('Hometown', validators = [Optional()])
-    mother_tongue = StringField('Mother Tongue', )
+    occupation = StringField('Occupation', validators = [Optional()])
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     salary = IntegerField('Salary' , validators = [Optional()])
     under_grad = StringField('Under Graduation', validators = [Optional()])
     post_grad = StringField('Post Gradution', validators = [Optional()])
-=======
-    occupation = StringField('Occupation', validators = [Optional()])
-    salary = StringField('Salary', validators = [Optional()])
-    under_grad = StringField('Undergrad School', validators = [Optional()])
-    post_grad = StringField('Postgrad School', validators = [Optional()])
-    height = IntegerField('Height(in cm)' , validators = [Optional()])
->>>>>>> c9706fc98299308e6e17c7026de9daae179ffe82
     submit = SubmitField('Search')
 '''
       id = db.Column(db.Integer, primary_key=True)
