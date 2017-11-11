@@ -341,6 +341,7 @@ def editPreferences():
 @login_required
 def advancedSearch():
     form = SearchFilterForm()
+<<<<<<< HEAD
     if form.validate_on_submit():
         search = {}
         for field in form:
@@ -375,6 +376,8 @@ def advancedSearch():
         print profiles
 
         return render_template('searchResults.html', profiles = profiles , images = images)
+=======
+>>>>>>> refs/remotes/origin/master
 
     return render_template('advancedSearch.html', form = form)
 
@@ -424,8 +427,12 @@ def delete():
 def deleteconfirm():
         return render_template('delete-confirm.html')
 
+<<<<<<< HEAD
 @app.route("/forward/", methods=['POST', 'GET'])
 @login_required
+=======
+@app.route("/forward/", methods=['POST','GET'])
+>>>>>>> refs/remotes/origin/master
 def move_forward():
     user = current_user
     images = ImageGallery.query.filter_by(username= current_user.username).all()
