@@ -169,8 +169,8 @@ class Requests(UserMixin, db.Model):
     __tablename__= 'Requests'
     request_id = db.Column(db.Integer, primary_key= True)
     to_username = db.Column(db.String(150), nullable = False)
-    from_username = db.Column(db.String(150), nullabe = False)
-    status = db.Column(db.String(10), nullabe = False)
+    from_username = db.Column(db.String(150), nullable = False)
+    status = db.Column(db.String(10), nullable = False)
 
     def __repr__(self):
         return '<Request :{}>'.format(self.request_id)

@@ -423,12 +423,8 @@ def delete():
 def deleteconfirm():
         return render_template('delete-confirm.html')
 
-<<<<<<< HEAD
 @app.route("/forward/", methods=['POST', 'GET'])
 @login_required
-=======
-@app.route("/forward/", methods=['POST','GET'])
->>>>>>> c9706fc98299308e6e17c7026de9daae179ffe82
 def move_forward():
     user = current_user
     images = ImageGallery.query.filter_by(username= current_user.username).all()
