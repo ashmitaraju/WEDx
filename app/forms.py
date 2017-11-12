@@ -112,14 +112,15 @@ class DeleteProfileForm(Form):
     submit = SubmitField('Confirm')
 
 class SearchFilterForm(Form):
-    age = IntegerField('Age' , validators = [Optional()])
+    age_lower = IntegerField('Lower Limit of Age' , validators = [Optional()])
+    age_upper = IntegerField('Upper Limit of Age' , validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = StringField('Mother Tongue', validators = [Optional()])
     current_location = StringField('Current Location', validators = [Optional()])
     hometown = StringField('Hometown', validators = [Optional()])
     occupation = StringField('Occupation', validators = [Optional()])
-    height = IntegerField('Height(in cm)' , validators = [Optional()])
-    salary = IntegerField('Salary' , validators = [Optional()])
+    height = IntegerField('Lower Limit of Height(in cm)' , validators = [Optional()])
+    salary = IntegerField('Lower Limit of Salary' , validators = [Optional()])
     under_grad = StringField('Under Graduation', validators = [Optional()])
     post_grad = StringField('Post Gradution', validators = [Optional()])
     submit = SubmitField('Search')

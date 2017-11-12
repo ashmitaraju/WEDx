@@ -4,19 +4,12 @@
 {% block title %}Edit Profile{% endblock %}
 {% block body %}
 
-    function highLight()
-    {
-      var img = document.getElementById('myImage');
-      img.style.border = "2px inset black";
-    }
-    </script>
-
 <link rel=stylesheet type="text/css" href="../static/assets/css/image.css">
 
 <div class="content-section" >
-        <br/>
+        
         {{ utils.flashed_messages() }}
-        <br/>
+        
   <div class="center">
     <h1>Edit Your Profile</h1>
     <div id="wrapper">
@@ -50,24 +43,38 @@
 </div>
 
       <h3>Gallery Details</h3>
-    
+      <br>
+      <br>
+      <br>
+      <div class="col-md-12">
       {% for pic in pics: %}
-      <div class="image">
-        <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" onclick = "highLight()" >
+      <div class="image floated_img" >
+        <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" >
       </div>
       {% endfor %}
+      </div>
    
-    
-      <form method="POST" enctype="multipart/form-data" class="form-control">
+  
+    <div>
+      <form method="POST" enctype="multipart/form-data" >
 
     {{ form.hidden_tag() }}
     {{ form.image(multiple="multiple") }}
     {{ form.submit }}
     {{ form.skip }}
 </form>
-      <br/>
+</div>
+     
 
 </div>
 </div>
+</div>
+
+<style> 
+.floated_img
+{
+    float: left;
+}
+</style>
 
 {% endblock %}

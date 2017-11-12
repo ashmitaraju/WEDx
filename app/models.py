@@ -35,7 +35,6 @@ class Users(UserMixin, db.Model):
     def __repr__(self):
         return '<User: {}>'.format(self.username)
 
-
 class Profiles(UserMixin, db.Model):
     __tablename__ = 'Profiles'
 

@@ -7,19 +7,14 @@
 
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
                 <div class="profile-page w3-animate-opacity">
-                        <br/>
-                        {{ utils.flashed_messages() }}
-                        <br/>
-
-
-
+                       
                     <div class="main main-raised col-md-12">
                             <div class="profile-content col-md-3 text-left">
 
                                     <div class="row">
                                         <div class="profile">
 
-                                            <div class="image center">
+                                          <div class="image center">
                                                 <img src= "{{ image.image_path }}" alt="" class="img-rounded img-raised object-fit_cover" >
                                             </div>
                                             <div class="name">
@@ -66,14 +61,20 @@
                                               <a href="{{ url_for('delete') }}" class="btn btn-danger btn-round text-center">Delete Account </a>
 
                                           </div>
+                                        
 
                                           <div class="container col-md-12">
+                                                <div class="left">
+                                                        <br/>
+                                                        {{ utils.flashed_messages() }}
+                                                        <br/>
+                                                        </div>
                                             <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">message</i></i> Requests </h3> <hr>
                                       <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">#</th>
-                                                <th>From</th>
+                                               
+                                                <th class="text-center">From</th>
                                             </tr>
                                         </thead>
 
@@ -81,12 +82,11 @@
                                         </div>
 
                                         <tbody>
-                                                {% for req in requests %}
+                                                {% for req in reqs %}
                                         <tr>
-                                            <td class="text-center">{{ req.request_id }}</td>
-                                            <td>{{ req.from_username }}</td>
-                                            <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> Accept </a> </td>
-                                            <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Reject </a> </td>
+                                            <td> <a href="{{ url_for('viewProfile', user=req.from_username) }}"> {{req.from_username}} </a> </td>
+                                            <td> <a href="{{ url_for('acceptRequest', rid = req.request_id) }}"> Accept </a> </td>
+                                            <td> <a href="{{ url_for('rejectRequest', rid = req.request_id) }}"> Reject </a> </td>
                                         {% endfor %}
                                         <tbody>
 
@@ -102,16 +102,16 @@
                                           <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
+                                                    <th>Time</th>
                                                     <th>From</th>
-                                                    <th class="text-left">Subject</th>
+                                                    <th>Subject</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
                                                     {% for msg in msgs %}
                                             <tr>
-                                                <td class="text-center">{{ msg.msgid }}</td>
+                                                <td>{{ msg.timestamp }}</td>
                                                 <td>{{ msg.sender_username }}</td>
                                                 <td class="text-left">{{ msg.subject }}</td>
                                                 <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View and Reply </a> </td>

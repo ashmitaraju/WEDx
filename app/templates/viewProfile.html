@@ -6,6 +6,8 @@
 
 
 {% block body %}
+
+
     <!-- Modal Core -->
     <div class="modal fade" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -55,7 +57,7 @@
 
                 </div>
             </div>
-
+            {% if allowed %}
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="profile-tabs">
@@ -227,6 +229,12 @@
         </div>
     </div>
 
+    {% else %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h4> Private Profile</h4>
+            <a href="{{ url_for('requested' , toUser = user) }}"> Request Access </a>
+    {% endif %}
  {% endblock %}
  {% block scripts %}
  {% endblock %}

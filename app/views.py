@@ -25,6 +25,7 @@ def dashboard():
         return redirect(url_for('viewProfile' , user = text))
 
     msgs = Messages.query.filter_by(receiver_username= current_user.username).all()
+    reqs = Requests.query.filter_by(to_username = current_user.username , status = 'requested').all()
     profile = Profiles.query.filter_by(username= current_user.username).first()
     if profile is not None:
         id = profile.image_id
@@ -34,7 +35,7 @@ def dashboard():
 
     age = calculate_age(profile.dob)
 
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age) #eh wait
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs) #eh wait
 
 @app.route('/index')
 def index():
@@ -43,11 +44,14 @@ def index():
 @app.route('/viewProfile/<user>', methods=['GET', 'POST'])
 @login_required
 def viewProfile(user):
-
+    
+    allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username).first()
+    print allowed
+       
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
     prefs = Partner_Preferences.query.filter_by(username = user).first() 
-    print prefs 
+    #print prefs 
     emailid = Users.query.filter_by(username = user).first()
     
 
@@ -70,7 +74,7 @@ def viewProfile(user):
         db.session.commit()
         flash('Message sent!')
     age = calculate_age(profile.dob)
-    return render_template('viewProfile.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , form = form , age=age)
+    return render_template('viewProfile.html', user = user , profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , form = form , age=age , allowed = allowed)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -262,26 +266,30 @@ def editSocial():
 def editImages():
 
     pics = ImageGallery.query.filter_by(username = current_user.username).all() 
+    print pics 
 
     form4 = EditImageGalleryForm()
 
     if form4.skip.data:
         return redirect(url_for('editBody'))
 
+    if form4.submit.data: 
+        if 'image' in request.files:
+            for f in request.files.getlist('image'):
+                if f.filename:
+                    print "hey"
+                    print f.filename 
+                    filename = secure_filename(f.filename)
+                    f.save(os.path.join(app.config['UPLOADED_IMAGES_DEST'], filename))
+                    url = "../static/img/" + filename
+                    image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
+                    db.session.add(image)
+                    db.session.commit()
+            return redirect(url_for('editBody'))
+        else:
+            print "hey"
+            return redirect(url_for('editBody'))
 
-    #if form4.validate_on_submit() and 'image' in request.files:
-    if 'image' in request.files:
-        print "hey"
-
-        for f in request.files.getlist('image'):
-
-            filename = secure_filename(f.filename)
-            f.save(os.path.join(app.config['UPLOADED_IMAGES_DEST'], filename))
-            url = "app/static/img/" + filename
-            image = ImageGallery(image_filename= filename, image_path= url, username= current_user.username)
-            db.session.add(image)
-            db.session.commit()
-        return redirect(url_for('editBody'))
     return render_template('image.html' , form = form4 , pics = pics)
 
 @app.route('/body', methods=['GET', 'POST'])
@@ -343,21 +351,35 @@ def advancedSearch():
     form = SearchFilterForm()
     if form.validate_on_submit():
         search = {}
-        for field in form:
-            if (field.data and field.name != 'csrf_token' and field.name != 'submit'):
-                search.update({field.name : field.data})
-            
-        print "hey"    
-        print search
+        if form.age_lower.data:
+            age_lower = form.age_lower.data
+        else:
+            age_lower = 18 
 
-        query = db.session.query('Search')
-        for _filter, value in search.items():
-             query = Search.query.filter(getattr(Search, _filter) == value)
-        result = query.all()
+        if form.age_upper.data:
+            age_upper = form.age_upper.data 
+        else:
+            age_upper = 100
+
+        for field in form:
+            if (field.data and field.name != 'csrf_token' and field.name != 'submit' and field.name != 'age_lower' and field.name != 'age_upper'):
+                search.update({field.name : field.data})
+        
+        results = Search.query.filter_by(**search)
+        results_list = list(results)
+
+        if results is not None:
+            for res in results_list: 
+                if res.age <= age_lower and res.age >= age_upper:
+                    results_list.remove(res)  
+        else: 
+            results = Search.query.filter_by(age >= age_lower , age <=age_upper) 
+        
+        results = results_list 
 
         #images = [] 
         profiles = []
-        for user in result:
+        for user in results:
             if user.username != current_user.username:
                 profile = Profiles.query.filter_by(username = user.username).first()  
                 image = ImageGallery.query.filter_by(imgid = profile.image_id).first()
@@ -435,3 +457,43 @@ def move_forward():
     db.session.commit()
     flash('Ciao')
     return redirect('logout')
+
+
+@app.route("/request/<toUser>", methods=['POST', 'GET'])
+@login_required
+def requested(toUser): 
+    request = Requests(from_username = current_user.username , to_username = toUser , status = 'requested')
+    db.session.add(request)
+    db.session.commit() 
+    flash (' Request Sent')
+    return redirect(url_for('dashboard')) 
+
+@app.route("/acceptRequest/<rid>", methods=['POST', 'GET'])
+@login_required
+def acceptRequest(rid): 
+    req = Requests.query.filter_by(request_id = rid).first()
+    #req = Requests(from_username = current_user.username , to_username = req.to_username , status = 'accepted')
+    req.status='accepted'
+    body_msg = current_user.username + " has accepted your request to view their profile."
+    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Accepted", body=body_msg , timestamp = datetime.datetime.now())
+    db.session.add(message)
+    db.session.commit()
+    return redirect(url_for('dashboard'))   
+
+
+@app.route("/rejectRequest/<rid>", methods=['POST', 'GET'])
+@login_required
+def rejectRequest(rid): 
+    req = Requests.query.filter_by(request_id = rid).first()
+    #req = Requests(from_username = current_user.username , to_username = toUser , status = 'rejected')
+    req.status='rejected'
+    body_msg = current_user.username + " has accepted your request to view their profile."
+    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
+    db.session.commit() 
+    return redirect(url_for('dashboard'))  
+
+
+
+
+
+
