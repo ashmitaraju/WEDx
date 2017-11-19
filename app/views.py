@@ -373,7 +373,7 @@ def advancedSearch():
 
         if results is not None:
             for res in results_list: 
-                if res.age <= age_lower and res.age >= age_upper:
+                if res.age <= age_lower or res.age >= age_upper or res.searchable == 1:
                     results_list.remove(res)  
         else: 
             results = Search.query.filter_by(age >= age_lower , age <=age_upper) 
@@ -452,12 +452,16 @@ def deleteconfirm():
 @login_required
 def move_forward():
     user = current_user
-    images = ImageGallery.query.filter_by(username= current_user.username).all()
-    for image in images:
-         os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
+    #images = ImageGallery.query.filter_by(username= current_user.username).all()
+    #for image in images:
+         #os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
 
-    db.session.delete(user)
+    #db.session.delete(user)
+    
+    search = Search.query.filter_by(username = user.username).first()
+    search.searchable = 'False' 
     db.session.commit()
+
     flash('Ciao')
     return redirect('logout')
 

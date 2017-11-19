@@ -135,6 +135,7 @@ class Search(UserMixin, db.Model):
     __tablename__= 'Search'
 
     id = db.Column(db.Integer, primary_key=True)
+    searchable = db.Column(db.Boolean , default = 'True') 
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
     age = db.Column(db.Integer , nullable = True)
     height = db.Column(db.Integer)
