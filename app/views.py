@@ -350,10 +350,10 @@ def advancedSearch():
         print "hey"    
         print search
 
-        query = db.session.query('Search')
-        for _filter, value in search.items():
-             query = Search.query.filter(getattr(Search, _filter) == value)
-        result = query.all()
+      #  query = db.session.query('Search')
+      #  for _filter, value in search.items():
+        result = Search.query.filter_by(**search)
+     #   result = query.all()
 
         #images = [] 
         profiles = []
