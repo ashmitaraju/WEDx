@@ -436,7 +436,7 @@ def delete():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
                 if current_user.email == form.email.data:
-                    return redirect('deleteconfirm') 
+                    return redirect('/deactivateconfirm') 
                 else:
                     flash('Invalid Email ID. Please enter again.')
                     return redirect('delete')
@@ -452,18 +452,29 @@ def deleteconfirm():
 @login_required
 def move_forward():
     user = current_user
-    #images = ImageGallery.query.filter_by(username= current_user.username).all()
-    #for image in images:
-         #os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
-
-    #db.session.delete(user)
+    images = ImageGallery.query.filter_by(username= current_user.username).all()
+    for image in images:
+         os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
     
-    search = Search.query.filter_by(username = user.username).first()
-    search.searchable = 'False' 
+    db.session.delete(user)
     db.session.commit()
 
     flash('Ciao')
     return redirect('logout')
+
+@app.route('/deactivateconfirm', methods=['GET', 'POST'])
+@login_required
+def deactivate_confirm():
+    return render_template('deactivate.html')
+
+@app.route('/deactivate', methods=['GET', 'POST'])
+@login_required
+def deactivate():
+    user = current_user
+    search = Search.query.filter_by(username = user.username).first()
+    search.searchable = 'False' 
+    db.session.commit()
+    return redirect('logout') 
 
 
 @app.route("/request/<toUser>", methods=['POST', 'GET'])
