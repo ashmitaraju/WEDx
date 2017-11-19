@@ -46,7 +46,10 @@ def index():
 def viewProfile(user):
     
     allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username).first()
-    print allowed
+    if user == current_user.username: 
+        allowed = True
+
+
        
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
@@ -491,9 +494,3 @@ def rejectRequest(rid):
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
     db.session.commit() 
     return redirect(url_for('dashboard'))  
-
-
-
-
-
-
