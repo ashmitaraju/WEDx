@@ -42,8 +42,8 @@ button:hover, a:hover {
   }
 
   .image-index {
-    width:300px;
-    height: 300px;
+    width:500px;
+    height: 500px;
     background: url(../static/img/kendall.jpg) no-repeat scroll 0 0;
   }
   

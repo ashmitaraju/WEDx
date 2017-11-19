@@ -6,4 +6,4 @@ flask
 .git-old
 .vscode
 .idea
-config.py
+config.py 
