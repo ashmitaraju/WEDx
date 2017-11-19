@@ -143,3 +143,6 @@ class SendMessageForm(Form):
     subject = StringField('Subject', validators =[DataRequired()])
     body = TextField('Body', validators = [InputRequired()])
     submit = SubmitField('Send')
+
+
+
