@@ -7,14 +7,19 @@
 
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
                 <div class="profile-page w3-animate-opacity">
-                       
+                        <br/>
+                        {{ utils.flashed_messages() }}
+                        <br/>
+
+
+
                     <div class="main main-raised col-md-12">
                             <div class="profile-content col-md-3 text-left">
 
                                     <div class="row">
                                         <div class="profile">
 
-                                          <div class="image center">
+                                            <div class="image center">
                                                 <img src= "{{ image.image_path }}" alt="" class="img-rounded img-raised object-fit_cover" >
                                             </div>
                                             <div class="name">
@@ -22,6 +27,7 @@
                                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
                                                 <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> {{ profile.current_location }}</h6>
                                             </div>
+                                            <a href="{{ url_for('gettingLaid') }}" class="btn btn-danger btn-round text-center"> I'm getting married <3 </a>
                                             
                                         </div>
                                     </div>
@@ -49,51 +55,39 @@
                                                               <i class="material-icons">search</i>
                                                       </button>
 
-
                                                 </div>
                                               </div>
 
 
-
-                                              </form>
-                                            <div>
-                                              <a href="{{ url_for('advancedSearch') }}" class="btn btn-danger btn-round text-center">Advanced Search </a>
-                                              <a href="{{ url_for('delete') }}" class="btn btn-danger btn-round text-center">Deactivate Account </a>
-
-                                            </div>
-                                        
-
-                                          <div class="container col-md-12">
-                                                <div class="left">
-                                                        <br/>
-                                                        {{ utils.flashed_messages() }}
-                                                        <br/>
-                                                        </div>
-                                            <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">message</i></i> Requests </h3> <hr>
-                                      <table class="table">
-                                        <thead>
-                                            <tr>
-                                               
-                                                <th class="text-center">From</th>
-                                            </tr>
-                                        </thead>
-
                                             </form>
-                                        </div>
+                                            </div>
+
+
+
+                                            
+  
+                                            
+                                            <a href="{{ url_for('advancedSearch') }}" class="btn btn-danger btn-round text-center">Advanced Search </a>
+                                            <a href="{{ url_for('delete') }}" class="btn btn-danger btn-round text-center">Delete Account </a>
 
                                         <tbody>
-                                                {% for req in reqs %}
+                                                {% for req in requests %}
                                         <tr>
-                                            <td> <a href="{{ url_for('viewProfile', user=req.from_username) }}"> {{req.from_username}} </a> </td>
-                                            <td> <a href="{{ url_for('acceptRequest', rid = req.request_id) }}"> Accept </a> </td>
-                                            <td> <a href="{{ url_for('rejectRequest', rid = req.request_id) }}"> Reject </a> </td>
+                                            <td class="text-center">{{ req.request_id }}</td>
+                                            <td>{{ req.from_username }}</td>
+                                            <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> Accept </a> </td>
+                                            <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Reject </a> </td>
                                         {% endfor %}
                                         <tbody>
+                                        </table>
+                                        </div>
+
+
+                                            
+                                            
 
                                         
 
-                                        </table>
-                                        </div>
 
 
                                           
@@ -102,16 +96,16 @@
                                           <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Time</th>
+                                                    <th class="text-center">#</th>
                                                     <th>From</th>
-                                                    <th>Subject</th>
+                                                    <th class="text-left">Subject</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
                                                     {% for msg in msgs %}
                                             <tr>
-                                                <td>{{ msg.timestamp }}</td>
+                                                <td class="text-center">{{ msg.msgid }}</td>
                                                 <td>{{ msg.sender_username }}</td>
                                                 <td class="text-left">{{ msg.subject }}</td>
                                                 <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View and Reply </a> </td>

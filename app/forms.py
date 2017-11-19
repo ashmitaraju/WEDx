@@ -144,5 +144,17 @@ class SendMessageForm(Form):
     body = TextField('Body', validators = [InputRequired()])
     submit = SubmitField('Send')
 
+class BootyCallForm(Form):
+    toUser = StringField('Partner Username', validators =[DataRequired()])
+    submit = SubmitField('Submit')
+
+class CreateStoryForm(Form):
+    story = TextField('About', validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+
+
+
+
 
 

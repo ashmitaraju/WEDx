@@ -508,4 +508,64 @@ def rejectRequest(rid):
     body_msg = current_user.username + " has accepted your request to view their profile."
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
     db.session.commit() 
-    return redirect(url_for('dashboard'))  
+    return redirect(url_for('dashboard')) 
+
+@app.route("/gettingLaid", methods=['POST', 'GET'])
+@login_required
+def gettingLaid(): 
+    
+    form = BootyCallForm()
+
+    if form.validate_on_submit():
+         
+         username = form.toUser.data
+         if ( Users.query.filter_by( username = username).first() is not None):
+             body_msg = "Hey, we're getting married soon. <a href=\"url_for('acceptBootyCall')\">Accept</a> <a href=\"url_for('rejectBootyCall')\">Reject</a>"
+             message = Messages(sender_username = current_user.username, receiver_username = form.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
+             db.session.add(message)
+             db.session.commit()
+             print message  
+         else :
+             flash ('Invalid Username')
+             return redirect ('gettingLaid')
+
+    
+    return render_template('gettingLaid.html', form = form) 
+
+
+@app.route("/createStory/<user2>", methods=['POST', 'GET'])
+@login_required
+def createStory(user2): 
+    
+    form = CreateStoryForm()
+
+    if form.validate_on_submit():
+        story = successStories(username1= current_user.username, username2 = user2, story = form.story.data, timestamp = datetime.datetime.now() )
+        db.session.add(story)
+        db.session.commit()
+             
+    return render_template('gettingLaid.html', form = form) 
+
+
+@app.route("/acceptBootyCall/<user2>", methods=['POST', 'GET'])
+@login_required
+def acceptBootyCall(user2): 
+
+    body_msg = current_user.username + " has accepted your proposal. We at WEDx congratulate you. Please add story. Put link here."
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request Accepted", body=body_msg , timestamp = datetime.datetime.now())
+    db.session.add(message)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
+
+
+@app.route("/rejectBootyCall/<user2>", methods=['POST', 'GET'])
+@login_required
+def acceptBootyCall(user2): 
+
+    body_msg = current_user.username + " has rejected your proposal. No action 4 u :( "
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
+    db.session.add(message)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
+             
+    
