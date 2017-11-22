@@ -520,7 +520,7 @@ def gettingLaid():
          
          username = form.toUser.data
          if ( Users.query.filter_by( username = username).first() is not None):
-             body_msg = "Hey, we're getting married soon. <a href=\"url_for('acceptBootyCall')\">Accept</a> <a href=\"url_for('rejectBootyCall')\">Reject</a>"
+             body_msg = "Hey, we're getting married soon. <a href=\"{{ url_for('acceptBootyCall', user2 = current_user.username) }}\">Accept</a> <a href=\"{{ url_for('rejectBootyCall',  user2 = current_user.username) }}\">Reject</a>"
              message = Messages(sender_username = current_user.username, receiver_username = form.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
              db.session.add(message)
              db.session.commit()
@@ -554,18 +554,17 @@ def acceptBootyCall(user2):
     body_msg = current_user.username + " has accepted your proposal. We at WEDx congratulate you. Please add story. Put link here."
     message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request Accepted", body=body_msg , timestamp = datetime.datetime.now())
     db.session.add(message)
+    print "hi"
     db.session.commit()
     return redirect(url_for('dashboard'))
 
 
 @app.route("/rejectBootyCall/<user2>", methods=['POST', 'GET'])
 @login_required
-def acceptBootyCall(user2): 
+def rejectBootyCall(user2): 
 
     body_msg = current_user.username + " has rejected your proposal. No action 4 u :( "
     message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
     db.session.add(message)
     db.session.commit()
     return redirect(url_for('dashboard'))
-             
-    

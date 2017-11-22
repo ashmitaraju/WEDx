@@ -6,6 +6,7 @@
 
 
 {% block body %}
+
     <!-- Modal Core -->
     <div class="modal fade" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -35,7 +36,7 @@
                     
                     <h4 class="title"> Sender : {{ message.sender_username }}</h3>
                     <h5 class="title"> Message :-</h5>
-                    <p> {{ message.body }}  </p>
+                    <p> {{ message.body | safe }}  </p>
 
                     
                     {{ wtf.quick_form(form) }}
