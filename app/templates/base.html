@@ -42,14 +42,16 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                   <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                  <li><a href="{{ url_for('viewStories') }}">Success Stories</a></li>
                   <li><a href="{{ url_for('editProfile') }}">Edit Profile</a></li>
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
                 {% else %}
                   <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                  <li><a href="{{ url_for('viewStories') }}">Success Stories</a></li>
                   <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                   <li><a href="{{ url_for('login') }}">Login</a></li>
-                 {% endif %}
+                {% endif %}
               </ul>
           </div>
         </div>

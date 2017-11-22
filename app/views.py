@@ -615,7 +615,7 @@ def acceptProposal(user2):
     search = Search.query.filter_by(username = user.username).first()
     search.searchable = 'False'
     user = user2 
-    search = Search.query.filter_by(username = user.username).first()
+    search = Search.query.filter_by(username = user2).first()
     search.searchable = 'False'
     db.session.commit()
     return redirect(url_for('dashboard'))
@@ -630,3 +630,20 @@ def rejectProposal(user2):
     db.session.add(message)
     db.session.commit()
     return redirect(url_for('dashboard'))
+
+@app.route("/viewStories", methods=['POST', 'GET'])
+@login_required
+def viewStories(): 
+
+    stories = successStories.query.all()
+    story_dict=[]
+
+    for story in stories:
+        profile1 = Profiles.query.filter_by(username = story.username1).first()
+        profile2 = Profiles.query.filter_by(username = story.username2).first()
+        image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
+        image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
+        cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story]
+        story_dict.append(cur_list) 
+
+    return render_template('viewStories.html', stories = story_dict) 

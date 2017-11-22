@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+<div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
+<div class="profile-page">
+    <div class="main main-raised col-md-12">
+            <div class="profile-content col-md-12">
+
+                <div class="row">
+                    <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Stories </h3> <hr>
+                    
+                <br>
+                {% if stories %}
+                {% for story in stories %}
+                
+                <div class="w3-animate-left card-search col-md-12 ">
+                   <div class="col-md-6">
+                    <img src="{{ story[4] }}" class="img-rounded img-raised object-fit_cover" alt="No Profile Picture" style="width:100%">
+                    <h4> {{ story[0] }} {{ story[1] }}</h4>
+                    </div>
+                    <div class="col-md-6">
+                    <img src="{{ story[5] }}" class="img-rounded img-raised object-fit_cover" alt="No Profile Picture" style="width:100%">
+                    <h4> {{ story[2] }}  {{ story[3] }}</h4>
+                    </div>
+
+                    <div class="col-md-12">
+                            <p> {{ story[6] }}<p>
+                            </div>
+
+                    
+                   
+                
+
+        
+                  </div>
+                
+                {% endfor %}
+                {% else %}
+                <h4> No results found. </h4>
+                {% endif %}
+                    
+                </div>
+            </div>
+
+            
+        </div>
+     </div>
+
+
+
+{% endblock %}
+{% block scripts %}
+<script>
+$('#sliderDouble').noUiSlider({
+	start: [18, 21] ,
+	connect: true,
+	range: {
+	    min: 18,
+	    max: 100
+	}
+});
+</script>
+{% endblock %}
+
