@@ -19,10 +19,62 @@ def homepage():
 @app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
 def dashboard():
+    '''
     if request.method == 'POST':
-        text = request.form["text"]
-        print text
-        return redirect(url_for('viewProfile' , user = text))
+
+        if request.form["text"]:
+
+            text = request.form["text"]
+            print text
+            print "hi"
+            return redirect(url_for('viewProfile' , user = text)) 
+
+
+        print "hi"
+        print request.form["proposal"] 
+        
+
+        if request.form["proposal"]:
+
+            text = request.form["proposal"]
+            print "hey"
+            print text
+            if ( Users.query.filter_by( username = text).first() is not None):
+                body_msg = "Hey, we're getting married soon. <a href=\"{{ url_for('acceptProposal', user2 = current_user.username) }}\">Accept</a> <a href=\"{{ url_for('rejectProposal',  user2 = current_user.username) }}\">Reject</a>"
+                message = Messages(sender_username = current_user.username, receiver_username = text, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
+                db.session.add(message)
+                db.session.commit() 
+                return redirect(url_for('dashboard')) 
+            else:
+                flash ('Invalid Username')
+                return redirect(url_for('dashboard')) 
+
+        '''
+
+        
+
+    proposalForm = ProposalForm()
+    quickSearchForm = QuickSearchForm()
+
+    if proposalForm.validate_on_submit():
+
+        username = proposalForm.toUser.data
+        if ( Users.query.filter_by( username = username).first() is not None):
+            body_msg = "Hey, we're getting married soon. <a href=\"{{ url_for('acceptProposal', user2 = current_user.username) }}\">Accept</a> <a href=\"{{ url_for('rejectProposal',  user2 = current_user.username) }}\">Reject</a>"
+            message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
+            db.session.add(message)
+            db.session.commit() 
+
+            print message  
+            # return redirect(url_for('dashboard'))
+        else:
+            flash ('Invalid Username')
+        # return redirect(url_for('dashboard'))
+        # return redirect(url_for('dashboard'))
+
+    elif quickSearchForm.validate_on_submit():
+        text = quickSearchForm.username.data
+        return redirect(url_for('viewProfile' , user = text)) 
 
     msgs = Messages.query.filter_by(receiver_username= current_user.username).all()
     reqs = Requests.query.filter_by(to_username = current_user.username , status = 'requested').all()
@@ -35,7 +87,8 @@ def dashboard():
 
     age = calculate_age(profile.dob)
 
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs) #eh wait
+
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs, proposalForm = proposalForm, quickSearchForm = quickSearchForm) #eh wait
 
 @app.route('/index')
 def index():
@@ -509,12 +562,12 @@ def rejectRequest(rid):
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
     db.session.commit() 
     return redirect(url_for('dashboard')) 
-
+"""
 @app.route("/gettingLaid", methods=['POST', 'GET'])
 @login_required
 def gettingLaid(): 
     
-    form = ProposalForm()
+    proposalForm = ProposalForm()
 
     if form.validate_on_submit():
          
@@ -527,11 +580,11 @@ def gettingLaid():
              print message  
          else :
              flash ('Invalid Username')
-             return redirect ('gettingLaid')
+             return redirect ('dashboard')
 
     
-    return render_template('gettingLaid.html', form = form) 
-
+    return render_template('gettingLaid.html', form = proposalForm) 
+"""
 
 @app.route("/createStory/<user2>", methods=['POST', 'GET'])
 @login_required

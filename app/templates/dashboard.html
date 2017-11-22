@@ -5,6 +5,30 @@
 {% block title %}Dashboard{% endblock %}
 {% block body %}
 
+<div class="modal fade" id="sendProposal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Send Proposal</h4>
+        </div>
+        <div class="modal-body">
+
+                {{ wtf.quick_form(proposalForm, extra_classes="input-group form-control") }}
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
                 <div class="profile-page w3-animate-opacity">
                        
@@ -12,7 +36,7 @@
                             <div class="profile-content col-md-3 text-left">
 
                                     <div class="row">
-                                        <div class="profile">
+                                        <div class="profile center">
 
                                           <div class="image center">
                                                 <img src= "{{ image.image_path }}" alt="" class="img-rounded img-raised object-fit_cover" >
@@ -21,15 +45,27 @@
                                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
                                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
                                                 <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> {{ profile.current_location }}</h6>
+                                
                                             </div>
+                                    
+                                            <button class="btn btn-danger col-md-12 text-center" data-toggle="modal" data-target="#sendProposal">
+                                                I'm Getting Married
+                                               </button>
+                                    
+
+                                               <div class="input-bar-item width100">
+                                                    {{ wtf.quick_form(quickSearchForm, extra_classes="input-group form-control", button_map={'submit' : 'danger'}) }}
+                                                    </div>
                                             
                                         </div>
+                                      
                                     </div>
                                     <div class="description text-center">
                                         <h4> About </h4>
                                         <p>{{ profile.about }} </p>
-                                    </div>
 
+                                    </div>
+                                   
 
 
 
@@ -38,24 +74,7 @@
 
 
                                     <div class="input-bar col-sm-12 text-center">
-                                        <div class="input-bar-item width100">
-                                            <form class="form-inline" action="/dashboard" method="POST">
-                                               <div class="form-group">
-                                                  <input type="text" name="text" value="" placeholder="Search" class="form-control width100">
-                                              </div>
-                                              <div class="form-group">
-                                                <div class="input-bar-item">
-                                                      <button class="btn btn-danger btn-round " type="submit" name="my-form">
-                                                              <i class="material-icons">search</i>
-                                                      </button>
-
-
-                                                </div>
-                                              </div>
-
-
-
-                                              </form>
+            
                                             <div>
                                               <a href="{{ url_for('advancedSearch') }}" class="btn btn-danger btn-round text-center">Advanced Search </a>
                                               <a href="{{ url_for('delete') }}" class="btn btn-danger btn-round text-center">Deactivate Account </a>

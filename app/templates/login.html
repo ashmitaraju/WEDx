@@ -11,7 +11,7 @@
   <div class="center">
     <h1>Login to your account</h1>
     <br/>
-    {{ wtf.quick_form(form) }}
+    {{ wtf.quick_form(form, button_map={'submit' : 'danger'}) }}
   </div>
 </div>
 {% endblock %}

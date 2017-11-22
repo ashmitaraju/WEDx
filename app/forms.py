@@ -148,6 +148,10 @@ class ProposalForm(Form):
     toUser = StringField('Partner Username', validators =[DataRequired()])
     submit = SubmitField('Submit')
 
+class QuickSearchForm(Form):
+    username = StringField('Quick Search Username', validators =[DataRequired()])
+    submit = SubmitField('Submit')
+
 class CreateStoryForm(Form):
     story = TextField('About', validators = [DataRequired()])
     submit = SubmitField('Submit')
