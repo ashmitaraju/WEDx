@@ -153,7 +153,7 @@ class QuickSearchForm(Form):
     submit = SubmitField('Submit')
 
 class CreateStoryForm(Form):
-    story = TextField('About', validators = [DataRequired()])
+    story = TextField('Add your Story', validators = [DataRequired()])
     submit = SubmitField('Submit')
 
 
