@@ -144,7 +144,7 @@ class SendMessageForm(Form):
     body = TextField('Body', validators = [InputRequired()])
     submit = SubmitField('Send')
 
-class BootyCallForm(Form):
+class ProposalForm(Form):
     toUser = StringField('Partner Username', validators =[DataRequired()])
     submit = SubmitField('Submit')
 
