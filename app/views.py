@@ -560,7 +560,7 @@ def acceptBootyCall(user2):
 
 @app.route("/rejectBootyCall/<user2>", methods=['POST', 'GET'])
 @login_required
-def acceptBootyCall(user2): 
+def rejectBootyCall(user2): 
 
     body_msg = current_user.username + " has rejected your proposal. No action 4 u :( "
     message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
