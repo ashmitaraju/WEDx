@@ -44,7 +44,11 @@
                                             <div class="name">
                                                 <h4 class="title">@{{ profile.username }}</h4>
                                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
+                                                {% if gender %}
                                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
+                                                {% else %}
+                                                <h6><i class="fa fa-female fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
+                                                {% endif %}    
                                                 <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> {{ profile.current_location }}</h6>
                                 
                                             </div>
@@ -102,7 +106,7 @@
                                         </div>
 
                                         <tbody>
-                                                {% for req in reqs %}
+                                                {% for req in reqs | reverse %}
                                         <tr>
                                             <td> <a href="{{ url_for('viewProfile', user=req.from_username) }}"> {{req.from_username}} </a> </td>
                                             <td> <a href="{{ url_for('acceptRequest', rid = req.request_id) }}"> Accept </a> </td>
@@ -122,17 +126,17 @@
                                           <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Time</th>
+                                                    <th>Date and Time</th>
                                                     <th>From</th>
                                                     <th>Subject</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                    {% for msg in msgs %}
+                                                    {% for msg in msgs | reverse %}
                                             <tr>
-                                                <td>{{ msg.timestamp }}</td>
-                                                <td>{{ msg.sender_username }}</td>
+                                                <td class="text-left">{{ msg.timestamp }}</td>
+                                                <td class="text-left">{{ msg.sender_username }}</td>
                                                 <td class="text-left">{{ msg.subject }}</td>
                                                 <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View and Reply </a> </td>
                                                 <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Delete </a> </td>

@@ -61,7 +61,7 @@ def dashboard():
         username = proposalForm.toUser.data
         if ( Users.query.filter_by( username = username).first() is not None):
             body_msg = "Hey, we're getting married soon. <a href=\" /acceptProposal/" + current_user.username + "\"" + "  >Accept</a> <a href=\" /rejectProposal/" + current_user.username + "\"" + "  >Reject</a>"
-            message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
+            message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
             db.session.add(message)
             db.session.commit() 
 
@@ -86,9 +86,13 @@ def dashboard():
         image = None
 
     age = calculate_age(profile.dob)
+    if profile.gender == 'male': 
+        gender=1
+    else:
+        gender=0
 
 
-    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs, proposalForm = proposalForm, quickSearchForm = quickSearchForm) #eh wait
+    return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs, proposalForm = proposalForm, quickSearchForm = quickSearchForm, gender = gender) #eh wait
 
 @app.route('/index')
 def index():
@@ -125,7 +129,7 @@ def viewProfile(user):
 
     form = SendMessageForm()
     if form.validate_on_submit():
-        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.body.data , timestamp = datetime.datetime.now())
+        message = Messages(sender_username = current_user.username, receiver_username = profile.username, subject=form.subject.data, body=form.body.data , timestamp = str(datetime.datetime.now())[:16])
         db.session.add(message)
         db.session.commit()
         flash('Message sent!')
@@ -463,7 +467,7 @@ def replyMessage(mid):
    # print message.sender_username
     
     if form.validate_on_submit():
-        newMessage = Messages(sender_username = current_user.username, receiver_username = message.sender_username, subject = form.subject.data, body = form.body.data, timestamp = datetime.datetime.now())
+        newMessage = Messages(sender_username = current_user.username, receiver_username = message.sender_username, subject = form.subject.data, body = form.body.data, timestamp = str(datetime.datetime.now())[:16])
         db.session.add(newMessage)
         db.session.commit()
         flash('Message Sent!')
@@ -547,7 +551,7 @@ def acceptRequest(rid):
     #req = Requests(from_username = current_user.username , to_username = req.to_username , status = 'accepted')
     req.status='accepted'
     body_msg = current_user.username + " has accepted your request to view their profile."
-    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Accepted", body=body_msg , timestamp = datetime.datetime.now())
+    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     db.session.commit()
     return redirect(url_for('dashboard'))   
@@ -560,7 +564,7 @@ def rejectRequest(rid):
     #req = Requests(from_username = current_user.username , to_username = toUser , status = 'rejected')
     req.status='rejected'
     body_msg = current_user.username + " has accepted your request to view their profile."
-    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = datetime.datetime.now())
+    message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.commit() 
     return redirect(url_for('dashboard')) 
 """
@@ -594,7 +598,7 @@ def createStory(user2):
     form = CreateStoryForm()
 
     if form.validate_on_submit():
-        story = successStories(username1= current_user.username, username2 = user2, story = form.story.data, timestamp = datetime.datetime.now() )
+        story = successStories(username1= current_user.username, username2 = user2, story = form.story.data, timestamp = str(datetime.datetime.now()) [:16])
         db.session.add(story)
         db.session.commit()
         return redirect (url_for('dashboard'))
@@ -607,7 +611,7 @@ def createStory(user2):
 def acceptProposal(user2): 
 
     body_msg = current_user.username + " has accepted your proposal. We at WEDx congratulate you.  <a href=\" /createStory/" + current_user.username + "\"" + "  >Please add story.</a>"
-    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Accepted", body=body_msg , timestamp = datetime.datetime.now())
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     print "hi"
     db.session.commit()
@@ -626,7 +630,7 @@ def acceptProposal(user2):
 def rejectProposal(user2): 
 
     body_msg = current_user.username + " has rejected your proposal. "
-    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Rejected", body=body_msg , timestamp = datetime.datetime.now())
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     db.session.commit()
     return redirect(url_for('dashboard'))
@@ -648,7 +652,7 @@ def viewStories():
         image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
         if image2 is None: 
             print "hey"
-        cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story]
+        cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story ]
         story_dict.append(cur_list) 
 
     return render_template('viewStories.html', stories = story_dict) 
