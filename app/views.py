@@ -113,7 +113,7 @@ def login():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            
+
             return redirect('dashboard') #review
         else:
             flash('Invlaid email or password')
@@ -634,6 +634,10 @@ def generateBio():
     profile = Profiles.query.filter_by(username=current_user.username).first()
     pics = ImageGallery.query.filter_by(username = current_user.username).all()
     prefs = Partner_Preferences.query.filter_by(username = current_user.username).first() 
+    social = Social_Media.query.filter_by(username = current_user.username).first()
+    edu = Education.query.filter_by(username = current_user.username).first()
+    emp = Employment.query.filter_by(username = current_user.username).first()
+    bod = Body.query.filter_by(username = current_user.username).first()
     #print prefs 
     emailid = Users.query.filter_by(username = current_user.username).first()
     
@@ -652,7 +656,7 @@ def generateBio():
 
     age = calculate_age(profile.dob)
 
-    rendered = render_template('generateBio.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , age=age)
+    rendered = render_template('generateBio.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , age=age , social=social , edu=edu,emp=emp,bod=bod)
   
     pdf = pdfkit.from_string(rendered, False,)
 

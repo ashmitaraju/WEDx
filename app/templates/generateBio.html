@@ -2,7 +2,7 @@
       
 <body>
         <div class="avatar">
-                <img src="{{ image.image_path }}" alt="Circle Image" class="img-rounded img-responsive img-raised">
+                <img src="/home/cms/WEDx/WEDx/app/static/img/marc.jpg" alt="Circle Image" class="img-rounded img-responsive img-raised" width="25%">
             </div>
             <div class="name">
                  <h3 class="title">Name : {{ profile.first_name}} {{ profile.last_name }}</h3>
@@ -15,34 +15,70 @@
                </div>
 
                                        
-                                       <h3>Profile</h3>
-
-                                                <table class="table ">
-                                                        <div>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center"></th>
-                                                                </tr>
-                                                            </thead>
-                
-                                                            <tbody>
-                                                                    <tr>
-                                                                            <td class="title text-left">Hometown</td>
-                                                                            <td>{{profile.hometown}}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                            <td class="title text-left">Mother Tongue</td>
-                                                                            <td>{{ profile.mother_tongue}}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                            <td class="title text-left">Marital Status</td>
-                                                                            <td>{{profile.marital_status}}</td>
-                                                                    </tr>
-                                                            
-                                                            </tbody>
-                                                   
-                                                        </div>
-                                                    </table>
+               <h3>Profile</h3>
+               
+                                                               <table class="table ">
+                                                                       <div>
+                                                                           <thead>
+                                                                               <tr>
+                                                                                   <th class="text-center"></th>
+                                                                               </tr>
+                                                                           </thead>
+                               
+                                                                           <tbody>
+                                                                                   <tr>
+                                                                                           <td class="title text-left">Hometown</td>
+                                                                                           <td>{{profile.hometown}}</td>
+                                                                                   </tr>
+                                                                                   <tr>
+                                                                                           <td class="title text-left">Mother Tongue</td>
+                                                                                           <td>{{ profile.mother_tongue}}</td>
+                                                                                   </tr>
+                                                                                   <tr>
+                                                                                           <td class="title text-left">Marital Status</td>
+                                                                                           <td>{{profile.marital_status}}</td>
+                                                                                   </tr>
+                                                                                   
+                                                                                   <tr>
+                                                                                       <td class="title text-left">School</td>
+                                                                                       <td>{{edu.school}}</td>
+                                                                               </tr>
+                                                                               <tr>
+                                                                                   <td class="title text-left">Under Graduation</td>
+                                                                                   <td>{{edu.under_grad}}</td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                               <td class="title text-left">Post Graduation</td>
+                                                                               <td>{{edu.post_grad}}</td>
+                                                                       </tr>
+               
+                                                                       <tr>
+                                                                           <td class="title text-left">Occupation</td>
+                                                                           <td>{{emp.occupation}}</td>
+                                                                   </tr>
+               
+                                                                   <tr>
+                                                                       <td class="title text-left">Designation</td>
+                                                                       <td>{{emp.designation}}</td>
+                                                               </tr>
+               
+                                                               <tr>
+                                                                   <td class="title text-left">Company</td>
+                                                                   <td>{{emp.company_name}}</td>
+                                                           </tr>
+               
+                                                           <tr>
+                                                               <td class="title text-left">Salary</td>
+                                                               <td>{{emp.salary}}</td>
+                                                       </tr>
+               
+                                                       
+                                                                           
+                                                                           </tbody>
+                                                                  
+                                                                       </div>
+                                                                   </table>
+               
 
 
                                                     <h3>Contact Details</h3>
@@ -65,7 +101,39 @@
                                                             </div>
                                                         </table>
 
-                                                    
+                                                        <h3>Physical Appearance</h3>
+                                                        <table class="table ">
+                                                                <div>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center"></th>
+                                                                        </tr>
+                                                                    </thead>
+                        
+                                                                    <tbody>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Height</td>
+                                                                                    <td>{{bod.height}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="title text-left">Weight</td>
+                                                                                <td>{{bod.weight}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="title text-left">Complexion</td>
+                                                                            <td>{{bod.complexion}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="title text-left">Hair Colour</td>
+                                                                        <td>{{bod.hair_colour}}</td>
+                                                                </tr>
+                                                                            
+                                                                            
+                                                                    </tbody>
+                                                           
+                                                                </div>
+                                                            </table>
+
                                                         <h3>Partner Preferences</h3>
                                                         <table class="table ">
                                                                 <div>
