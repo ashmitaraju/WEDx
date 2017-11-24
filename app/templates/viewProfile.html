@@ -77,6 +77,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="#body" role="tab" data-toggle="tab">
+                                        <i class="material-icons">accessibility</i>
+                                        Physical Appearance
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="#pictures" role="tab" data-toggle="tab">
                                         <i class="material-icons">photo</i>
                                         Picture
@@ -118,6 +124,41 @@
                                                                             <td class="title text-left">Marital Status</td>
                                                                             <td>{{profile.marital_status}}</td>
                                                                     </tr>
+                                                                    
+                                                                    <tr>
+                                                                        <td class="title text-left">School</td>
+                                                                        <td>{{edu.school}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="title text-left">Under Graduation</td>
+                                                                    <td>{{edu.under_grad}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="title text-left">Post Graduation</td>
+                                                                <td>{{edu.post_grad}}</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="title text-left">Occupation</td>
+                                                            <td>{{emp.occupation}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="title text-left">Designation</td>
+                                                        <td>{{emp.designation}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="title text-left">Company</td>
+                                                    <td>{{emp.company_name}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="title text-left">Salary</td>
+                                                <td>{{emp.salary}}</td>
+                                        </tr>
+
+                                        
                                                             
                                                             </tbody>
                                                    
@@ -147,6 +188,12 @@
                                                                             <td class="title text-left">Email ID</td>
                                                                             <td>{{emailid.email}}</td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <a href="{{ social.instagram}}"><i class="fa fa-instagram"></i></a> 
+                                                                        <a href="{{ social.twitter}}"><i class="fa fa-twitter"></i></a> 
+                                                                        <a href="{{ social.linkedin}}"><i class="fa fa-linkedin"></i></a> 
+                                                                        <a href="{{ social.facebook}}"><i class="fa fa-facebook"></i></a> 
+                                                                    </tr>
                                                                     
                                                             </tbody>
                                                    
@@ -155,6 +202,47 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-pane text-center" id="body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            
+                                                <h3>Physical Appearance</h3>
+                                                <table class="table ">
+                                                        <div>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                
+                                                            <tbody>
+                                                                    <tr>
+                                                                            <td class="title text-left">Height</td>
+                                                                            <td>{{bod.height}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="title text-left">Weight</td>
+                                                                        <td>{{bod.weight}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="title text-left">Complexion</td>
+                                                                    <td>{{bod.complexion}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="title text-left">Hair Colour</td>
+                                                                <td>{{bod.hair_colour}}</td>
+                                                        </tr>
+                                                                    
+                                                                    
+                                                            </tbody>
+                                                   
+                                                        </div>
+                                                    </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="tab-pane text-center" id="pictures">
                                     <div class="row">
                                         <div class="col-md-12">

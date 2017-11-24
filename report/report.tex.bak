@@ -5,13 +5,7 @@
 \graphicspath{ {images/} }
 
 \begin{document}
-
-
-\tableofcontents
-\listoffigures
-
 \chapter{Introduction}\label{ch:introduction}
-\addcontentsline{toc}{chapter}{Introduction}
 Matrimonial sites in India operate on the basis of bringing in technology to facilitate what was so far known as an arranged marriage. The astounding growth of online matrimonial sites is largely because of numerous choices they offer to its users, making it very convenient for them to find a suitable partner.
 
 Matrimonial websites are a big business because they blend in the traditional with the modern. Traditional families are happy that these sites offer them the choice of caste, creed, and other such parameters which they would otherwise look for in a prospective bride/groom; on the other hand, the huge database offers young people the chance to browse for someone based on their tastes, and then filter it down to someone they think they could connect to.
@@ -27,12 +21,20 @@ The intent of the project is to gather and maintain data pertaining to each indi
 
 
 \section{Scope}
-The proposed system will allow every user to sign up on the website by filling out a few mandatory details. All the details can be edited as and when required. After signing up users will be able to filter other profiles based on what they are looking for. \\\\
-All details of a user is not available to be viewed by everyone. When a user wants to view the profile of another user, an access request needs to be sent. Once the other user approves, the profile can be viewed. \\\\
-Users can contact other users from within the website by sending messages to them. The messages can be replied to as well as deleted from the database.\\\\
-If a user wishes to deactivate his/her profile for a while, they can do so. Their data will still be available on the database but their profile can neither be viewed nor searched for. \\\\
-If a user wishes to delete his profile completely, he can do so. All the data he has uploaded will get erased completely. \\\\
-If a match is made and a couple decides to get married they can update their story on the website under Success Stories.   
+\subsubsection*{Existing System}
+Although there are some great Database management systems , there are still many that do not have  efficient data mining and retrieval methods and are thus prone to excess utilization of resources and less utilization of the ever increasing and possible facilities that could change the way a database is used to store and retrieve data. Furthermore, the authenticity of the information stored in the database is often brought into question. These are parameters we intend to bring under review while designing our database system. Many traditional databases aren’t used to their full capabilities and thus there is a need to stitch the method used to manipulate data in the database systems.
+
+
+\subsubsection*{Proposed System} 
+
+Proposed System objectives :-
+\begin{itemize}
+\item Enables seamless  basic profile access by training with the datasets and generating user access pattern.
+\item Performance analysis is done on the decision tree algorithms to check the accuracy in its prediction.
+\item The above modifications will be made to the conventional traditional database management systems in order to make the application and the manipulation seamless.
+
+\end{itemize}
+
 
 
 
@@ -40,11 +42,7 @@ If a match is made and a couple decides to get married they can update their sto
 
 \section{Overall Description}
 A software requirements specification (SRS) is a document that captures complete description      
-about how the system is expected to perform. It is a comprehensive description of the intended purpose and environment for software under development.\\\\
-To be used efficiently, all computer software needs certain hardware components or other software
-resources to be present on a computer. These prerequisites are known as (computer) system
-requirements and are often used as a guideline as opposed to an absolute rule. Most software defines
-two sets of system requirements: minimum and recommended.
+About how the system is expected to perform. It is a comprehensive description of the intended purpose and environment for software under development.
 
 \section{Specific Requirements} 
 
@@ -78,30 +76,30 @@ Consequently to run the database application a suitable browser compatible with 
 
 
 \subsection{Functionality}
-Functional Requirements explain the main and important features of the Database Management Systems and how they can be used by the clients and users to achieve the purpose. Functional Requirements can include technical details, and specific personality that can help accomplish the purpose of the Database Management System.
+Functional Requirements explain the main and important features of the Database management systems and how they can be used by the clients and users to achieve the purpose. Functional Requirements can include technical details, and specific personality that can help accomplish the purpose of the Database management system.
 
 \begin{itemize}
 
-\item \textbf{Adding new users}\\ Matrimonial Database Management System should be able to allow addition of new users to the Database and each new user is will choose a unique Username at the time of his/her registration.
+\item \textbf{Adding new users}\\ Matrimonial database management system should be able to allow addition of new users to the Database and each new user is will choose a unique Username at the time of his/her registration.
  
  
 \item \textbf{Adding User Mandatory Information}\\
 Each user shall have the following mandatory information: first name, last name, gender, date of birth and image. 
 
 \item \textbf{Update/Modify User Information}\\
-The matrimonial database management system shall allow the user to update any of the user’s information.
+The matrimonial database management system shall allow the user to update any of the user’s information as described in FR02. 
 
-\item \textbf{Delete User Information}\\Information which is not mandatory can be deleted by the user at any point of time. 
+\item \textbf{Delete User Information}\\Information which are not mandatory can be deleted by the user at any point of time. 
 
-\item\textbf{Searching for Matches} \\Each user should be able to search the database for a match, based on filters on the various attributes. 
+\item\textbf{Searching for matches} \\Each user should be able to search the database for a match, based on filters on the various attributes. 
 
-\item\textbf{Requesting for Access to View Profile}\\
+\item\textbf{Requesting for access to view profile}\\
 Each user can send a ‘View Profile’ request to other users. If accepted they can view their entire profile, else they can view only basic details. 
 
 
 \item\textbf{Messaging System} \\Each user can send messages to other users. 
 
-\item\textbf{Deactivate/Delete Account} \\Each user can deactivate his/her account at any point of time. This will render his profile inaccessible. 
+\item\textbf{Deactivate/Delete Account} \\Each user can deactivate his/her account at any point of time. This will make his profile non-searchable. 
 Each account can also be deleted completely, which will remove all the data from the database. 
 
 \item\textbf{Adding Success Stories} \\If a user finds a match using the website and decides to get married, they can add a success story. This story can be viewed by the other users. 
@@ -115,16 +113,18 @@ Each account can also be deleted completely, which will remove all the data from
 
 \item\textbf{Security } \\The system requires the User to identify himself/herself using a unique \emph{username.} 
 \begin{itemize}
-\item\textbf{Login ID } \\Any user who uses the system shall have a Username and Password. 
+\item\textbf{Logon ID } \\Any user who uses the system shall have a Username and Password. 
 
-\item\textbf{Modification} \\Any modification (insert, delete, update) for the Database shall be synchronized. 
+\item\textbf{Modification} \\Any modification (insert, delete, update) for the Database shall be synchronized and done by the administrator. 
+
+\item\textbf{Administrators' Rights} \\Administrators shall be able to view and modify all information in the Matrimonial Database management system. 
 
 
 \end{itemize}
 
-\item\textbf{Portability } \\Since it is a web based application, it can be used on any device with a browser.
+\item\textbf{Portability } \\Since it’s a web based application, it can be used on any device with a browser.
 
-\item\textbf{Reliability} \\Constraints are enforced to ensure the consistency of the data throughout. 
+\item\textbf{Reliability} \\Constraints must be enforced to ensure the consistency of the data throughout. 
 
 \end{itemize}
 
@@ -136,13 +136,13 @@ A data flow diagram is a graphical representation of the "flow" of data through 
 Using any convention’s DFD rules or guidelines, the symbols depict the four components of data flow diagrams:
 
 \begin{enumerate}
-\item \textbf{External entity} \\An outside system that sends or receives data, communicating with the system being diagrammed. They are the sources and destinations of information entering or leaving the system. They might be an outside organization or person, a computer system or a business system. They are also known as terminators, sources and sinks or actors. They are typically drawn on the edges of the diagram.
+\item \textbf{External entity}. \\An outside system that sends or receives data, communicating with the system being diagrammed. They are the sources and destinations of information entering or leaving the system. They might be an outside organization or person, a computer system or a business system. They are also known as terminators, sources and sinks or actors. They are typically drawn on the edges of the diagram.
 
-\item \textbf{Process} \\ Any process that changes the data, producing an output. It might perform computations, or sort data based on logic, or direct the data flow based on business rules. A short label is used to describe the process, such as “Submit payment.”
+\item \textbf{Process}. \\ Any process that changes the data, producing an output. It might perform computations, or sort data based on logic, or direct the data flow based on business rules. A short label is used to describe the process, such as “Submit payment.”
 
-\item \textbf{Data store} \\Files or repositories that hold information for later use, such as a database table or a membership form. Each data store receives a simple label, such as “Orders.”
+\item \textbf{Data store}. \\Files or repositories that hold information for later use, such as a database table or a membership form. Each data store receives a simple label, such as “Orders.”
 
-\item \textbf{Data flow} \\The route that data takes between the external entities, processes and data stores. It portrays the interface between the other components and is shown with arrows, typically labelled with a short data name, like “Billing details.”
+\item \textbf{Data flow}. \\The route that data takes between the external entities, processes and data stores. It portrays the interface between the other components and is shown with arrows, typically labelled with a short data name, like “Billing details.”
 
 \end{enumerate}
 
@@ -165,7 +165,7 @@ The level zero of the data flow diagram represents only the actions and response
 The level one of the Data Flow Diagram of the Matrimonial Database System depicts the different functionalities a user has. These are insertion, deletion, modification, searching, messaging, requesting for user access and viewing profiles.
 
 \begin{itemize}
-\item\textbf{Insertion} \\ Involves adding data to the various tables in the database.
+\item\textbf{Insertion} \\ Involves adding data to the various tables in the database
 
 \item\textbf{Deletion} \\Involves removing all the data of a particular user from the database.  
 
@@ -223,16 +223,9 @@ The level two of the DFD splits each task in level 1 into separate diagrams for 
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=.8\textwidth]{df-l2-4.png}
-    \caption{DFD Level 2.4}
-    \label{fig:dfd l2.4}
-\end{figure}
-
-\begin{figure}[!htb]
-    \centering
     \includegraphics[width=.8\textwidth]{df-l2-5.png}
     \caption{DFD Level 2.5}
-    \label{fig:dfd l2.5}
+    \label{fig:dfd l2.4}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -266,7 +259,7 @@ Entities may be characterized not only by relationships, but also by additional 
  
 An ER model is typically implemented as a database. In a simple relational database implementation, each row of a table represents one instance of an entity type, and each field in a table represents an attribute type. In a relational database a relationship between entities is implemented by storing the primary key of one entity as a pointer or "foreign key" in the table of another entity.\\
 
-The ER Diagram shown below provides details about the design of the Matrimonial Database system where each entity consists of various non composite attributes that make up a set of prime and non prime attributes. The relationships between the various entities is depicted with the (min ,max) constraints specified. This notation involves associating a pair of integer numbers (min,max) with each participation of an entity type E in a relationship type R, where 0 min less than or equal to max and max greater than or equal to 1 . The numbers mean that for each entity e in E, e must participate in at least min and at most max relationship instances in R at any point of time.  
+The E-R Diagram shown below provides details about the design of the Matrimonial Database system where each entity consists of various non composite attributes that make up a set of prime and non prime attributes. The relationships between the various entities is depicted with the (min ,max) constraints specified. This notation involves associating a pair of integer numbers (min,max) with each participation of an entity type E in a relationship type R, where 0 min less than or equal to max and max greater than or equa1 to 1 . The numbers mean that for each entity e in E, e must participate in at least min and at most max relationship instances in R at any point of time.  
 
 
 \chapter{Relational Schema and Normalization}
@@ -295,23 +288,22 @@ A non-prime attribute of R is an attribute that does not belong to any candidate
  
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.25\textwidth]{Normalized-Tables.png}
+    \includegraphics[width=1\textwidth]{Normalized-Tables.png}
     \caption{Normalized Schema}
     \label{fig:Normalized Schema}
 \end{figure}
  
-\chapter{Reports} 
-
+ 
 \chapter{Conclusions}
 \section{Summary}
 \paragraph*{•}
  
  The matrimonial site developed allows one to explore various matchmaking opportunities to find a viable or suitable partner whom he/she feels truly connected to.\\
 
-The site promotes socializing and offers numerous possibilities by allowing users to sift through the sea of humanity that we normally face in an organized and easy manner.The implementation of an user friendly interface will indubitably makes the premise of background checks easier as documents such as ID proofs necessary for verification can be uploaded seamlessly using a one-click.\\
+The site promotes socializing and offers numerous possibilities by allowing users to sift through the sea of humanity that we normally face in an organized and easy manner.The implementation of user friendly Interfaces will indubitably makes the premise of background checks easier as documents such as ID proofs necessary for verification can be uploaded seamlessly using a one-click or drag and drop mechanism developed.\\
 
 
-Furthermore, the messaging service developed and request access can help dispel several myths and fancies and allow a free and uninhibited social sphere which in turn may often lead to promising matchmaking.
+Furthermore, the messaging service developed and FAQs can help dispel several myths and fancies and allow a free and uninhibited social sphere which in turn may often lead to promising matchmaking.
 
 
 \section{Limitations}
@@ -320,9 +312,7 @@ Furthermore, the messaging service developed and request access can help dispel 
 \begin{enumerate}
 \item Users cannot set different levels of privacy to different sets of details entered by them. 
 \item Users cannot delete the pictures they have uploaded once in the gallery. 
-\item Other family members cannot make profiles for their relatives.
 \end{enumerate}
-
 
 \section{Future Enhancements}
 \paragraph*{•}
@@ -331,32 +321,10 @@ Furthermore, the messaging service developed and request access can help dispel 
 \item Automatic recommendations of user profiles using a sophisticated matching algorithm.  
 \item Implementation of live chat with multiple users.
 \item Varying levels of privacy for different sets of details.
-\item Multiple types of users, for example as a mother or father.
-\item Multiple types of users, for example those who have a Premium Membership. 
 
 \end{enumerate}
 
 \chapter{References} 
 
-\section{Books}
-\noindent [1] Roger S Presman, 2002. Software Engineering Concepts: A Modern Approach, Prentice Hall, Second Edition. \\\
-
-\noindent [2] Rajib Mall, 2002. Fundamentals of Software Engineering, Prentice Hall, Fifth Edition. \\\
-
-\noindent [3] Elmasri and Navathe,2005. Fundamentals of Database Systems, Pearson, Fifth Edition
-
-
-\section{Websites}
-
-\begin{itemize}
-\item https://www.w3schools.com/w3css/default.asp
-\item http://jinja.pocoo.org/docs/2.9/templates/
-\item https://docs.python.org/2/library/hashlib.html
-\item https://realpython.com/blog/python/introduction-to- flask-part- 2-creating- a-login-
-page/
-\item https://pypi.python.org/pypi/MySQL-python
-\end{itemize}
-
-\chapter{Appendix: Snapshots} 
 
 \end{document} 

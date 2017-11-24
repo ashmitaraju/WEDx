@@ -72,11 +72,14 @@ def viewProfile(user):
     if user == current_user.username: 
         allowed = True
 
-
-       
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
     prefs = Partner_Preferences.query.filter_by(username = user).first() 
+    social = Social_Media.query.filter_by(username = user).first()
+    edu = Education.query.filter_by(username = user).first()
+    emp = Employment.query.filter_by(username = user).first()
+    bod = Body.query.filter_by(username = user).first()
+
     #print prefs 
     emailid = Users.query.filter_by(username = user).first()
     
@@ -100,7 +103,7 @@ def viewProfile(user):
         db.session.commit()
         flash('Message sent!')
     age = calculate_age(profile.dob)
-    return render_template('viewProfile.html', user = user , profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , form = form , age=age , allowed = allowed)
+    return render_template('viewProfile.html', user = user , profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , form = form , age=age , allowed = allowed , social = social , edu = edu , emp = emp , bod = bod)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
