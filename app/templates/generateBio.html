@@ -1,0 +1,119 @@
+<html lang=en>
+      
+<body>
+        <div class="avatar">
+                <img src="{{ image.image_path }}" alt="Circle Image" class="img-rounded img-responsive img-raised">
+            </div>
+            <div class="name">
+                 <h3 class="title">Name : {{ profile.first_name}} {{ profile.last_name }}</h3>
+                <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i> Age : {{ age }}</h6>
+                <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Location : {{ profile.current_location }}</h6>
+            </div>
+            <div class="description text-center">
+                    <h4> About </h4>
+                   <p>{{ profile.about }} </p>
+               </div>
+
+                                       
+                                       <h3>Profile</h3>
+
+                                                <table class="table ">
+                                                        <div>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center"></th>
+                                                                </tr>
+                                                            </thead>
+                
+                                                            <tbody>
+                                                                    <tr>
+                                                                            <td class="title text-left">Hometown</td>
+                                                                            <td>{{profile.hometown}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Mother Tongue</td>
+                                                                            <td>{{ profile.mother_tongue}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td class="title text-left">Marital Status</td>
+                                                                            <td>{{profile.marital_status}}</td>
+                                                                    </tr>
+                                                            
+                                                            </tbody>
+                                                   
+                                                        </div>
+                                                    </table>
+
+
+                                                    <h3>Contact Details</h3>
+                                                    <table class="table ">
+                                                            <div>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="text-center"></th>
+                                                                    </tr>
+                                                                </thead>
+                    
+                                                                <tbody>
+                                                                        <tr>
+                                                                                <td class="title text-left">Email ID</td>
+                                                                                <td>{{emailid.email}}</td>
+                                                                        </tr>
+                                                                        
+                                                                </tbody>
+                                                       
+                                                            </div>
+                                                        </table>
+
+                                                    
+                                                        <h3>Partner Preferences</h3>
+                                                        <table class="table ">
+                                                                <div>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center"></th>
+                                                                        </tr>
+                                                                    </thead>
+                        
+                                                                    <tbody>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Hometown</td>
+                                                                                    <td>{{prefs.height}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Mother Tongue</td>
+                                                                                    <td>{{prefs.occupation}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Salary</td>
+                                                                                    <td>{{prefs.salary}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Gender</td>
+                                                                                    <td>{{prefs.gender}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Hometown</td>
+                                                                                    <td>{{prefs.hometown}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Mother Tongue</td>
+                                                                                    <td>{{prefs.mother_tongue}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">Current Location</td>
+                                                                                    <td>{{prefs.current_location}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                    <td class="title text-left">About</td>
+                                                                                    <td>{{prefs.about}}</td>
+                                                                            </tr>
+                                                                    
+                                                                    </tbody>
+                                                           
+                                                                </div>
+                                                            </table>
+
+                                                        </body>
+</html>
+
