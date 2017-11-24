@@ -17,15 +17,95 @@ The intent of the project is to gather and maintain data pertaining to each indi
 
 
 \section{Scope}
-Existing System:
-Although there are some great Database management systems , there are still many that do not have  efficient data mining and retrieval methods and are thus prone to excess utilization of resources and less utilization of the ever increasing and possible facilities that could change the way a database is used to store and retrieve data. Furthermore, the authenticity of the information stored in the database is often brought into question. These are parameters we intend to bring under review while designing our database system. Many traditional databases aren’t used to their full capabilities and thus there is a need to stitch the method used to manipulate data in the Database systems.
+\subsubsection*{Existing System}
+Although there are some great Database management systems , there are still many that do not have  efficient data mining and retrieval methods and are thus prone to excess utilization of resources and less utilization of the ever increasing and possible facilities that could change the way a database is used to store and retrieve data. Furthermore, the authenticity of the information stored in the database is often brought into question. These are parameters we intend to bring under review while designing our database system. Many traditional databases aren’t used to their full capabilities and thus there is a need to stitch the method used to manipulate data in the database systems.
 
-Proposed System : 
+
+\subsubsection*{Proposed System} 
 
 Proposed System objectives :-
-Enables seamless  basic profile access by training with the datasets and generating user access pattern.
-Performance analysis is done on the decision tree algorithms to check the accuracy in its prediction.
-The above modifications will be made to the conventional traditional database management systems in order to make the application and the manipulation seamless.
+\begin{itemize}
+\item Enables seamless  basic profile access by training with the datasets and generating user access pattern.
+\item Performance analysis is done on the decision tree algorithms to check the accuracy in its prediction.
+\item The above modifications will be made to the conventional traditional database management systems in order to make the application and the manipulation seamless.
+
+\end{itemize}
+
+
+
+
+\chapter{Software Requirements Specification}\label{ch:srr}
+A software requirements specification (SRS) is a document that captures complete description      
+About how the system is expected to perform. It is a comprehensive description of the intended purpose and environment for software under development.
+
+\section{Specific Requirements} 
+
+\subsection{Software Requirements}
+
+\begin{itemize}
+\item Operating Systems
+\begin{itemize}
+\item Client Side : Any OS with a suitable web browser. 
+\item Server Side : Any Linux Server Distribution
+
+\end{itemize}
+
+\item Database: MySQL 
+\item  Server scripting: Python’s Flask framework
+\item Front End Interface: HTML, CSS, Javascript and JQuery
+\end{itemize}
+
+Consequently to run the database application a suitable browser compatible with all of the aforementioned requirements is necessary. Speculated ones are Google Chrome, Mozilla Firefox.
+
+
+
+
+\subsection{Hardware Requirements}
+\begin{itemize}
+\item \textbf{Server Side :} The system will be hosted online with help of hosting services like AWS, Google Cloud Platform or Microsoft Azure. 
+
+\item\textbf{Client Side :}   Any device with an Internet connection and a suitable web browser that supports HTML 3 or above. 
+\end{itemize}
+
+
+
+\subsection{Functionality}
+Functional Requirements explain the main and important features of the Database management systems and how they can be used by the clients and users to achieve the purpose. Functional Requirements can include technical details, and specific personality that can help accomplish the purpose of the Database management system.
+
+\begin{description}
+\item[$\bullet$ Adding new users:] Matrimonial database management system should be able to allow addition of new users to the Database and each new user is will choose a unique Username at the time of his/her registration.
+
+ 
+\item [$\bullet$Adding User Mandatory Information:]
+Each user shall have the following mandatory information: first name, last name, gender, date of birth and image. 
+
+\item [$\bullet$Update/Modify User Information:]
+The matrimonial database management system shall allow the user to update any of the user’s information as described in FR02. 
+
+\item [$\bullet$Delete User Information:] 
+
+Information which are not mandatory can be deleted by the user at any point of time. 
+
+\item [$\bullet$Searching for matches:] 
+
+Each user should be able to search the database for a match, based on filters on the various attributes. 
+
+\item [$\bullet$Requesting for access to view profile:]
+
+Each user can send a ‘View Profile’ request to other users. If accepted they can view their entire profile, else they can view only basic details. 
+
+\item [$\bullet$Messaging System:] 
+
+Each user can send messages to other users. 
+
+\item [$\bullet$Deactivate Account:] 
+
+Each user can deactivate his/her account at any point of time. This will make his profile non-searchable. 
+
+
+
+\end{description}
 
 \end{document}
+
 
