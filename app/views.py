@@ -113,6 +113,7 @@ def login():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
+            
             return redirect('dashboard') #review
         else:
             flash('Invlaid email or password')
