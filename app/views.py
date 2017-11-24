@@ -180,7 +180,7 @@ def editProfile():
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
                 else:
-                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
+                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = 18)
                 db.session.add(profile)
                 db.session.commit()
                 age = calculate_age(profile.dob) 
@@ -632,7 +632,6 @@ def rejectProposal(user2):
     return redirect(url_for('dashboard'))
 
 @app.route("/viewStories", methods=['POST', 'GET'])
-@login_required
 def viewStories(): 
 
     stories = successStories.query.all()
@@ -641,9 +640,31 @@ def viewStories():
     for story in stories:
         profile1 = Profiles.query.filter_by(username = story.username1).first()
         profile2 = Profiles.query.filter_by(username = story.username2).first()
+        print profile2.username
         image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
+        if image1 is None:
+            print "hi"
+            
         image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
+        if image2 is None: 
+            print "hey"
         cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story]
         story_dict.append(cur_list) 
 
     return render_template('viewStories.html', stories = story_dict) 
+
+#did you create a story? mean husband 
+#if conditions haak beku 
+#haku
+#or we'll put a default img_path for all profiless. yes we will .
+#imgid numbering starts with 0 or 1?
+#1 
+#okay so we'll insert the dummy as zero and make all the profiles with no dps point at that?
+#S. you never fail to make me kringe
+#clearing traces
+#where do we insert that dummy image 
+#i did that. i'm talking about inserting into db
+#lets just write one line to insert it now and then remove the line 
+#but there has to be someway of keeping static stuff in the db no
+#bby call madi
+ 
