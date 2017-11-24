@@ -86,10 +86,10 @@ class EditPreferencesForm(Form):
 
 class EditSocialMediaForm(Form):
 
-    facebook = StringField('Facebook Link', validators = [Optional()])
-    twitter = StringField('Twitter Link', validators = [Optional()])
-    instagram = StringField('Instagram Link', validators = [Optional()])
-    linkedin = StringField('Linkedin Link', validators = [Optional()])
+    facebook = StringField('Facebook Link', validators = [Optional()], default = "https://www.facebook.com/")
+    twitter = StringField('Twitter Link', validators = [Optional()],default = "https://www.twitter.com/")
+    instagram = StringField('Instagram Link', validators = [Optional()],default = "https://www.instagram.com/")
+    linkedin = StringField('Linkedin Link', validators = [Optional()],default = "https://www.linkedin.com/")
     submit = SubmitField('Save and Next')
     skip = SubmitField('Skip')
 
@@ -127,20 +127,7 @@ class SearchFilterForm(Form):
     under_grad = StringField('Under Graduation', validators = [Optional()])
     post_grad = StringField('Post Gradution', validators = [Optional()])
     submit = SubmitField('Search')
-'''
-      id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    height = db.Column(db.Integer)
-    occupation = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger)
-    under_grad = db.Column(db.String(150), nullable = True)
-    post_grad = db.Column(db.String(150), nullable = True)
-    gender = db.Column(db.String(10), nullable = True)
-    hometown = db.Column(db.String(60), nullable = True)
-    mother_tongue = db.Column(db.String(60), nullable = True)
-    current_location = db.Column(db.String(20), nullable = True)
-    dob = db.Column(db.Date, nullable = True)
-'''
+
 
 class SendMessageForm(Form):
     subject = StringField('Subject', validators =[DataRequired()])
@@ -152,7 +139,7 @@ class ProposalForm(Form):
     submit = SubmitField('Submit')
 
 class QuickSearchForm(Form):
-    username = StringField('Quick Search Username', validators =[DataRequired()])
+    username = StringField('Quick Search ', validators =[DataRequired()])
     submit = SubmitField('Submit')
 
 class CreateStoryForm(Form):
