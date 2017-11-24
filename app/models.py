@@ -123,10 +123,10 @@ class ImageGallery(UserMixin, db.Model):
     __tablename__= 'ImageGallery'
 
     imgid = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False , unique = False)
+    username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = True , unique = False)
     image_filename = db.Column(db.String(60), default= None, nullable= False)
     image_path = db.Column(db.Text, default= None, nullable = False)
-
+#correct no? yes.
 
     def __repr(self):
         return '<ImageGallery :{}>'.format(self.username)
