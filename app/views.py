@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, flash, url_for, request, make_response
 from flask_login import login_required, login_user, logout_user, current_user
 from .forms import *
 from app import db, images
@@ -7,6 +7,7 @@ from .models import *
 import datetime
 from werkzeug.utils import secure_filename
 import os
+import pdfkit
 
 def calculate_age(born):
     today = datetime.datetime.now()
@@ -622,6 +623,45 @@ def viewStories():
         story_dict.append(cur_list) 
 
     return render_template('viewStories.html', stories = story_dict) 
+
+@app.route('/generateBio')
+@login_required
+def generateBio():
+    profile = Profiles.query.filter_by(username=current_user.username).first()
+    pics = ImageGallery.query.filter_by(username = current_user.username).all()
+    prefs = Partner_Preferences.query.filter_by(username = current_user.username).first() 
+    #print prefs 
+    emailid = Users.query.filter_by(username = current_user.username).first()
+    
+
+    if profile is None:
+        flash('Profile does not exist')
+        return redirect('dashboard')
+    else:
+        id = profile.image_id
+        image = ImageGallery.query.filter_by(imgid = id).first()
+
+
+    gender = {'male' : False}
+    if (str(profile.gender) == "male"):
+        gender['male'] = True
+
+    age = calculate_age(profile.dob)
+
+    rendered = render_template('generateBio.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , age=age)
+  
+    pdf = pdfkit.from_string(rendered, False,)
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'inline; filename=output.pdf'
+
+    return response
+
+
+
+
+    
 
 #did you create a story? mean husband 
 #if conditions haak beku 
