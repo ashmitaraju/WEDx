@@ -19,40 +19,6 @@ def homepage():
 @app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
 def dashboard():
-    '''
-    if request.method == 'POST':
-
-        if request.form["text"]:
-
-            text = request.form["text"]
-            print text
-            print "hi"
-            return redirect(url_for('viewProfile' , user = text)) 
-
-
-        print "hi"
-        print request.form["proposal"] 
-        
-
-        if request.form["proposal"]:
-
-            text = request.form["proposal"]
-            print "hey"
-            print text
-            if ( Users.query.filter_by( username = text).first() is not None):
-                body_msg = "Hey, we're getting married soon. <a href=\"{{ url_for('acceptProposal', user2 = current_user.username) }}\">Accept</a> <a href=\"{{ url_for('rejectProposal',  user2 = current_user.username) }}\">Reject</a>"
-                message = Messages(sender_username = current_user.username, receiver_username = text, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
-                db.session.add(message)
-                db.session.commit() 
-                return redirect(url_for('dashboard')) 
-            else:
-                flash ('Invalid Username')
-                return redirect(url_for('dashboard')) 
-
-        '''
-
-        
-
     proposalForm = ProposalForm()
     quickSearchForm = QuickSearchForm()
 
@@ -646,7 +612,7 @@ def viewStories():
         profile2 = Profiles.query.filter_by(username = story.username2).first()
         print profile2.username
         image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
-        if image1 is None:
+        if image1 is None: 
             print "hi"
             
         image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
