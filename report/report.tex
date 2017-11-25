@@ -81,7 +81,7 @@ Consequently to run the database application a suitable browser compatible with 
 
 
 
-\subsection{Functionality}
+\subsection{Functional Requirements}
 Functional Requirements explain the main and important features of the Database Management Systems and how they can be used by the clients and users to achieve the purpose. Functional Requirements can include technical details, and specific personality that can help accomplish the purpose of the Database Management System.
 
 \begin{itemize}
@@ -303,10 +303,14 @@ Codd's definition states that a table is in 3NF if and only if both of the follo
 \item Every non-prime attribute of R is non-transitively dependent on every key of R.
 \end{itemize}
 
-Every non-prime attribute of R is non-transitively dependent on every key of R.
+\noindent Every non-prime attribute of R is non-transitively dependent on every key of R.
 A non-prime attribute of R is an attribute that does not belong to any candidate key of R.\\
  A transitive dependency is a functional dependency in which 
- $ X \rightarrow Z $ (X determines Z) indirectly, by virtue of $X \rightarrow Y$ and $Y \rightarrow Z$ (where it is not the case that $Y \rightarrow X$). 
+ $ X \rightarrow Z $ (X determines Z) indirectly, by virtue of $X \rightarrow Y$ and $Y \rightarrow Z$ (where it is not the case that $Y \rightarrow X$). \\\\
+ \noindent The normalized tables of our database is given in the figure below. \\
+ 
+
+ 
  
 \begin{figure}[!htb]
     \centering
@@ -314,13 +318,20 @@ A non-prime attribute of R is an attribute that does not belong to any candidate
     \caption{Normalized Schema}
     \label{fig:Normalized Schema}
 \end{figure}
+
+\noindent The tables are in 1NF since the domain of each attribute contains only atomic (indivisible) values, and the value of each attribute contains only a single value from that domain. \\
+
+\noindent The tables are in 2NF since it is in 1NF and every non-prime attribute of the relation is dependent on the whole of every candidate key. In our tables the candidate keys are the same as the primary keys which is just one attribute in every simple. Therefore this constraint is satisfied. \\
+ 
+\noindent The tables are in 3NF since in it in 2NF and every non-prime attribute of every relation is non-transitively dependent on every key of the relation. There are no inherent transitive dependencies in our relations. \\
+
  
 \chapter{Reports} 
 Most database management systems include a report
 writer that enables you to design and generate reports. The process of report generation includes
 collecting suitable data from multiple functionalities and displaying to the end user. A report usually
 summarizes the entire functionality of the database management system that is design. \\\\
-Users can click on the Generate Bio button to generate a download-able PDF of their profile. This PDF will contain all the information that they have entered in their profile. \\\\
+Users can click on the \emph{Generate Bio} button to generate a download-able PDF of their profile. This PDF will contain all the information that they have entered in their profile. \\\\
 Given below is an example of the report generated for a particular user.
 
 \begin{figure}[!htb]
@@ -366,24 +377,22 @@ Furthermore, the messaging service developed and request access can help dispel 
 
 \chapter{References} 
 
-\section{Books}
+
 \noindent [1] Roger S Presman, 2002. Software Engineering Concepts: A Modern Approach, Prentice Hall, Second Edition. \\\
 
 \noindent [2] Rajib Mall, 2002. Fundamentals of Software Engineering, Prentice Hall, Fifth Edition. \\\
 
-\noindent [3] Elmasri and Navathe,2005. Fundamentals of Database Systems, Pearson, Fifth Edition
+\noindent [3] Elmasri and Navathe,2005. Fundamentals of Database Systems, Pearson, Fifth Edition \\
 
 
-\section{Websites}
 
-\begin{itemize}
-\item https://www.w3schools.com/w3css/default.asp
-\item http://jinja.pocoo.org/docs/2.9/templates/
-\item https://docs.python.org/2/library/hashlib.html
-\item https://realpython.com/blog/python/introduction-to- flask-part- 2-creating- a-login-
-page/
-\item https://pypi.python.org/pypi/MySQL-python
-\end{itemize}
+\noindent [4] https://www.w3schools.com/w3css/default.asp \\\\
+\noindent [5] http://jinja.pocoo.org/docs/2.9/templates/\\\\
+\noindent [6] https://docs.python.org/2/library/hashlib.html \\\\
+\noindent [7] https://realpython.com/blog/python/introduction-to- flask-part- 2-creating- a-login-
+page/ \\\\
+\noindent [8] https://pypi.python.org/pypi/MySQL-python
+
 
 \chapter{Appendix: Snapshots} 
 
