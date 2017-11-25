@@ -73,6 +73,12 @@ def viewProfile(user):
     if user == current_user.username: 
         allowed = True
 
+    search = Search.query.filter_by(username = user).first()
+    if search.searchable == 0:
+        flash('Profile does not exist')
+        return redirect('dashboard')
+      
+
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
     prefs = Partner_Preferences.query.filter_by(username = user).first() 
@@ -401,7 +407,7 @@ def advancedSearch():
 
         if results is not None:
             for res in results_list: 
-                if res.age <= age_lower or res.age >= age_upper or res.searchable == 1:
+                if res.age <= age_lower or res.age >= age_upper or res.searchable == 0:
                     results_list.remove(res)  
         else: 
             results = Search.query.filter_by(age >= age_lower , age <=age_upper) 
@@ -501,9 +507,20 @@ def deactivate_confirm():
 def deactivate():
     user = current_user
     search = Search.query.filter_by(username = user.username).first()
-    search.searchable = 'False' 
+    search.searchable = 0 
+    flash('Account has been deactivated.')
     db.session.commit()
     return redirect('logout') 
+
+@app.route('/activate', methods=['GET', 'POST'])
+@login_required
+def activate():
+    user = current_user
+    search = Search.query.filter_by(username = user.username).first()
+    search.searchable = 1 
+    flash('Account has been activated.')
+    db.session.commit()
+    return redirect('dashboard') 
 
 
 @app.route("/request/<toUser>", methods=['POST', 'GET'])
@@ -538,29 +555,7 @@ def rejectRequest(rid):
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.commit() 
     return redirect(url_for('dashboard')) 
-"""
-@app.route("/gettingLaid", methods=['POST', 'GET'])
-@login_required
-def gettingLaid(): 
-    
-    proposalForm = ProposalForm()
 
-    if form.validate_on_submit():
-         
-         username = form.toUser.data
-         if ( Users.query.filter_by( username = username).first() is not None):
-             body_msg = "Hey, we're getting married soon. <a href=\"{{ url_for('acceptProposal', user2 = current_user.username) }}\">Accept</a> <a href=\"{{ url_for('rejectProposal',  user2 = current_user.username) }}\">Reject</a>"
-             message = Messages(sender_username = current_user.username, receiver_username = form.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = datetime.datetime.now())
-             db.session.add(message)
-             db.session.commit()
-             print message  
-         else :
-             flash ('Invalid Username')
-             return redirect ('dashboard')
-
-    
-    return render_template('gettingLaid.html', form = proposalForm) 
-"""
 
 @app.route("/createStory/<user2>", methods=['POST', 'GET'])
 @login_required
