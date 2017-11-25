@@ -1,4 +1,4 @@
-venv
+00nv
 migrations
 flask
 *.pyc
@@ -7,3 +7,5 @@ flask
 .vscode
 .idea
 config.py 
+wedx
+
