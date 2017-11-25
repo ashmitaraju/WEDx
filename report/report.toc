@@ -1,27 +1,27 @@
-\contentsline {chapter}{\numberline {1}Introduction}{4}
-\contentsline {chapter}{Introduction}{4}
-\contentsline {section}{\numberline {1.1}Purpose}{4}
-\contentsline {section}{\numberline {1.2}Scope}{5}
-\contentsline {chapter}{\numberline {2}Software Requirements Specification}{6}
-\contentsline {section}{\numberline {2.1}Overall Description}{6}
-\contentsline {section}{\numberline {2.2}Specific Requirements}{6}
-\contentsline {subsection}{\numberline {2.2.1}Software Requirements}{6}
-\contentsline {subsection}{\numberline {2.2.2}Hardware Requirements}{7}
-\contentsline {subsection}{\numberline {2.2.3}Functionality}{7}
-\contentsline {subsection}{\numberline {2.2.4}Non-Functional Requirements}{8}
-\contentsline {chapter}{\numberline {3}Detailed Design}{10}
-\contentsline {section}{\numberline {3.1}DFD Level 0}{11}
-\contentsline {section}{\numberline {3.2}DFD Level 1}{11}
-\contentsline {section}{\numberline {3.3}DFD Level 2}{14}
-\contentsline {chapter}{\numberline {4}ER Diagram}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {chapter}{\numberline {5}Relational Schema and Normalization}{19}
-\contentsline {chapter}{\numberline {6}Reports}{22}
-\contentsline {chapter}{\numberline {7}Conclusions}{23}
-\contentsline {section}{\numberline {7.1}Summary}{23}
-\contentsline {section}{\numberline {7.2}Limitations}{23}
-\contentsline {section}{\numberline {7.3}Future Enhancements}{24}
-\contentsline {chapter}{\numberline {8}References}{25}
-\contentsline {section}{\numberline {8.1}Books}{25}
-\contentsline {section}{\numberline {8.2}Websites}{25}
-\contentsline {chapter}{\numberline {9}Appendix: Snapshots}{26}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{Introduction}{3}
+\contentsline {section}{\numberline {1.1}Purpose}{3}
+\contentsline {section}{\numberline {1.2}Scope}{3}
+\contentsline {chapter}{\numberline {2}Software Requirements Specification}{5}
+\contentsline {section}{\numberline {2.1}Overall Description}{5}
+\contentsline {section}{\numberline {2.2}Specific Requirements}{5}
+\contentsline {subsection}{\numberline {2.2.1}Software Requirements}{5}
+\contentsline {subsection}{\numberline {2.2.2}Hardware Requirements}{6}
+\contentsline {subsection}{\numberline {2.2.3}Functionality}{6}
+\contentsline {subsection}{\numberline {2.2.4}Non-Functional Requirements}{7}
+\contentsline {chapter}{\numberline {3}Detailed Design}{8}
+\contentsline {section}{\numberline {3.1}DFD Level 0}{9}
+\contentsline {section}{\numberline {3.2}DFD Level 1}{9}
+\contentsline {section}{\numberline {3.3}DFD Level 2}{11}
+\contentsline {chapter}{\numberline {4}ER Diagram}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {chapter}{\numberline {5}Relational Schema and Normalization}{16}
+\contentsline {chapter}{\numberline {6}Reports}{18}
+\contentsline {chapter}{\numberline {7}Conclusions}{20}
+\contentsline {section}{\numberline {7.1}Summary}{20}
+\contentsline {section}{\numberline {7.2}Limitations}{20}
+\contentsline {section}{\numberline {7.3}Future Enhancements}{20}
+\contentsline {chapter}{\numberline {8}References}{22}
+\contentsline {section}{\numberline {8.1}Books}{22}
+\contentsline {section}{\numberline {8.2}Websites}{22}
+\contentsline {chapter}{\numberline {9}Appendix: Snapshots}{23}

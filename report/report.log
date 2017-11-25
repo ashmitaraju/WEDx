@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.24)  25 NOV 2017 04:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.24)  25 NOV 2017 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
-LaTeX2e <2017/01/01> patch level 3
-Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -32,24 +32,24 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
 ))
@@ -60,7 +60,7 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 Package: placeins 2005/04/18  v 2.2
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/11/05 v2.16a AMS math features
+Package: amsmath 2016/03/03 v2.15a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
@@ -77,23 +77,23 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen106
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count89
-LaTeX Info: Redefining \frac on input line 213.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count90
 \leftroot@=\count91
-LaTeX Info: Redefining \overline on input line 375.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count92
 \DOTSCASE@=\count93
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen107
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \macc@depth=\count94
 \c@MaxMatrixCols=\count95
 \dotsspace@=\muskip10
@@ -114,8 +114,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -132,45 +132,91 @@ Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen114
+\WF@size=\dimen115
+\c@WF@wrappedlines=\count101
+\WF@box=\box28
+\WF@everypar=\toks20
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count102
+\rotFPtop=\skip46
+\rotFPbot=\skip47
+\rot@float@box=\box29
+\rot@mess@toks=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen116
+\Gm@wd@mp=\dimen117
+\Gm@odd@mp=\dimen118
+\Gm@even@mp=\dimen119
+\Gm@layoutwidth=\dimen120
+\Gm@layoutheight=\dimen121
+\Gm@layouthoffset=\dimen122
+\Gm@layoutvoffset=\dimen123
+\Gm@dimlist=\toks22
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen114
-\scratchbox=\box28
-\nofMPsegments=\count102
-\nofMParguments=\count103
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen115
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count106
+\scratchdimen=\dimen124
+\scratchbox=\box30
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen125
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -178,38 +224,70 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 (./report.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -224,84 +302,83 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+))
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [2] (./report.lof)
+ [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.lof)
 \tf@lof=\write4
 \openout4 = `report.lof'.
 
- [3
+ [2
 
 ]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
 
  []
 
-[4
+[3
 
-] [5]
+] [4]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--48
+Underfull \hbox (badness 10000) in paragraph at lines 46--52
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 54.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
- [6
+ [5
 
 ]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
- [7]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ò in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
- [8] [9]
+ [6] [7]
 Chapter 3.
 Missing character: There is no ‚ in font cmbx12!
 Missing character: There is no Ä in font cmbx12!
 Missing character: There is no ¢ in font cmbx12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
@@ -320,372 +397,365 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[10
-
-]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- <images/df-l0.png, id=38, 415.5525pt x 145.0218pt>
+[8
+
+] <images/df-l0.png, id=32, 415.5525pt x 145.0218pt>
 File: images/df-l0.png Graphic file (type png)
  <use images/df-l0.png>
-Package pdftex.def Info: images/df-l0.png used on input line 157.
-(pdftex.def)             Requested size: 390.0pt x 136.11028pt.
+Package pdftex.def Info: images/df-l0.png used on input line 161.
+(pdftex.def)             Requested size: 469.75502pt x 163.94353pt.
 
-[11 <./images/df-l0.png>] <images/df-l1.png, id=43, 632.3625pt x 939.51pt>
+[9 <./images/df-l0.png>] <images/df-l1.png, id=37, 632.3625pt x 939.51pt>
 File: images/df-l1.png Graphic file (type png)
 
 <use images/df-l1.png>
-Package pdftex.def Info: images/df-l1.png used on input line 191.
-(pdftex.def)             Requested size: 390.0pt x 579.43666pt.
-
-
-LaTeX Warning: Float too large for page by 57.76997pt on input line 194.
-
-[12] [13 <./images/df-l1.png>]
-<images/df-l2-1.png, id=52, 298.2342pt x 180.675pt>
+Package pdftex.def Info: images/df-l1.png used on input line 195.
+(pdftex.def)             Requested size: 328.82707pt x 488.54802pt.
+ <images/df-l2-1.png, id=38, 298.2342pt x 180.675pt>
 File: images/df-l2-1.png Graphic file (type png)
- <use images/df-l2-1.png>
-Package pdftex.def Info: images/df-l2-1.png used on input line 205.
-(pdftex.def)             Requested size: 312.00119pt x 189.02235pt.
 
-<images/df-l2-2.png, id=53, 298.2342pt x 180.675pt>
+<use images/df-l2-1.png>
+Package pdftex.def Info: images/df-l2-1.png used on input line 209.
+(pdftex.def)             Requested size: 375.80544pt x 227.67924pt.
+ [10 <./images/df-l1.png>]
+<images/df-l2-2.png, id=43, 298.2342pt x 180.675pt>
 File: images/df-l2-2.png Graphic file (type png)
  <use images/df-l2-2.png>
-Package pdftex.def Info: images/df-l2-2.png used on input line 212.
-(pdftex.def)             Requested size: 312.00119pt x 189.02235pt.
+Package pdftex.def Info: images/df-l2-2.png used on input line 216.
+(pdftex.def)             Requested size: 375.80544pt x 227.67924pt.
 
-<images/df-l2-3.png, id=54, 308.5929pt x 180.675pt>
+<images/df-l2-3.png, id=44, 308.5929pt x 180.675pt>
 File: images/df-l2-3.png Graphic file (type png)
  <use images/df-l2-3.png>
-Package pdftex.def Info: images/df-l2-3.png used on input line 219.
-(pdftex.def)             Requested size: 312.00119pt x 182.68706pt.
+Package pdftex.def Info: images/df-l2-3.png used on input line 223.
+(pdftex.def)             Requested size: 375.80544pt x 220.04547pt.
 
-<images/df-l2-4.png, id=55, 543.9522pt x 180.675pt>
+<images/df-l2-4.png, id=45, 543.9522pt x 180.675pt>
 File: images/df-l2-4.png Graphic file (type png)
  <use images/df-l2-4.png>
-Package pdftex.def Info: images/df-l2-4.png used on input line 226.
-(pdftex.def)             Requested size: 312.00119pt x 103.63367pt.
+Package pdftex.def Info: images/df-l2-4.png used on input line 230.
+(pdftex.def)             Requested size: 375.80544pt x 124.82578pt.
 
-<images/df-l2-5.png, id=56, 402.0621pt x 204.2832pt>
+<images/df-l2-5.png, id=46, 402.0621pt x 204.2832pt>
 File: images/df-l2-5.png Graphic file (type png)
  <use images/df-l2-5.png>
-Package pdftex.def Info: images/df-l2-5.png used on input line 233.
-(pdftex.def)             Requested size: 312.00119pt x 158.53603pt.
+Package pdftex.def Info: images/df-l2-5.png used on input line 237.
+(pdftex.def)             Requested size: 375.80544pt x 190.95393pt.
 
-<images/df-l2-6.png, id=57, 402.0621pt x 204.2832pt>
+<images/df-l2-6.png, id=47, 402.0621pt x 204.2832pt>
 File: images/df-l2-6.png Graphic file (type png)
  <use images/df-l2-6.png>
-Package pdftex.def Info: images/df-l2-6.png used on input line 240.
-(pdftex.def)             Requested size: 312.00119pt x 158.53603pt.
+Package pdftex.def Info: images/df-l2-6.png used on input line 244.
+(pdftex.def)             Requested size: 375.80544pt x 190.95393pt.
 
-<images/df-l2-7.png, id=58, 471.6822pt x 180.675pt>
+<images/df-l2-7.png, id=48, 471.6822pt x 180.675pt>
 File: images/df-l2-7.png Graphic file (type png)
  <use images/df-l2-7.png>
-Package pdftex.def Info: images/df-l2-7.png used on input line 247.
-(pdftex.def)             Requested size: 312.00119pt x 119.51602pt.
+Package pdftex.def Info: images/df-l2-7.png used on input line 251.
+(pdftex.def)             Requested size: 375.80544pt x 143.95572pt.
 
-<images/df-l2-8.png, id=59, 308.5929pt x 180.675pt>
+<images/df-l2-8.png, id=49, 308.5929pt x 180.675pt>
 File: images/df-l2-8.png Graphic file (type png)
  <use images/df-l2-8.png>
-Package pdftex.def Info: images/df-l2-8.png used on input line 254.
-(pdftex.def)             Requested size: 272.99881pt x 159.8491pt.
+Package pdftex.def Info: images/df-l2-8.png used on input line 258.
+(pdftex.def)             Requested size: 328.82707pt x 192.54013pt.
 
-[14
-
- <./images/df-l2-1.png> <./images/df-l2-2.png>] [15 <./images/df-l2-3.png> <./i
-mages/df-l2-4.png> <./images/df-l2-5.png>] [16 <./images/df-l2-6.png> <./images
-/df-l2-7.png> <./images/df-l2-8.png>]
+[11 <./images/df-l2-1.png> <./images/df-l2-2.png>] [12 <./images/df-l2-3.png> <
+./images/df-l2-4.png> <./images/df-l2-5.png>] [13 <./images/df-l2-6.png> <./ima
+ges/df-l2-7.png> <./images/df-l2-8.png>]
 Chapter 4.
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
-[17
 
-] [18]
-Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
 
  []
 
-[19
 
-] <images/Normalized-Tables.png, id=87, 1947.275pt x 2107.875pt>
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+
+ []
+
+<images/ER.png, id=68, 6558.5025pt x 3725.92pt>
+File: images/ER.png Graphic file (type png)
+ <use images/ER.png>
+Package pdftex.def Info: images/ER.png used on input line 278.
+(pdftex.def)             Requested size: 610.68295pt x 346.91632pt.
+ [14
+
+]
+[15 <./images/ER.png>]
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
+
+ []
+
+[16
+
+] <images/Normalized-Tables.png, id=80, 1947.275pt x 2107.875pt>
 File: images/Normalized-Tables.png Graphic file (type png)
 
 <use images/Normalized-Tables.png>
-Package pdftex.def Info: images/Normalized-Tables.png used on input line 298.
-(pdftex.def)             Requested size: 487.5pt x 527.70723pt.
-
-Overfull \hbox (97.5pt too wide) in paragraph at lines 298--299
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 6.04054pt on input line 301.
-
-[20] [21 <./images/Normalized-Tables.png>]
+Package pdftex.def Info: images/Normalized-Tables.png used on input line 313.
+(pdftex.def)             Requested size: 469.75502pt x 508.47342pt.
+ [17 <./images/Normalized-Tables.png>]
 Chapter 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--310
+Underfull \hbox (badness 10000) in paragraph at lines 319--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--310
+Underfull \hbox (badness 10000) in paragraph at lines 319--325
+
+ []
+
+<images/report.jpeg, id=86, 907.39pt x 1284.8pt>
+File: images/report.jpeg Graphic file (type jpg)
+ <use images/report.jpeg>
+Package pdftex.def Info: images/report.jpeg used on input line 328.
+(pdftex.def)             Requested size: 422.77664pt x 598.6217pt.
+
+[18
+
+]
+
+LaTeX Warning: Text page 19 contains only floats.
+
+
+Overfull \vbox (3.02501pt too high) has occurred while \output is active []
+
+
+[19 <./images/report.jpeg>]
+Chapter 7.
+Missing character: There is no ‚ in font cmbx12!
+Missing character: There is no Ä in font cmbx12!
+Missing character: There is no ¢ in font cmbx12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
+
+ []
+
+Missing character: There is no ‚ in font cmbx12!
+Missing character: There is no Ä in font cmbx12!
+Missing character: There is no ¢ in font cmbx12!
+Missing character: There is no ‚ in font cmbx12!
+Missing character: There is no Ä in font cmbx12!
+Missing character: There is no ¢ in font cmbx12!
+[20
+
+] [21]
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
 
  []
 
 [22
 
 ]
-Chapter 7.
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ¢ in font cmbx12!
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 317--318
-
- []
-
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ¢ in font cmbx12!
-Missing character: There is no ‚ in font cmbx12!
-Missing character: There is no Ä in font cmbx12!
-Missing character: There is no ¢ in font cmbx12!
-[23
-
-]
-Overfull \hbox (6.2931pt too wide) in paragraph at lines 337--338
-[]\OT1/cmr/m/n/12 Automatic rec-om-men-da-tions of user pro-files us-ing a so-p
-his-ti-cated match-
- []
-
-[24]
-Chapter 8.
-
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-
- []
-
-
-Overfull \hbox (29.20953pt too wide) in paragraph at lines 361--363
-[]\OT1/cmr/m/n/12 https://realpython.com/blog/python/introduction-to- flask-par
-t- 2-creating-
- []
-
-[25
-
-]
 Chapter 9.
-<images/sc-1.png, id=110, 1371.1225pt x 770.88pt>
+<images/sc-1.png, id=103, 1371.1225pt x 770.88pt>
 File: images/sc-1.png Graphic file (type png)
  <use images/sc-1.png>
-Package pdftex.def Info: images/sc-1.png used on input line 370.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-1.png used on input line 392.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-2.png, id=111, 1371.1225pt x 770.88pt>
+<images/sc-2.png, id=104, 1371.1225pt x 770.88pt>
 File: images/sc-2.png Graphic file (type png)
  <use images/sc-2.png>
-Package pdftex.def Info: images/sc-2.png used on input line 375.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-2.png used on input line 397.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-3.png, id=112, 1371.1225pt x 770.88pt>
+<images/sc-3.png, id=105, 1371.1225pt x 770.88pt>
 File: images/sc-3.png Graphic file (type png)
  <use images/sc-3.png>
-Package pdftex.def Info: images/sc-3.png used on input line 380.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-3.png used on input line 402.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-4.png, id=113, 1371.1225pt x 770.88pt>
+<images/sc-4.png, id=106, 1371.1225pt x 770.88pt>
 File: images/sc-4.png Graphic file (type png)
  <use images/sc-4.png>
-Package pdftex.def Info: images/sc-4.png used on input line 385.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-4.png used on input line 407.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-5.png, id=114, 1371.1225pt x 770.88pt>
+<images/sc-5.png, id=107, 1371.1225pt x 770.88pt>
 File: images/sc-5.png Graphic file (type png)
  <use images/sc-5.png>
-Package pdftex.def Info: images/sc-5.png used on input line 390.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-5.png used on input line 412.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-6.png, id=115, 1371.1225pt x 770.88pt>
+<images/sc-6.png, id=108, 1371.1225pt x 770.88pt>
 File: images/sc-6.png Graphic file (type png)
  <use images/sc-6.png>
-Package pdftex.def Info: images/sc-6.png used on input line 395.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-6.png used on input line 417.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-7.png, id=116, 1371.1225pt x 770.88pt>
+<images/sc-7.png, id=109, 1371.1225pt x 770.88pt>
 File: images/sc-7.png Graphic file (type png)
  <use images/sc-7.png>
-Package pdftex.def Info: images/sc-7.png used on input line 400.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-7.png used on input line 422.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-8.png, id=117, 1371.1225pt x 770.88pt>
+<images/sc-8.png, id=110, 1371.1225pt x 770.88pt>
 File: images/sc-8.png Graphic file (type png)
  <use images/sc-8.png>
-Package pdftex.def Info: images/sc-8.png used on input line 405.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-8.png used on input line 427.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-9.png, id=118, 1371.1225pt x 770.88pt>
+<images/sc-9.png, id=111, 1371.1225pt x 770.88pt>
 File: images/sc-9.png Graphic file (type png)
  <use images/sc-9.png>
-Package pdftex.def Info: images/sc-9.png used on input line 410.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-9.png used on input line 432.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-10.png, id=119, 1371.1225pt x 770.88pt>
+<images/sc-10.png, id=112, 1371.1225pt x 770.88pt>
 File: images/sc-10.png Graphic file (type png)
  <use images/sc-10.png>
-Package pdftex.def Info: images/sc-10.png used on input line 415.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-10.png used on input line 437.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-11.png, id=120, 1371.1225pt x 770.88pt>
+<images/sc-11.png, id=113, 1371.1225pt x 770.88pt>
 File: images/sc-11.png Graphic file (type png)
  <use images/sc-11.png>
-Package pdftex.def Info: images/sc-11.png used on input line 420.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-11.png used on input line 442.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-12.png, id=121, 1371.1225pt x 770.88pt>
+<images/sc-12.png, id=114, 1371.1225pt x 770.88pt>
 File: images/sc-12.png Graphic file (type png)
  <use images/sc-12.png>
-Package pdftex.def Info: images/sc-12.png used on input line 425.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-12.png used on input line 447.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-13.png, id=122, 1371.1225pt x 770.88pt>
+<images/sc-13.png, id=115, 1371.1225pt x 770.88pt>
 File: images/sc-13.png Graphic file (type png)
  <use images/sc-13.png>
-Package pdftex.def Info: images/sc-13.png used on input line 430.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-13.png used on input line 452.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-14.png, id=123, 1371.1225pt x 770.88pt>
+<images/sc-14.png, id=116, 1371.1225pt x 770.88pt>
 File: images/sc-14.png Graphic file (type png)
  <use images/sc-14.png>
-Package pdftex.def Info: images/sc-14.png used on input line 435.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-14.png used on input line 457.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-15.png, id=124, 1371.1225pt x 770.88pt>
+<images/sc-15.png, id=117, 1371.1225pt x 770.88pt>
 File: images/sc-15.png Graphic file (type png)
  <use images/sc-15.png>
-Package pdftex.def Info: images/sc-15.png used on input line 440.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-15.png used on input line 462.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-16.png, id=125, 1371.1225pt x 770.88pt>
+<images/sc-16.png, id=118, 1371.1225pt x 770.88pt>
 File: images/sc-16.png Graphic file (type png)
  <use images/sc-16.png>
-Package pdftex.def Info: images/sc-16.png used on input line 445.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-16.png used on input line 467.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-17.png, id=126, 1371.1225pt x 770.88pt>
+<images/sc-17.png, id=119, 1371.1225pt x 770.88pt>
 File: images/sc-17.png Graphic file (type png)
  <use images/sc-17.png>
-Package pdftex.def Info: images/sc-17.png used on input line 450.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-17.png used on input line 472.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-18.png, id=127, 1371.1225pt x 770.88pt>
+<images/sc-18.png, id=120, 1371.1225pt x 770.88pt>
 File: images/sc-18.png Graphic file (type png)
  <use images/sc-18.png>
-Package pdftex.def Info: images/sc-18.png used on input line 455.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-18.png used on input line 477.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-19.png, id=128, 1371.1225pt x 770.88pt>
+<images/sc-19.png, id=121, 1371.1225pt x 770.88pt>
 File: images/sc-19.png Graphic file (type png)
  <use images/sc-19.png>
-Package pdftex.def Info: images/sc-19.png used on input line 460.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-19.png used on input line 482.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-20.png, id=129, 1371.1225pt x 770.88pt>
+<images/sc-20.png, id=122, 1371.1225pt x 770.88pt>
 File: images/sc-20.png Graphic file (type png)
  <use images/sc-20.png>
-Package pdftex.def Info: images/sc-20.png used on input line 465.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-20.png used on input line 487.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-21.png, id=130, 1371.1225pt x 770.88pt>
+<images/sc-21.png, id=123, 1371.1225pt x 770.88pt>
 File: images/sc-21.png Graphic file (type png)
  <use images/sc-21.png>
-Package pdftex.def Info: images/sc-21.png used on input line 470.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-21.png used on input line 492.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-22.png, id=131, 1371.1225pt x 770.88pt>
+<images/sc-22.png, id=124, 1371.1225pt x 770.88pt>
 File: images/sc-22.png Graphic file (type png)
  <use images/sc-22.png>
-Package pdftex.def Info: images/sc-22.png used on input line 475.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-22.png used on input line 497.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-23.png, id=132, 1371.1225pt x 770.88pt>
+<images/sc-23.png, id=125, 1371.1225pt x 770.88pt>
 File: images/sc-23.png Graphic file (type png)
  <use images/sc-23.png>
-Package pdftex.def Info: images/sc-23.png used on input line 480.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-23.png used on input line 502.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-24.png, id=133, 1371.1225pt x 770.88pt>
+<images/sc-24.png, id=126, 1371.1225pt x 770.88pt>
 File: images/sc-24.png Graphic file (type png)
  <use images/sc-24.png>
-Package pdftex.def Info: images/sc-24.png used on input line 485.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-24.png used on input line 507.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-<images/sc-25.png, id=134, 1371.1225pt x 770.88pt>
+<images/sc-25.png, id=127, 1371.1225pt x 770.88pt>
 File: images/sc-25.png Graphic file (type png)
  <use images/sc-25.png>
-Package pdftex.def Info: images/sc-25.png used on input line 490.
-(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+Package pdftex.def Info: images/sc-25.png used on input line 512.
+(pdftex.def)             Requested size: 469.75502pt x 264.10715pt.
 
-[26
+[23
 
- <./images/sc-1.png>] [27 <./images/sc-2.png> <./images/sc-3.png>] [28 <./image
-s/sc-4.png> <./images/sc-5.png>] [29 <./images/sc-6.png> <./images/sc-7.png>] [
-30 <./images/sc-8.png> <./images/sc-9.png>] [31 <./images/sc-10.png> <./images/
-sc-11.png>] [32 <./images/sc-12.png> <./images/sc-13.png>] [33 <./images/sc-14.
-png> <./images/sc-15.png>] [34 <./images/sc-16.png> <./images/sc-17.png>]
-[35 <./images/sc-18.png> <./images/sc-19.png>] [36 <./images/sc-20.png> <./imag
-es/sc-21.png>] [37 <./images/sc-22.png> <./images/sc-23.png>] [38 <./images/sc-
+ <./images/sc-1.png>] [24 <./images/sc-2.png> <./images/sc-3.png>] [25 <./image
+s/sc-4.png> <./images/sc-5.png>] [26 <./images/sc-6.png> <./images/sc-7.png>] [
+27 <./images/sc-8.png> <./images/sc-9.png>] [28 <./images/sc-10.png> <./images/
+sc-11.png>] [29 <./images/sc-12.png> <./images/sc-13.png>] [30 <./images/sc-14.
+png> <./images/sc-15.png>] [31 <./images/sc-16.png> <./images/sc-17.png>]
+[32 <./images/sc-18.png> <./images/sc-19.png>] [33 <./images/sc-20.png> <./imag
+es/sc-21.png>] [34 <./images/sc-22.png> <./images/sc-23.png>] [35 <./images/sc-
 24.png> <./images/sc-25.png>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2659 strings out of 494945
- 36349 string characters out of 6181031
- 88379 words of memory out of 5000000
- 5870 multiletter control sequences out of 15000+600000
+ 3330 strings out of 494910
+ 45877 string characters out of 6179835
+ 107226 words of memory out of 5000000
+ 6513 multiletter control sequences out of 15000+600000
  11074 words of font info for 43 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 39i,5n,26p,692b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36 hyphenation exceptions out of 8191
+ 38i,8n,32p,692b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti12.pfb>
-Output written on report.pdf (38 pages, 6309941 bytes).
+Output written on report.pdf (35 pages, 7467991 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 187 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

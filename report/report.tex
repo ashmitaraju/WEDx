@@ -2,6 +2,10 @@
 \usepackage{graphicx}
 \usepackage[section]{placeins}
 \usepackage{amsmath,amssymb,latexsym} 
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage[margin=1in]{geometry}
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -188,7 +192,7 @@ The level one of the Data Flow Diagram of the Matrimonial Database System depict
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1\textwidth]{df-l1.png}
+    \includegraphics[width=.7\textwidth]{df-l1.png}
     \caption{DFD Level 1}
     \label{fig:dfd l1}
 \end{figure}
@@ -269,6 +273,17 @@ An ER model is typically implemented as a database. In a simple relational datab
 The ER Diagram shown below provides details about the design of the Matrimonial Database system where each entity consists of various non composite attributes that make up a set of prime and non prime attributes. The relationships between the various entities is depicted with the (min ,max) constraints specified. This notation involves associating a pair of integer numbers (min,max) with each participation of an entity type E in a relationship type R, where 0 min less than or equal to max and max greater than or equal to 1 . The numbers mean that for each entity e in E, e must participate in at least min and at most max relationship instances in R at any point of time.  
 
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1.3\textwidth, angle = 270]{ER.png}
+    \caption{ER Diagram}
+    \label{fig:ER Diagram}
+\end{figure}
+
+
+
+
+
 \chapter{Relational Schema and Normalization}
 The term \emph{schema} refers to the organization of data as a blueprint of how the database is constructed. The formal definition of a database schema is a set of formulas (sentences) called integrity constraints imposed on a database. Before you can define the database tables using a specific database management software and DDL (Data Definition Language), you must write a relation schema for each table. The set of relation schemas form the relational database schema which is used as input when defining the database.\\
 
@@ -295,7 +310,7 @@ A non-prime attribute of R is an attribute that does not belong to any candidate
  
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.25\textwidth]{Normalized-Tables.png}
+    \includegraphics[width=1\textwidth]{Normalized-Tables.png}
     \caption{Normalized Schema}
     \label{fig:Normalized Schema}
 \end{figure}
@@ -306,7 +321,14 @@ writer that enables you to design and generate reports. The process of report ge
 collecting suitable data from multiple functionalities and displaying to the end user. A report usually
 summarizes the entire functionality of the database management system that is design. \\\\
 Users can click on the Generate Bio button to generate a download-able PDF of their profile. This PDF will contain all the information that they have entered in their profile. \\\\
-Given below is an example of the report generated for a particular user. 
+Given below is an example of the report generated for a particular user.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\textwidth]{report.jpeg}
+    \caption{Report}
+    \label{fig:Report}
+\end{figure} 
 
 \chapter{Conclusions}
 \section{Summary}
