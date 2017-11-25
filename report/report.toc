@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {2.2}Specific Requirements}{6}
 \contentsline {subsection}{\numberline {2.2.1}Software Requirements}{6}
 \contentsline {subsection}{\numberline {2.2.2}Hardware Requirements}{7}
-\contentsline {subsection}{\numberline {2.2.3}Functional Requirements}{7}
+\contentsline {subsection}{\numberline {2.2.3}Functionality}{7}
 \contentsline {subsection}{\numberline {2.2.4}Non-Functional Requirements}{8}
 \contentsline {chapter}{\numberline {3}Detailed Design}{9}
 \contentsline {section}{\numberline {3.1}DFD Level 0}{10}
