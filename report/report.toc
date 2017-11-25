@@ -16,12 +16,10 @@
 \contentsline {chapter}{\numberline {4}ER Diagram}{15}
 \contentsline {paragraph}{}{15}
 \contentsline {chapter}{\numberline {5}Relational Schema and Normalization}{17}
-\contentsline {chapter}{\numberline {6}Reports}{19}
-\contentsline {chapter}{\numberline {7}Conclusions}{21}
-\contentsline {section}{\numberline {7.1}Summary}{21}
-\contentsline {section}{\numberline {7.2}Limitations}{21}
-\contentsline {section}{\numberline {7.3}Future Enhancements}{21}
-\contentsline {chapter}{\numberline {8}References}{23}
-\contentsline {section}{\numberline {8.1}Books}{23}
-\contentsline {section}{\numberline {8.2}Websites}{23}
-\contentsline {chapter}{\numberline {9}Appendix: Snapshots}{24}
+\contentsline {chapter}{\numberline {6}Reports}{20}
+\contentsline {chapter}{\numberline {7}Conclusions}{22}
+\contentsline {section}{\numberline {7.1}Summary}{22}
+\contentsline {section}{\numberline {7.2}Limitations}{22}
+\contentsline {section}{\numberline {7.3}Future Enhancements}{22}
+\contentsline {chapter}{\numberline {8}References}{24}
+\contentsline {chapter}{\numberline {9}Appendix: Snapshots}{25}
