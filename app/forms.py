@@ -130,8 +130,8 @@ class SearchFilterForm(Form):
 
 
 class SendMessageForm(Form):
-    subject = StringField('Subject', validators =[DataRequired()])
-    body = TextField('Body', validators = [InputRequired()])
+    subject = StringField('Subject')
+    body = TextField('Body') 
     submit = SubmitField('Send')
 
 class ProposalForm(Form):

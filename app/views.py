@@ -27,8 +27,8 @@ def dashboard():
 
         username = proposalForm.toUser.data
         if ( Users.query.filter_by( username = username).first() is not None):
-            body_msg = "Hey, we're getting married soon. <a href=\" /acceptProposal/" + current_user.username + "\"" + "  >Accept</a> <a href=\" /rejectProposal/" + current_user.username + "\"" + "  >Reject</a>"
-            message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= " Marriage Proposal", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
+            body_msg = "Accept this request so that I can fill out our success story. <a href=\" /acceptProposal/" + current_user.username + "\"" + "  >Accept</a> <a href=\" /rejectProposal/" + current_user.username + "\"" + "  >Reject</a>"
+            message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= "Let's fill our success story.", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
             db.session.add(message)
             db.session.commit() 
 
@@ -576,8 +576,8 @@ def createStory(user2):
 @login_required
 def acceptProposal(user2): 
 
-    body_msg = current_user.username + " has accepted your proposal. We at WEDx congratulate you.  <a href=\" /createStory/" + current_user.username + "\"" + "  >Please add story.</a>"
-    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
+    body_msg = current_user.username + " has accepted your request to fill stories. Please deactivate your profile so that it is not searchable and not viewable.   <a href=\" /createStory/" + current_user.username + "\"" + "  >Please add story.</a>"
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request to fill story Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     print "hi"
     db.session.commit()
@@ -595,8 +595,8 @@ def acceptProposal(user2):
 @login_required
 def rejectProposal(user2): 
 
-    body_msg = current_user.username + " has rejected your proposal. "
-    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Proposal Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
+    body_msg = current_user.username + " has rejected your request to fill a story. "
+    message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request to fill story Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     db.session.commit()
     return redirect(url_for('dashboard'))
@@ -609,15 +609,22 @@ def viewStories():
 
     for story in stories:
         profile1 = Profiles.query.filter_by(username = story.username1).first()
+        search1 = Search.query.filter_by(username = story.username1).first()
+
         profile2 = Profiles.query.filter_by(username = story.username2).first()
-        print profile2.username
-        image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
-        if image1 is None: 
-            print "hi"
-            
-        image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
-        if image2 is None: 
+        search2 = Search.query.filter_by(username = story.username2).first()
+
+        print story.username1 
+        print story.username2
+
+        if search1.searchable == 0 or search2.searchable == 0:
             print "hey"
+            break
+
+        image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
+        image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
+        print "hi"
+           
         cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story ]
         story_dict.append(cur_list) 
 

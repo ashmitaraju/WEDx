@@ -156,7 +156,7 @@ class Messages(UserMixin, db.Model):
 
     __tablename__= 'Messages'
     msgid = db.Column(db.Integer, primary_key= True)
-    sender_username = db.Column(db.String(150), nullable = False)
+    sender_username = db.Column(db.String(150), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     receiver_username  = db.Column(db.String(150), nullable = False)
     subject = db.Column(db.String(50), nullable = True)
     body = db.Column(db.Text, nullable = False)
@@ -168,7 +168,7 @@ class Messages(UserMixin, db.Model):
 class Requests(UserMixin, db.Model):
     __tablename__= 'Requests'
     request_id = db.Column(db.Integer, primary_key= True)
-    to_username = db.Column(db.String(150), nullable = False)
+    to_username = db.Column(db.String(150),  db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False)
     from_username = db.Column(db.String(150), nullable = False)
     status = db.Column(db.String(10), nullable = False)
 
@@ -178,7 +178,7 @@ class Requests(UserMixin, db.Model):
 class successStories (UserMixin, db.Model):
     _tablename_ = 'Success Stories'
     succ_id = request_id = db.Column(db.Integer, primary_key= True)
-    username1 = db.Column(db.String(150), nullable = False)
+    username1 = db.Column(db.String(150),  db.ForeignKey("users.username", ondelete='CASCADE'),  nullable = False)
     username2 = db.Column(db.String(150), nullable = False)
     story = db.Column(db.Text, nullable = False)
     timestamp = db.Column(db.String(50), nullable = False)
