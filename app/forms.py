@@ -74,9 +74,9 @@ class EditEmploymentForm(Form):
 
 class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
-    salary = IntegerField('Salary' , validators = [Optional()])
+    salary = StringField('Salary (Enter range)' , validators = [Optional()])
     hometown = SelectField('Hometown', choices = cities, validators = [Optional()])
-    height = IntegerField('Height (in cm)' , validators = [Optional()])
+    height = IntegerField('Height (Enter range in cm)' , validators = [Optional()])
     current_location = SelectField('Current Location', choices = cities, validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = SelectField('Mother Tongue', choices = langs, validators = [Optional()])
@@ -101,11 +101,12 @@ class EditImageGalleryForm(Form):
 
 class EditBodyForm(Form):
 
-    hairChoices = [('pale','Pale'),('fair','Fair'), ('brown' , 'Brown') , ('dark' , 'Dark')]
+    skinChoices = [('pale','Pale'),('fair','Fair'), ('brown' , 'Brown') , ('dark' , 'Dark')]
+    hairChoices = [('black','Black'), ('brown','Brown'),('blonde','Blonde'),('red','Red'),('white','White'), ] 
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     weight = IntegerField('Weight' , validators = [Optional()])
-    hair_colour = StringField('Hair Colour', validators = [Optional()])
-    complexion = SelectField('Complexion' , choices = hairChoices)
+    hair_colour = SelectField('Hair Colour', validators = [Optional()] ,  choices = hairChoices)
+    complexion = SelectField('Complexion' , choices = skinChoices)
     submit = SubmitField('Save and Next')
     skip = SubmitField('Skip')
 

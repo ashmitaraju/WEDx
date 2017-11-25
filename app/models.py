@@ -108,9 +108,9 @@ class Partner_Preferences(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), db.ForeignKey("users.username", ondelete='CASCADE'), nullable = False, unique=True)
-    height = db.Column(db.Integer)
+    height = db.Column(db.String)
     occupation = db.Column(db.String(150), nullable = True)
-    salary = db.Column(db.BigInteger)
+    salary = db.Column(db.String)
     gender = db.Column(db.String(10), nullable = True)
     hometown = db.Column(db.String(60), nullable = True)
     mother_tongue = db.Column(db.String(60), nullable = True)
