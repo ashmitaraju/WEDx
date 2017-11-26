@@ -74,7 +74,7 @@ def index():
 @login_required
 def viewProfile(user):
 
-    allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username).first()
+    allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username , status = 'accepted').first()
     if user == current_user.username:
         allowed = True
 
