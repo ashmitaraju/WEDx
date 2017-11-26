@@ -414,30 +414,34 @@ def advancedSearch():
         results_list = list(results)
 
         if results is not None:
-            for res in results_list:
+            print "hi"
+            for res in results_list[:]:
+                print res.age
                 if res.age <= age_lower or res.age >= age_upper or res.searchable == 0:
                     results_list.remove(res)
         else:
             results = Search.query.filter_by(age >= age_lower , age <=age_upper)
+            results_list = results 
+        print "HI"
         print results_list
 
         if form.height.data:
             if results_list is not None:
-                print "hi"
+                #print "hi"
                 for res in results_list[:]: 
-                    print res 
+                    #print res 
                     if res.height <= form.height.data: 
-                        print "hi2"
-                        print res
+                        #print "hi2"
+                        #print res
                         results_list.remove(res)
-        print "bl"
+        #print "bl"
         #print results_list
 
         if form.salary.data:
             if results is not None:
                 for res in results_list[:]:
                     if res.salary <= form.salary.data:
-                        print "hi" 
+                        #print "hi" 
                         results_list.remove(res)  
     
         print results_list
