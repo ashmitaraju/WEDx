@@ -42,7 +42,7 @@ class SignUpForm(Form):
 
 class EditProfileForm(Form):
 
-    maritalChoices = [('single' , 'Single') , ('divorced' , 'Divorced') , ('widow' , 'Widow/Widower') , ('poly' , 'Believe in Polygamy')]
+    maritalChoices = [('Single' , 'Single') , ('Divorced' , 'Divorced') , ('Widow' , 'Widow/Widower') , ('Poly' , 'Believe in Polygamy')]
     first_name = StringField('First Name', validators = [InputRequired()])
     last_name = StringField('Last Name', validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
@@ -101,8 +101,8 @@ class EditImageGalleryForm(Form):
 
 class EditBodyForm(Form):
 
-    skinChoices = [('pale','Pale'),('fair','Fair'), ('brown' , 'Brown') , ('dark' , 'Dark')]
-    hairChoices = [('black','Black'), ('brown','Brown'),('blonde','Blonde'),('red','Red'),('white','White'), ] 
+    skinChoices = [('Pale','Pale'),('Fair','Fair'), ('Brown' , 'Brown') , ('Dark' , 'Dark')]
+    hairChoices = [('Black','Black'), ('Brown','Brown'),('Blonde','Blonde'),('Red','Red'),('White','White'), ]
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     weight = IntegerField('Weight' , validators = [Optional()])
     hair_colour = SelectField('Hair Colour', validators = [Optional()] ,  choices = hairChoices)
@@ -132,7 +132,7 @@ class SearchFilterForm(Form):
 
 class SendMessageForm(Form):
     subject = StringField('Subject')
-    body = TextField('Body') 
+    body = TextField('Body')
     submit = SubmitField('Send')
 
 class ProposalForm(Form):
