@@ -3,18 +3,76 @@
 {% block body %}
 <div class="intro-header">
     <div class="container">
+        <br><br><br>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                        <div class="image-index center w3-animate-opacity">
-                                <img src= "../static/assets/img/wedx_logo.png" alt="" class="img-rounded object-fit_cover img-responsive" width="75%">
-                            </div>
-                    <h3>Profiles worth sharing :)</h3>
-                    <hr class="intro-divider center">
-                    </ul>
-                </div>
+            <div class="col-md-12 text-center">
+                    
+                            <img src= "../static/assets/img/wedx_logo.png" alt="" class="w3-animate-opacity" width="65%">
+                        
+                    <h3 class="title w3-animate-top">Profiles worth sharing :)</h3>
+                    <a href="{{ url_for('signup') }}" class="btn btn-danger btn-raised btn-lg w3-animate-left">
+                        <i></i> Sign Up
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-danger btn-raised btn-lg w3-animate-right">
+                            <i></i> Login
+                        </a>
+    
             </div>
         </div>
     </div>
+    <br><br><br>
 </div>
+
+
+<div class="main main-raised w3-animate-bottom">
+        <div class="container">
+            <div class="section text-center section-landing">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="title">Let's talk about marriage</h2>
+                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-primary">
+                                    <i class="material-icons">chat</i>
+                                </div>
+                                <h4 class="info-title">First Feature</h4>
+                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-success">
+                                    <i class="material-icons">verified_user</i>
+                                </div>
+                                <h4 class="info-title">Second Feature</h4>
+                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <i class="material-icons">fingerprint</i>
+                                </div>
+                                <h4 class="info-title">Third Feature</h4>
+                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+
+
+
+
+            </div>
+        </div>
+
 {% endblock %}

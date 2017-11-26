@@ -10,7 +10,7 @@
   <div class="center">
     <h1>Register on WEDx</h1>
     <br/>
-    {{ wtf.quick_form(form) }}
+    {{ wtf.quick_form(form, button_map={'submit' : 'danger'}) }}
   </div>
 </div>
 {% endblock %}

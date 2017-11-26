@@ -177,7 +177,7 @@ class Requests(UserMixin, db.Model):
 
 class successStories (UserMixin, db.Model):
     _tablename_ = 'Success Stories'
-    succ_id = request_id = db.Column(db.Integer, primary_key= True)
+    succ_id = db.Column(db.Integer, primary_key= True)
     username1 = db.Column(db.String(150),  db.ForeignKey("users.username", ondelete='CASCADE'),  nullable = False)
     username2 = db.Column(db.String(150), nullable = False)
     story = db.Column(db.Text, nullable = False)

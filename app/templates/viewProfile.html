@@ -14,7 +14,7 @@
               <h4 class="modal-title" id="myModalLabel">Send Message</h4>
             </div>
             <div class="modal-body">
-                {{ wtf.quick_form(form) }}
+                {{ wtf.quick_form(form, button_map={'submit' : 'danger'}) }}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
