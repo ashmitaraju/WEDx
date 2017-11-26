@@ -33,7 +33,9 @@
                             <div class="avatar">
                                 <img src="{{ image.image_path }}" alt="Circle Image" class="img-rounded img-responsive img-raised">
                             </div>
+                            <br><br>
                             <div class="name">
+                                    <a href="{{ url_for('viewProfile' , user =profile.username) }}" >@{{ profile.username }} </a>
                                 <h3 class="title">{{ profile.first_name}} {{ profile.last_name }}</h3>
                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
                                 <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ profile.current_location }}</h6>
@@ -44,19 +46,21 @@
                                    </button>
                             </div>
                         </div>
+                        <div class="description text-center">
+                                <h4> About </h4>
+                                <p>{{ profile.about }} </p>
+                            </div>
+        
                     </div>
-                    <div class="description text-center">
-                        <h4> About </h4>
-                        <p>{{ profile.about }} </p>
-                    </div>
-
+                   
                     <!-- Button trigger modal -->
 
                 </div>
             </div>
             {% if allowed %}
+            <div class="container col-md-8">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-offset-2">
                     <div class="profile-tabs">
                         <div class="nav-align-center">
                             <ul class="nav nav-pills nav-pills-danger" role="tablist">
@@ -312,6 +316,7 @@
                         </div>
                     </div>
         </div>
+    </div>
     </div>
 
     {% else %}

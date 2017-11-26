@@ -44,6 +44,7 @@
                   <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
                   <li><a href="{{ url_for('viewStories') }}">Success Stories</a></li>
                   <li><a href="{{ url_for('editProfile') }}">Edit Profile</a></li>
+                  <li><a href="{{ url_for('delete') }}">Account Settings</a></li>
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
                   <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
                 {% else %}

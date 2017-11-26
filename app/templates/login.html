@@ -4,14 +4,40 @@
 
 {% block title %}Login{% endblock %}
 {% block body %}
+
+<div class="intro-header">
+    <div class="container">
+        <br><br><br><br><br>
+       
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="card card-signup">
+              
+                <div class="header header-danger text-center">
+                  <h3>Login</h3>
+                  <br/>
+                  {{ utils.flashed_messages() }}
+                  <br/>
+                 
+                </div>
+                <div class="content text-left">
+                    {{ wtf.quick_form(form, button_map={'submit' : 'danger'}) }}
+                  
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--
 <div class="content-section">
-    <br/>
-    {{ utils.flashed_messages() }}
-    <br/>
+  
   <div class="center">
-    <h1>Login to your account</h1>
+    <h3>Login to your account</h3>
     <br/>
     {{ wtf.quick_form(form, button_map={'submit' : 'danger'}) }}
   </div>
 </div>
+-->
 {% endblock %}
