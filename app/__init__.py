@@ -9,7 +9,9 @@ import os
 db = SQLAlchemy()
 login_manager = LoginManager()
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application 
+
 app.config.from_object('config')
 
 #app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 
