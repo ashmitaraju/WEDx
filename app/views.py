@@ -114,6 +114,9 @@ def viewProfile(user):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #if(current_user):
+        #return redirect('dashboard')
+
     form = LoginForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(email = form.email.data).first()

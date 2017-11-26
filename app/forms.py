@@ -89,7 +89,7 @@ class EditSocialMediaForm(Form):
     facebook = StringField('Facebook Link', validators = [Optional()], default = "https://www.facebook.com/")
     twitter = StringField('Twitter Link', validators = [Optional()],default = "https://www.twitter.com/")
     instagram = StringField('Instagram Link', validators = [Optional()],default = "https://www.instagram.com/")
-    linkedin = StringField('Linkedin Link', validators = [Optional()],default = "https://www.linkedin.com/")
+    linkedin = StringField('Linkedin Link', validators = [Optional()],default = "https://www.linkedin.com/in/")
     submit = SubmitField('Save and Next')
     skip = SubmitField('Skip')
 
