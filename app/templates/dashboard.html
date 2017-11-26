@@ -15,11 +15,11 @@
         <div class="modal-body">
 
                 {{ wtf.quick_form(proposalForm, extra_classes="input-group form-control", button_map={'submit' : 'danger'}) }}
-           
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
-          
+
         </div>
       </div>
     </div>
@@ -27,16 +27,16 @@
 
                 <div class="header header-filter" style="background-image: url('../static/assets/img/examples/city.jpg');"></div>
                 <div class="profile-page w3-animate-opacity">
-                       
+
                     <div class="main main-raised col-md-12">
                             <div class="profile-content col-md-3 text-left">
 
                                     <div class="row">
                                         <div class="profile center">
 
-                                          
+
                                                 <img src= "{{ image.image_path }}" alt="" class="img-rounded img-raised object-fit_cover" >
-                                            
+
                                             <div class="name">
                                                 <br><br>
                                                 <a href="{{ url_for('viewProfile' , user =profile.username) }}" >@{{ profile.username }} </a>
@@ -45,33 +45,33 @@
                                                 <h6><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
                                                 {% else %}
                                                 <h6><i class="fa fa-female fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ age }}</h6>
-                                                {% endif %}    
+                                                {% endif %}
                                                 <h6><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> {{ profile.current_location }}</h6>
-                                
+
                                             </div>
                                             <div class="description text-center">
                                                     <h4> About </h4>
                                                     <p>{{ profile.about }} </p>
-            
+
                                                 </div>
-                                    
+
                                             <a class="btn btn-danger btn-round text-center" data-toggle="modal" data-target="#sendProposal">
                                                 I Found a Match!
                                             </a>
                                                <a href="{{ url_for('advancedSearch') }}" class="btn btn-danger btn-round text-center">Advanced Search </a>
-                                    
+
 
                                                <div class="input-bar-item width100">
                                                     {{ wtf.quick_form(quickSearchForm, extra_classes="input-group form-control", button_map={'submit' : 'danger'}) }}
                                                     </div>
 
                                                     <a href="{{ url_for('generateBio') }}" class="btn btn-danger text-left">Generate Bio </a>
-                                            
+
                                         </div>
-                                      
+
                                     </div>
-                              
-                                   
+
+
                             </div>
                             <div class="container col-md-9">
 
@@ -88,7 +88,7 @@
                                       <table class="table">
                                         <thead>
                                             <tr>
-                                               
+
                                                 <th class="text-center">From</th>
                                             </tr>
                                         </thead>
@@ -105,13 +105,13 @@
                                         {% endfor %}
                                         <tbody>
 
-                                        
+
 
                                         </table>
                                         </div>
 
 
-                                          
+
                                           <div class="container col-md-12">
                                                 <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">message</i></i> Messages </h3> <hr>
                                           <table class="table">
@@ -129,19 +129,19 @@
                                                     {% for msg in msgs | reverse %}
                                             <tr>
                                                 <td class="text-left">{{ msg.timestamp }}</td>
-                                                <td class="text-left">{{ msg.sender_username }}</td>
+                                                <td class="text-left"> <a href="{{ url_for('viewProfile', user=msg.sender_username) }}"> {{msg.sender_username}} </a></td>
                                                 <td class="text-left">{{ msg.subject }}</td>
                                                 <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View and Reply </a> </td>
                                                 <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Delete </a> </td>
                                             {% endfor %}
                                             <tbody>
 
-                                            
+
 
                                             </table>
                                             </div>
 
-                                           
+
 
 
 

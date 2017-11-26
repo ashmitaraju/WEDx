@@ -42,7 +42,7 @@ class SignUpForm(Form):
 
 class EditProfileForm(Form):
 
-    maritalChoices = [('single' , 'Single') , ('divorced' , 'Divorced') , ('widow' , 'Widow/Widower') , ('poly' , 'Believe in Polygamy')]
+    maritalChoices = [('Single' , 'Single') , ('Divorced' , 'Divorced') , ('Widow' , 'Widow/Widower') , ('Poly' , 'Believe in Polygamy')]
     first_name = StringField('First Name', validators = [InputRequired()])
     last_name = StringField('Last Name', validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
@@ -76,7 +76,7 @@ class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
     salary = StringField('Salary (Enter range)' , validators = [Optional()])
     hometown = SelectField('Hometown', choices = cities, validators = [Optional()])
-    height = IntegerField('Height (Enter range in cm)' , validators = [Optional()])
+    height = StringField('Height (Enter range in cm)' , validators = [Optional()])
     current_location = SelectField('Current Location', choices = cities, validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = SelectField('Mother Tongue', choices = langs, validators = [Optional()])
@@ -89,7 +89,7 @@ class EditSocialMediaForm(Form):
     facebook = StringField('Facebook Link', validators = [Optional()], default = "https://www.facebook.com/")
     twitter = StringField('Twitter Link', validators = [Optional()],default = "https://www.twitter.com/")
     instagram = StringField('Instagram Link', validators = [Optional()],default = "https://www.instagram.com/")
-    linkedin = StringField('Linkedin Link', validators = [Optional()],default = "https://www.linkedin.com/")
+    linkedin = StringField('Linkedin Link', validators = [Optional()],default = "https://www.linkedin.com/in/")
     submit = SubmitField('Save and Next')
     skip = SubmitField('Skip')
 
@@ -101,8 +101,8 @@ class EditImageGalleryForm(Form):
 
 class EditBodyForm(Form):
 
-    skinChoices = [('pale','Pale'),('fair','Fair'), ('brown' , 'Brown') , ('dark' , 'Dark')]
-    hairChoices = [('black','Black'), ('brown','Brown'),('blonde','Blonde'),('red','Red'),('white','White'), ] 
+    skinChoices = [('Pale','Pale'),('Fair','Fair'), ('Brown' , 'Brown') , ('Dark' , 'Dark')]
+    hairChoices = [('Black','Black'), ('Brown','Brown'),('Blonde','Blonde'),('Red','Red'),('White','White'), ]
     height = IntegerField('Height(in cm)' , validators = [Optional()])
     weight = IntegerField('Weight' , validators = [Optional()])
     hair_colour = SelectField('Hair Colour', validators = [Optional()] ,  choices = hairChoices)
@@ -132,7 +132,7 @@ class SearchFilterForm(Form):
 
 class SendMessageForm(Form):
     subject = StringField('Subject')
-    body = TextField('Body') 
+    body = TextField('Body')
     submit = SubmitField('Send')
 
 class ProposalForm(Form):

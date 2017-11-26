@@ -30,9 +30,9 @@ def dashboard():
             body_msg = "Accept this request so that I can fill out our success story. <a href=\" /acceptProposal/" + current_user.username + "\"" + "  >Accept</a> <a href=\" /rejectProposal/" + current_user.username + "\"" + "  >Reject</a>"
             message = Messages(sender_username = current_user.username, receiver_username = proposalForm.toUser.data, subject= "Let's fill our success story.", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
             db.session.add(message)
-            db.session.commit() 
+            db.session.commit()
 
-            print message  
+            print message
             # return redirect(url_for('dashboard'))
         else:
             flash ('Invalid Username')
@@ -41,7 +41,7 @@ def dashboard():
 
     elif quickSearchForm.validate_on_submit():
         text = quickSearchForm.username.data
-        return redirect(url_for('viewProfile' , user = text)) 
+        return redirect(url_for('viewProfile' , user = text))
 
     msgs = Messages.query.filter_by(receiver_username= current_user.username).all()
     reqs = Requests.query.filter_by(to_username = current_user.username , status = 'requested').all()
@@ -53,7 +53,7 @@ def dashboard():
         image = None
 
     age = calculate_age(profile.dob)
-    if profile.gender == 'male': 
+    if profile.gender == 'male':
         gender=1
     else:
         gender=0
@@ -68,28 +68,28 @@ def index():
 @app.route('/viewProfile/<user>', methods=['GET', 'POST'])
 @login_required
 def viewProfile(user):
-    
+
     allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username).first()
-    if user == current_user.username: 
+    if user == current_user.username:
         allowed = True
 
     search = Search.query.filter_by(username = user).first()
     if search.searchable == 0:
         flash('Profile does not exist')
         return redirect('dashboard')
-      
+
 
     profile = Profiles.query.filter_by(username=user).first()
     pics = ImageGallery.query.filter_by(username = user).all()
-    prefs = Partner_Preferences.query.filter_by(username = user).first() 
+    prefs = Partner_Preferences.query.filter_by(username = user).first()
     social = Social_Media.query.filter_by(username = user).first()
     edu = Education.query.filter_by(username = user).first()
     emp = Employment.query.filter_by(username = user).first()
     bod = Body.query.filter_by(username = user).first()
 
-    #print prefs 
+    #print prefs
     emailid = Users.query.filter_by(username = user).first()
-    
+
 
     if profile is None:
         flash('Profile does not exist')
@@ -114,6 +114,9 @@ def viewProfile(user):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('dashboard')
+
     form = LoginForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(email = form.email.data).first()
@@ -161,10 +164,10 @@ def editProfile():
                     image = ImageGallery.query.filter_by(image_filename = filename).first()
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = image.imgid)
                 else:
-                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = 18)
+                    profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data , image_id = 1)
                 db.session.add(profile)
                 db.session.commit()
-                age = calculate_age(profile.dob) 
+                age = calculate_age(profile.dob)
                 search = Search(username= current_user.username, age = age , mother_tongue= profile.mother_tongue, current_location = profile.current_location, hometown = profile.hometown, gender = profile.gender)
 
                 db.session.add(search)
@@ -191,7 +194,7 @@ def editProfile():
                     profile = Profiles(first_name = form.first_name.data, last_name = form.last_name.data, gender = form.gender.data, dob = form.dob.data, about = form.about.data, hometown = form.hometown.data, mother_tongue = form.mother_tongue.data, username = current_user.username , current_location = form.current_location.data , marital_status = form.marital_status.data)
                     db.session.commit()
                 search = Search.query.filter_by(username = current_user.username).first()
-                age = calculate_age(profile.dob) 
+                age = calculate_age(profile.dob)
                 search.age = age
                 search.mother_tongue = form.mother_tongue.data
                 search.hometown = form.hometown.data
@@ -302,20 +305,20 @@ def editSocial():
 @login_required
 def editImages():
 
-    pics = ImageGallery.query.filter_by(username = current_user.username).all() 
-    print pics 
+    pics = ImageGallery.query.filter_by(username = current_user.username).all()
+    print pics
 
     form4 = EditImageGalleryForm()
 
     if form4.skip.data:
         return redirect(url_for('editBody'))
 
-    if form4.submit.data: 
+    if form4.submit.data:
         if 'image' in request.files:
             for f in request.files.getlist('image'):
                 if f.filename:
                     print "hey"
-                    print f.filename 
+                    print f.filename
                     filename = secure_filename(f.filename)
                     f.save(os.path.join(app.config['UPLOADED_IMAGES_DEST'], filename))
                     url = "../static/img/" + filename
@@ -391,45 +394,45 @@ def advancedSearch():
         if form.age_lower.data:
             age_lower = form.age_lower.data
         else:
-            age_lower = 18 
+            age_lower = 18
 
         if form.age_upper.data:
-            age_upper = form.age_upper.data 
+            age_upper = form.age_upper.data
         else:
             age_upper = 100
 
         for field in form:
             if (field.data and field.name != 'csrf_token' and field.name != 'submit' and field.name != 'age_lower' and field.name != 'age_upper'):
                 search.update({field.name : field.data})
-        
+
         results = Search.query.filter_by(**search)
         results_list = list(results)
 
         if results is not None:
-            for res in results_list: 
+            for res in results_list:
                 if res.age <= age_lower or res.age >= age_upper or res.searchable == 0:
-                    results_list.remove(res)  
-        else: 
-            results = Search.query.filter_by(age >= age_lower , age <=age_upper) 
-        
-        results = results_list 
+                    results_list.remove(res)
+        else:
+            results = Search.query.filter_by(age >= age_lower , age <=age_upper)
 
-        #images = [] 
+        results = results_list
+
+        #images = []
         profiles = []
         for user in results:
             if user.username != current_user.username:
-                profile = Profiles.query.filter_by(username = user.username).first()  
+                profile = Profiles.query.filter_by(username = user.username).first()
                 image = ImageGallery.query.filter_by(imgid = profile.image_id).first()
                 social = Social_Media.query.filter_by(username = profile.username).first()
-                if image is None and social is None: 
-                    profiles.append([profile , False , False]) 
-                elif image is None and social is not None: 
+                if image is None and social is None:
+                    profiles.append([profile , False , False])
+                elif image is None and social is not None:
                     profiles.append([profile , False , social ])
-                elif image is not None and social is None: 
+                elif image is not None and social is None:
                     profiles.append([profile , image , False])
-                else: 
+                else:
                     profiles.append([profile , image , social])
-        
+
         print profiles
 
         return render_template('searchResults.html', profiles = profiles , images = images)
@@ -442,7 +445,7 @@ def replyMessage(mid):
     form = SendMessageForm()
     message = Messages.query.filter_by(msgid= mid).first()
    # print message.sender_username
-    
+
     if form.validate_on_submit():
         newMessage = Messages(sender_username = current_user.username, receiver_username = message.sender_username, subject = form.subject.data, body = form.body.data, timestamp = str(datetime.datetime.now())[:16])
         db.session.add(newMessage)
@@ -456,7 +459,7 @@ def replyMessage(mid):
 @login_required
 def deleteMessage(mid):
     message = Messages.query.filter_by(msgid= mid).first()
-    
+
     db.session.delete(message)
     db.session.commit()
     flash('Message Deleted')
@@ -471,7 +474,7 @@ def delete():
         user = Users.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
                 if current_user.email == form.email.data:
-                    return redirect('/deactivateconfirm') 
+                    return redirect('/deactivateconfirm')
                 else:
                     flash('Invalid Email ID. Please enter again.')
                     return redirect('delete')
@@ -490,7 +493,7 @@ def move_forward():
     images = ImageGallery.query.filter_by(username= current_user.username).all()
     for image in images:
          os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], image.image_filename))
-    
+
     db.session.delete(user)
     db.session.commit()
 
@@ -507,34 +510,34 @@ def deactivate_confirm():
 def deactivate():
     user = current_user
     search = Search.query.filter_by(username = user.username).first()
-    search.searchable = 0 
+    search.searchable = 0
     flash('Account has been deactivated.')
     db.session.commit()
-    return redirect('logout') 
+    return redirect('logout')
 
 @app.route('/activate', methods=['GET', 'POST'])
 @login_required
 def activate():
     user = current_user
     search = Search.query.filter_by(username = user.username).first()
-    search.searchable = 1 
+    search.searchable = 1
     flash('Account has been activated.')
     db.session.commit()
-    return redirect('dashboard') 
+    return redirect('dashboard')
 
 
 @app.route("/request/<toUser>", methods=['POST', 'GET'])
 @login_required
-def requested(toUser): 
+def requested(toUser):
     request = Requests(from_username = current_user.username , to_username = toUser , status = 'requested')
     db.session.add(request)
-    db.session.commit() 
+    db.session.commit()
     flash (' Request Sent')
-    return redirect(url_for('dashboard')) 
+    return redirect(url_for('dashboard'))
 
 @app.route("/acceptRequest/<rid>", methods=['POST', 'GET'])
 @login_required
-def acceptRequest(rid): 
+def acceptRequest(rid):
     req = Requests.query.filter_by(request_id = rid).first()
     #req = Requests(from_username = current_user.username , to_username = req.to_username , status = 'accepted')
     req.status='accepted'
@@ -542,25 +545,25 @@ def acceptRequest(rid):
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
     db.session.add(message)
     db.session.commit()
-    return redirect(url_for('dashboard'))   
+    return redirect(url_for('dashboard'))
 
 
 @app.route("/rejectRequest/<rid>", methods=['POST', 'GET'])
 @login_required
-def rejectRequest(rid): 
+def rejectRequest(rid):
     req = Requests.query.filter_by(request_id = rid).first()
     #req = Requests(from_username = current_user.username , to_username = toUser , status = 'rejected')
     req.status='rejected'
     body_msg = current_user.username + " has accepted your request to view their profile."
     message = Messages(sender_username = current_user.username, receiver_username = req.from_username, subject= "Request Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
-    db.session.commit() 
-    return redirect(url_for('dashboard')) 
+    db.session.commit()
+    return redirect(url_for('dashboard'))
 
 
 @app.route("/createStory/<user2>", methods=['POST', 'GET'])
 @login_required
-def createStory(user2): 
-    
+def createStory(user2):
+
     form = CreateStoryForm()
 
     if form.validate_on_submit():
@@ -568,13 +571,13 @@ def createStory(user2):
         db.session.add(story)
         db.session.commit()
         return redirect (url_for('dashboard'))
-             
-    return render_template('createStory.html', form = form) 
+
+    return render_template('createStory.html', form = form)
 
 
 @app.route("/acceptProposal/<user2>", methods=['POST', 'GET'])
 @login_required
-def acceptProposal(user2): 
+def acceptProposal(user2):
 
     body_msg = current_user.username + " has accepted your request to fill stories. Please deactivate your profile so that it is not searchable and not viewable.   <a href=\" /createStory/" + current_user.username + "\"" + "  >Please add story.</a>"
     message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request to fill story Accepted", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
@@ -584,7 +587,7 @@ def acceptProposal(user2):
     user = current_user
     search = Search.query.filter_by(username = user.username).first()
     search.searchable = 'False'
-    user = user2 
+    user = user2
     search = Search.query.filter_by(username = user2).first()
     search.searchable = 'False'
     db.session.commit()
@@ -593,7 +596,7 @@ def acceptProposal(user2):
 
 @app.route("/rejectProposal/<user2>", methods=['POST', 'GET'])
 @login_required
-def rejectProposal(user2): 
+def rejectProposal(user2):
 
     body_msg = current_user.username + " has rejected your request to fill a story. "
     message = Messages(sender_username = current_user.username, receiver_username = user2, subject= "Request to fill story Rejected", body=body_msg , timestamp = str(datetime.datetime.now())[:16])
@@ -602,7 +605,7 @@ def rejectProposal(user2):
     return redirect(url_for('dashboard'))
 
 @app.route("/viewStories", methods=['POST', 'GET'])
-def viewStories(): 
+def viewStories():
 
     stories = successStories.query.all()
     story_dict=[]
@@ -614,7 +617,7 @@ def viewStories():
         profile2 = Profiles.query.filter_by(username = story.username2).first()
         search2 = Search.query.filter_by(username = story.username2).first()
 
-        print story.username1 
+        print story.username1
         print story.username2
 
         if search1.searchable == 0 or search2.searchable == 0:
@@ -624,25 +627,25 @@ def viewStories():
         image1 = ImageGallery.query.filter_by(imgid = profile1.image_id).first()
         image2 = ImageGallery.query.filter_by(imgid = profile2.image_id).first()
         print "hi"
-           
-        cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story ]
-        story_dict.append(cur_list) 
 
-    return render_template('viewStories.html', stories = story_dict) 
+        cur_list = [profile1.first_name , profile1.last_name , profile2.first_name , profile2.last_name , image1.image_path , image2.image_path , story.story ]
+        story_dict.append(cur_list)
+
+    return render_template('viewStories.html', stories = story_dict)
 
 @app.route('/generateBio')
 @login_required
 def generateBio():
     profile = Profiles.query.filter_by(username=current_user.username).first()
     pics = ImageGallery.query.filter_by(username = current_user.username).all()
-    prefs = Partner_Preferences.query.filter_by(username = current_user.username).first() 
+    prefs = Partner_Preferences.query.filter_by(username = current_user.username).first()
     social = Social_Media.query.filter_by(username = current_user.username).first()
     edu = Education.query.filter_by(username = current_user.username).first()
     emp = Employment.query.filter_by(username = current_user.username).first()
     bod = Body.query.filter_by(username = current_user.username).first()
-    #print prefs 
+    #print prefs
     emailid = Users.query.filter_by(username = current_user.username).first()
-    
+
 
     if profile is None:
         flash('Profile does not exist')
@@ -659,7 +662,7 @@ def generateBio():
     age = calculate_age(profile.dob)
 
     rendered = render_template('generateBio.html', profile = profile, image= image,  emailid = emailid , prefs = prefs , pics = pics , age=age , social=social , edu=edu,emp=emp,bod=bod)
-  
+
     pdf = pdfkit.from_string(rendered, False,)
 
     response = make_response(pdf)
@@ -671,20 +674,19 @@ def generateBio():
 
 
 
-    
 
-#did you create a story? mean husband 
-#if conditions haak beku 
+
+#did you create a story? mean husband
+#if conditions haak beku
 #haku
 #or we'll put a default img_path for all profiless. yes we will .
 #imgid numbering starts with 0 or 1?
-#1 
+#1
 #okay so we'll insert the dummy as zero and make all the profiles with no dps point at that?
 #S. you never fail to make me kringe
 #clearing traces
-#where do we insert that dummy image 
+#where do we insert that dummy image
 #i did that. i'm talking about inserting into db
-#lets just write one line to insert it now and then remove the line 
+#lets just write one line to insert it now and then remove the line
 #but there has to be someway of keeping static stuff in the db no
 #bby call madi
- 
