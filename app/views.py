@@ -20,6 +20,12 @@ def homepage():
 @app.route('/dashboard', methods = ['GET' , 'POST'])
 @login_required
 def dashboard():
+    profile = Profiles.query.filter_by(username= current_user.username).first()
+
+    if profile is None:
+        flash("Please edit your profile to proceed", 'danger')
+        return redirect(url_for('editProfile'))
+
     proposalForm = ProposalForm()
     quickSearchForm = QuickSearchForm()
 
@@ -125,7 +131,7 @@ def login():
 
             return redirect('dashboard') #review
         else:
-            flash('Invlaid email or password')
+            flash('Invlaid email or password', 'danger')
     return render_template('login.html', title='Sign In', form = form)
 
 @app.route('/logout')
@@ -206,7 +212,7 @@ def editProfile():
                 flash('Details Updated.')
                 return redirect(url_for('editEducation'))
 
-        return render_template('editProfile.html', form = form)
+        return render_template('editProfile.html', form = form, profile= profile)
 
 @app.route('/education', methods=['GET', 'POST'])
 @login_required
