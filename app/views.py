@@ -58,7 +58,6 @@ def dashboard():
     else:
         gender=0
 
-
     return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs, proposalForm = proposalForm, quickSearchForm = quickSearchForm, gender = gender) #eh wait
 
 @app.route('/index')
