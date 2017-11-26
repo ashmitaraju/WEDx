@@ -11,13 +11,61 @@
             <div class="profile-content col-md-12">
 
                 <div class="row">
+                        
+                    
                     <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">filter_list</i></i> Results </h3> <hr>
                     
                 <br>
+               
+                <div class="centered">
+                        
+                        
+                                   <section class="cards">
+                                        {% if profiles %}
+                                        {% for profile in profiles %}
+                                        
+                                       <article class="w3-animate-left card card-search col-md-3 col-sm-3">
+                                            {% if profile[1] %}
+                                            <img src="{{ profile[1].image_path }}" alt="No Profile Picture" style="width:100%">
+                                            {%else %}
+                                            <img src="../static/assets/img/konduru.jpg" alt="No Profile Picture" style="width:100%">
+                                            {% endif %} 
+                                            <h2>{{ profile[0].first_name }} {{ profile[0].last_name }}</h2>
+                                            <p class="title-search">{{ profile[0].about }}</p>
+                                            <p>{{ profile[0].current_location }}</p>    
+                                            {% if profile[2] %}
+                                            <a href="{{ profile[2].instagram}}"><i class="fa fa-instagram"></i></a> 
+                                            <a href="{{ profile[2].twitter}}"><i class="fa fa-twitter"></i></a> 
+                                            <a href="{{ profile[2].linkedin}}"><i class="fa fa-linkedin"></i></a> 
+                                            <a href="{{ profile[2].facebook}}"><i class="fa fa-facebook"></i></a> 
+                                            {% else %} 
+                                            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a> 
+                                            <a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a> 
+                                            <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a> 
+                                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        
+                                            {% endif %} 
+                        
+                        
+                                            <p><a href="{{url_for('viewProfile', user = profile[0].username)}}" class="btn btn-danger btn-round text-center"> View Profile </a></p>
+                                       </article><!-- /card-one -->
+                                       {% endfor %}
+                                       {% else %}
+                    
+                           </section>
+                       </div>
+                      
+                       <h4> No results found. </h4>
+                       {% endif %}
+                       <!--
+
+
+
+                <div class="flex-container">
                 {% if profiles %}
                 {% for profile in profiles %}
                 
-                <div class="w3-animate-left card-search col-md-3 ">
+                <div class="w3-animate-left card-search col-md-3 col-sm-3" style="align-self: center">
                     {% if profile[1] %}
                     <img src="{{ profile[1].image_path }}" alt="No Profile Picture" style="width:100%">
                     {%else %}
@@ -46,8 +94,9 @@
                 {% endfor %}
                 {% else %}
                 <h4> No results found. </h4>
-                {% endif %}
+                {% endif %} -->
                     
+                </div>
                 </div>
             </div>
 
@@ -59,6 +108,12 @@
 
 {% endblock %}
 {% block scripts %}
+<style>
+      .cards {
+        display: flex;
+        justify-content: space-between;
+     }
+        </style>
 <script>
 $('#sliderDouble').noUiSlider({
 	start: [18, 21] ,

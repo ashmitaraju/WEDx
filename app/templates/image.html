@@ -6,6 +6,76 @@
 
 <link rel=stylesheet type="text/css" href="../static/assets/css/image.css">
 
+<div class="intro-header">
+        <div class="container">
+            <br><br><br><br><br>
+            {{ utils.flashed_messages() }}
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-3">
+                <div class="card card-signup">
+                  
+                    <div class="header header-danger text-center">
+                      <h4>Edit your profile</h4>
+                     
+                    </div>
+                    <div class="content text-left">
+                            <div class="profile-tabs">
+                                    <div class="nav-align-center">
+                                        <ul class="nav nav-pills nav-pills-danger " role="tablist">
+                                     <li>
+                                         <a href="{{ url_for('editProfile') }}">Basic Profile</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editEducation') }}">Education</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editEmployment') }}">Employment</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editSocial') }}">Social Media</a>
+                                     </li>
+                                     <li class="active">
+                                         <a href="{{ url_for('editImages') }}">Gallery</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editBody') }}">Body Details</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editPreferences') }}">Partner Preferences</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                           </div>
+                           <div class="col-md-12">
+                                {% for pic in pics: %}
+                                <div class="image floated_img" >
+                                  <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" >
+                                </div>
+                                {% endfor %}
+                                </div>
+                        
+                                <div>
+                                        <form method="POST" enctype="multipart/form-data" >
+                                  
+                                      {{ form.hidden_tag() }}
+                                      {{ form.image(multiple="multiple") }}
+                                      {{ form.submit }}
+                                      {{ form.skip }}
+                                  </form>
+                                  </div>
+                             
+
+
+                      
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<!--
 <div class="content-section" >
         
         {{ utils.flashed_messages() }}
@@ -68,7 +138,7 @@
 
 </div>
 </div>
-</div>
+</div> -->
 
 <style> 
 .floated_img

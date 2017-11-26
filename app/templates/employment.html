@@ -4,49 +4,54 @@
 {% block title %}Edit Profile{% endblock %}
 {% block body %}
 
-<div class="content-section" >
-        <br/>
-        {{ utils.flashed_messages() }}
-        <br/>
-  <div class="center">
-    <h3>Edit Your Profile</h3>
-    <div id="wrapper">
-
-      <div class="profile-tabs">
-         <div class="nav-align-center">
-             <ul class="nav nav-pills nav-pills-danger " role="tablist">
-          <li>
-              <a href="{{ url_for('editProfile') }}">Basic Profile</a>
-          </li>
-          <li>
-              <a href="{{ url_for('editEducation') }}">Education</a>
-          </li>
-          <li class="active">
-              <a href="{{ url_for('editEmployment') }}">Employment</a>
-          </li>
-          <li>
-              <a href="{{ url_for('editSocial') }}">Social Media</a>
-          </li>
-          <li>
-              <a href="{{ url_for('editImages') }}">Gallery</a>
-          </li>
-          <li>
-              <a href="{{ url_for('editBody') }}">Body Details</a>
-          </li>
-          <li>
-              <a href="{{ url_for('editPreferences') }}">Partner Preferences</a>
-          </li>
-      </ul>
-  </div>
-  </div>
-
-      <h3>Employment Details</h3>
-      {{ wtf.quick_form(form, extra_classes="input-group form-control", button_map={'submit' : 'danger',  'skip' : 'danger'}) }}
-      </div>
-
-      <br/>
-
-</div>
-</div>
+<div class="intro-header">
+        <div class="container">
+            <br><br><br><br><br>
+            {{ utils.flashed_messages() }}
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2 col-sm-6 col-sm-offset-3">
+                <div class="card card-signup">
+                  
+                    <div class="header header-danger text-center">
+                      <h4>Edit your profile</h4>
+                     
+                    </div>
+                    <div class="content text-left">
+                            <div class="profile-tabs">
+                                    <div class="nav-align-center">
+                                        <ul class="nav nav-pills nav-pills-danger " role="tablist">
+                                     <li>
+                                         <a href="{{ url_for('editProfile') }}">Basic Profile</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editEducation') }}">Education</a>
+                                     </li class="active">
+                                     <li>
+                                         <a href="{{ url_for('editEmployment') }}">Employment</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editSocial') }}">Social Media</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editImages') }}">Gallery</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editBody') }}">Body Details</a>
+                                     </li>
+                                     <li>
+                                         <a href="{{ url_for('editPreferences') }}">Partner Preferences</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                           </div>
+                        
+                            {{ wtf.quick_form(form, extra_classes="input-group form-control", button_map={'submit' : 'danger',  'skip' : 'danger'}) }}
+                      
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
 {% endblock %}
