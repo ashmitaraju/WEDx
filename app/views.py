@@ -114,8 +114,8 @@ def viewProfile(user):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    #if(current_user):
-        #return redirect('dashboard')
+    if current_user.is_authenticated:
+        return redirect('dashboard')
 
     form = LoginForm()
     if form.validate_on_submit():
