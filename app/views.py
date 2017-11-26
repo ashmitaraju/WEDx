@@ -64,7 +64,6 @@ def dashboard():
     else:
         gender=0
 
-
     return render_template('dashboard.html', title="Dashboard", profile = profile , image = image , msgs = msgs , age = age , reqs = reqs, proposalForm = proposalForm, quickSearchForm = quickSearchForm, gender = gender) #eh wait
 
 @app.route('/index')
@@ -75,7 +74,7 @@ def index():
 @login_required
 def viewProfile(user):
 
-    allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username).first()
+    allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username , status = 'accepted').first()
     if user == current_user.username:
         allowed = True
 
