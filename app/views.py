@@ -407,7 +407,7 @@ def advancedSearch():
             age_upper = 100
 
         for field in form:
-            if (field.data and field.name != 'csrf_token' and field.name != 'submit' and field.name != 'age_lower' and field.name != 'age_upper'):
+            if (field.data and field.name != 'csrf_token' and field.name != 'submit' and field.name != 'age_lower' and field.name != 'age_upper' and field.name != 'height' and field.name != 'salary'):
                 search.update({field.name : field.data})
 
         results = Search.query.filter_by(**search)
@@ -419,7 +419,28 @@ def advancedSearch():
                     results_list.remove(res)
         else:
             results = Search.query.filter_by(age >= age_lower , age <=age_upper)
+        print results_list
 
+        if form.height.data:
+            if results_list is not None:
+                print "hi"
+                for res in results_list[:]: 
+                    print res 
+                    if res.height <= form.height.data: 
+                        print "hi2"
+                        print res
+                        results_list.remove(res)
+        print "bl"
+        #print results_list
+
+        if form.salary.data:
+            if results is not None:
+                for res in results_list[:]:
+                    if res.salary <= form.salary.data:
+                        print "hi" 
+                        results_list.remove(res)  
+    
+        print results_list
         results = results_list
 
         #images = []
@@ -438,6 +459,7 @@ def advancedSearch():
                 else:
                     profiles.append([profile , image , social])
 
+        print "blah"
         print profiles
 
         return render_template('searchResults.html', profiles = profiles , images = images)
