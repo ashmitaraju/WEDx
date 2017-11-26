@@ -122,7 +122,7 @@ def login():
 
             return redirect('dashboard') #review
         else:
-            flash('Invlaid email or password')
+            flash('Invlaid email or password', 'danger')
     return render_template('login.html', title='Sign In', form = form)
 
 @app.route('/logout')
