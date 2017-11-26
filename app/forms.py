@@ -76,7 +76,7 @@ class EditPreferencesForm(Form):
     occupation = StringField('Occupation')
     salary = StringField('Salary (Enter range)' , validators = [Optional()])
     hometown = SelectField('Hometown', choices = cities, validators = [Optional()])
-    height = IntegerField('Height (Enter range in cm)' , validators = [Optional()])
+    height = StringField('Height (Enter range in cm)' , validators = [Optional()])
     current_location = SelectField('Current Location', choices = cities, validators = [Optional()])
     gender = SelectField('Gender', choices = genderChoices)
     mother_tongue = SelectField('Mother Tongue', choices = langs, validators = [Optional()])
