@@ -359,14 +359,14 @@ def deleteImages():
             db.session.delete(img)
             db.session.commit()
         return redirect(url_for('editImages'))
-            
-   
-        
-
-    
 
 
-    
+
+
+
+
+
+
     return render_template('deleteImages.html' , pics = pics)
 
 
@@ -455,8 +455,7 @@ def advancedSearch():
         else:
             results = Search.query.filter_by(age >= age_lower , age <=age_upper)
             results_list = results
-        print "HI"
-        print results_list
+
 
         if form.height.data:
             if results_list is not None:
@@ -477,7 +476,7 @@ def advancedSearch():
                         #print "hi"
                         results_list.remove(res)
 
-        print results_list
+       # print results_list
         results = results_list
 
         #images = []
@@ -496,8 +495,8 @@ def advancedSearch():
                 else:
                     profiles.append([profile , image , social])
 
-        print "blah"
-        print profiles
+       # print "blah"
+       # print profiles
 
         return render_template('searchResults.html', profiles = profiles , images = images)
 
