@@ -28,7 +28,6 @@ MySQL-python==1.2.5
 olefile==0.44
 pbr==3.1.1
 pdfkit==0.6.1
-PIL==1.1.7
 Pillow==4.3.0
 pillowcase==2.0.0
 PyMySQL==0.7.11
