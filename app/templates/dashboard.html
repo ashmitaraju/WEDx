@@ -93,8 +93,8 @@
                                             </tr>
                                         </thead>
 
-                                            </form>
-                                        </div>
+                                        
+                                    
 
                                         <tbody>
                                                 {% for req in reqs | reverse %}
@@ -103,7 +103,8 @@
                                             <td> <a href="{{ url_for('acceptRequest', rid = req.request_id) }}"> Accept </a> </td>
                                             <td> <a href="{{ url_for('rejectRequest', rid = req.request_id) }}"> Reject </a> </td>
                                         {% endfor %}
-                                        <tbody>
+                                        </tr>
+                                    </tbody>
 
 
 
@@ -134,7 +135,8 @@
                                                 <td class="text-center"> <a href="{{ url_for('replyMessage', mid = msg.msgid) }}"> View and Reply </a> </td>
                                                 <td class="text-center"> <a href="{{ url_for('deleteMessage', mid = msg.msgid) }}"> Delete </a> </td>
                                             {% endfor %}
-                                            <tbody>
+                                            </tr>
+                                            </tbody>
 
 
 

@@ -74,7 +74,7 @@ def index():
 @login_required
 def viewProfile(user):
 
-    exists = users.query.filter_by(username = user).first()
+    exists = Users.query.filter_by(username = user).first()
     if exists is None:
         flash('Profile does not exist')
         return redirect('dashboard')
@@ -341,6 +341,34 @@ def editImages():
             return redirect(url_for('editBody'))
 
     return render_template('image.html' , form = form4 , pics = pics)
+
+
+@app.route('/deleteImages', methods=['GET', 'POST'])
+@login_required
+def deleteImages():
+    pics = ImageGallery.query.filter_by(username = current_user.username).all()
+    delPics = []
+    if request.method == "POST":
+        delPics = request.form.getlist("users")
+
+    if delPics:
+        for f in delPics:
+            print f
+            img = ImageGallery.query.filter_by(imgid = f).first()
+            os.remove(os.path.join(app.config['UPLOADED_IMAGES_DEST'], img.image_filename))
+            db.session.delete(img)
+            db.session.commit()
+        return redirect(url_for('editImages'))
+            
+   
+        
+
+    
+
+
+    
+    return render_template('deleteImages.html' , pics = pics)
+
 
 @app.route('/body', methods=['GET', 'POST'])
 @login_required

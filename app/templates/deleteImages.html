@@ -1,0 +1,65 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+{% block body %}
+
+<div class="intro-header">
+        <div class="container">
+            <br><br><br><br><br>
+            {{ utils.flashed_messages() }}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-signup">
+                  
+                    <div class="header header-danger text-center">
+                      <h4>Delete Images</h4>
+                     
+                    </div>
+                    <div class="content text-left">
+                        
+                        <div class="container col-md-12">
+
+                            <h3 class="title text-center"> <i class="material-icons"><i class="material-icons">photo_album</i></i> Your Images </h3> <hr>
+                            
+                            <table class="table">
+                                    <form role="form" method="post">
+                                    
+                              <thead>
+                                  <tr>
+
+                                      <th class="text-left">Filename</th>
+                                      <th class="text-left">Image</th>
+                                      <th class="text-left">Check</th>
+                                  </tr>
+                              </thead>
+
+                               
+                              
+
+                              <tbody>
+                                      {% for pic in pics | reverse %}
+                              <tr>
+                                  <td> {{ pic.image_filename }} </td>
+                                  <td>  <img src= {{ pic.image_path }} id="myImage" class="img-rounded img-raised object-fit_cover"  width="120" > </td>
+                                  <td> <input type="checkbox" id="id_{{ pic.imgid }}" name="users" value="{{pic.imgid}}"> </td>
+                              {% endfor %}
+                              </tr>
+                            </tbody>
+                                  
+                             
+                                 </table>
+                                </div>
+                                
+                                <button class="btn btn-danger btn-round" type="submit" name="submit" value="submit">Delete Pictures</button>
+                            </form>
+                            </div>
+                      
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
