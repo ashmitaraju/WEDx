@@ -74,6 +74,11 @@ def index():
 @login_required
 def viewProfile(user):
 
+    exists = users.query.filter_by(username = user).first()
+    if exists is None:
+        flash('Profile does not exist')
+        return redirect('dashboard')
+
     allowed = Requests.query.filter_by(to_username = user , from_username = current_user.username , status = 'accepted').first()
     if user == current_user.username:
         allowed = True
@@ -421,16 +426,16 @@ def advancedSearch():
                     results_list.remove(res)
         else:
             results = Search.query.filter_by(age >= age_lower , age <=age_upper)
-            results_list = results 
+            results_list = results
         print "HI"
         print results_list
 
         if form.height.data:
             if results_list is not None:
                 #print "hi"
-                for res in results_list[:]: 
-                    #print res 
-                    if res.height <= form.height.data: 
+                for res in results_list[:]:
+                    #print res
+                    if res.height <= form.height.data:
                         #print "hi2"
                         #print res
                         results_list.remove(res)
@@ -441,9 +446,9 @@ def advancedSearch():
             if results is not None:
                 for res in results_list[:]:
                     if res.salary <= form.salary.data:
-                        #print "hi" 
-                        results_list.remove(res)  
-    
+                        #print "hi"
+                        results_list.remove(res)
+
         print results_list
         results = results_list
 
