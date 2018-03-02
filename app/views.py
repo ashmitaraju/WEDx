@@ -326,6 +326,7 @@ def editImages():
     if form4.submit.data:
         if 'image' in request.files:
             for f in request.files.getlist('image'):
+                print type(f)
                 if f.filename:
                     print "hey"
                     print f.filename
@@ -359,14 +360,6 @@ def deleteImages():
             db.session.delete(img)
             db.session.commit()
         return redirect(url_for('editImages'))
-
-
-
-
-
-
-
-
     return render_template('deleteImages.html' , pics = pics)
 
 
@@ -733,23 +726,3 @@ def generateBio():
     response.headers['Content-Disposition'] = 'inline; filename=output.pdf'
 
     return response
-
-
-
-
-
-
-#did you create a story? mean husband
-#if conditions haak beku
-#haku
-#or we'll put a default img_path for all profiless. yes we will .
-#imgid numbering starts with 0 or 1?
-#1
-#okay so we'll insert the dummy as zero and make all the profiles with no dps point at that?
-#S. you never fail to make me kringe
-#clearing traces
-#where do we insert that dummy image
-#i did that. i'm talking about inserting into db
-#lets just write one line to insert it now and then remove the line
-#but there has to be someway of keeping static stuff in the db no
-#bby call madi

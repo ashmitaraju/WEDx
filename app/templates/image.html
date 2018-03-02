@@ -59,8 +59,8 @@
                                   
                                       {{ form.hidden_tag() }}
                                       {{ form.image(multiple="multiple") }}
-                                      {{ form.submit }}
-                                      {{ form.skip }}
+                                      {{ form.submit(class_="btn btn-danger btn-round text-center") }}
+                                      {{ form.skip(class_="btn btn-danger btn-round text-center") }}
                                   </form>
                                   <a class="btn btn-danger btn-round text-center" data-toggle="modal" href="{{ url_for('deleteImages') }}">
                                         Delete Images
