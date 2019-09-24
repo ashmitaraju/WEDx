@@ -1,3 +1,3 @@
 # WEDx
-A matrimony management application built using the Flask microframework.  
+A Matrimony Management Application built using the Flask Microframework.  
 Check it out at wedx.pythonanywhere.com 
