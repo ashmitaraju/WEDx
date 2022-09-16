@@ -22,7 +22,7 @@ flipflop==1.0
 guess-language==0.2
 itsdangerous==0.24
 Jinja2==2.9.6
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 MySQL-python==1.2.5
 olefile==0.44
